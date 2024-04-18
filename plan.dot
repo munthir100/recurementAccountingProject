@@ -1,0 +1,123 @@
+Status:
+    name
+User:
+    name
+    email
+    phone
+    password
+AccountType: // office and customer
+    name
+Account:
+    name
+    email
+    phone
+    password
+    account_type_id
+CV:
+    id
+    office_id
+    files:
+        cv:pdf,doc,docx 
+Worker:
+    first_name
+    last_name
+    job
+    month_salary
+    contract_period
+    languages: json // name and precantage
+    nationality
+    age
+    type
+    tall
+    religion
+    place_of_birth
+    children
+    education
+    birtth_date
+    weight
+    has_practical_experience
+    practical_experience // json name and value
+    work_experiance_country
+    years_of_experience
+    office_id
+    status_id
+    cv_id
+
+Order:
+    customer_id*
+    worker_id*
+    currency_id*
+    contract_type*
+    contract_start_duration*
+    contract_end_duration*
+    amount*
+    additional_information
+    status_id*
+
+
+Liability:
+    title,
+    description,
+    amount,
+    due_date,
+    type,
+    status_id,
+    account_id,
+    author_id:User
+
+Contract:
+    contract_type
+    start_date
+    end_date
+    value
+    worker_id
+    customer_id
+    author_id:User
+Blog:
+    title
+    context
+    published_at
+    status_id
+    author_id:User
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    customer Account description (AccountType::CUSTOMER):
+        when guest open a website he can see the workers , he can only  choose one of them.
+        after choosing the worker user will be redirected to another page where he 
+        can fill in all fields related with
+        this order (amount , contract_type ,contract_start_duration and contract_end_duration)
+        there is also "additional_information" field which is not required but if it's filled in
+        the order is saved with status new and a notification sent to User with new order created.
+        this process after login or register with account_type_id is AccountType::CUSTOMER .
+        when he is not login the popup modal displaied to guest to register name , email , phone 
+        and password with default account_type_id is AccountType::CUSTOMER .
+
+        also user can comment on the blogs in the website , the guests also can comment in blogs .
+        when the account comment in the blog a new notification sent to User also with type blog_comment.
+        office account description (AccountType::OFFICE):
+        can do any thing related to the customer account , also he can upload a Cv to the User
+
+        the Account ( office and customer can contact with the User when he contact a new notification 
+        ContactMessage sended to the User in the dashboard with title and description ) .
+
+    User description (admin):
+        the admin can manage Account , Cv , Worker , Order Liability , Contract , Blog
+        he can create workers from cvs recived from office accounts and get the data from Cv and 
+        write it on Worker data . 
+        he can change orders statuses and create a contracts and change a contracts statuses
+        he can view all notifications that came to him from Accounts .
+        

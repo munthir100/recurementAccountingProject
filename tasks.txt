@@ -1,0 +1,2 @@
+1- edit on the cv crude in dashbaord
+2- add the observer for cv model for updating
