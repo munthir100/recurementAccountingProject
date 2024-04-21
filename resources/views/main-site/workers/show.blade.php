@@ -12,10 +12,10 @@
     <div class="container">
         <div class="profile-header text-center mt-4 mb-4">
             <div class="avatar-lg mx-auto mb-3">
-                @if($worker->getFirstMedia('cvs'))
-                <img src="{{ $worker->getFirstMedia('main_images')->getUrl() }}" alt="{{ __('user-img') }}" class="img-thumbnail rounded-circle" />
+                @if($worker->getFirstMedia('main_images'))
+                <img height="215" width="215" src="{{ $worker->getFirstMedia('main_images')->getUrl() }}" alt="{{ __('user-img') }}" class="img-thumbnail rounded-circle" />
                 @else
-                <img src="/dashboard/assets/images/users/avatar-1.jpg" alt="{{ __('user-img') }}" class="img-thumbnail rounded-circle" />
+                <img height="215" width="215" src="/dashboard/assets/images/users/avatar-1.jpg" alt="{{ __('user-img') }}" class="img-thumbnail rounded-circle" />
                 @endif
             </div>
             <h2 class="fw-bold">{{ $worker->first_name }} {{ $worker->last_name }}</h2>

@@ -41,7 +41,7 @@ class UpdateWorkerRequest extends FormRequest
             'weight' => ['required', 'numeric'],
             'work_experience_country' => ['required', 'string', 'max:255'],
             'years_of_experience' => ['required', 'numeric'],
-            'status_id' => ['required', Rule::in(Status::ACTIVE, Status::NOT_ACTIVE)],
+            'status_id' => ['required', Rule::in(Status::PUBLISHED, Status::NOT_PUBLISHED)],
         ];
     }
 }

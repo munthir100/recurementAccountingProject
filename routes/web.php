@@ -23,7 +23,7 @@ Route::middleware([SetLocale::class])->group(function () {
         Route::get('/blog', [MainController::class, 'blog'])->name('blog');
         Route::get('/blog/{blog}/details', [MainController::class, 'blogDetails'])->name('blog.details');
         Route::get('/about', [MainController::class, 'about'])->name('about');
-        Route::get('workers', [MainController::class, 'workers'])->name('workers');
+        Route::get('workers', [MainController::class, 'workers'])->name('workers.index');
         Route::get('workers/{worker}', [MainController::class, 'workerDetails'])->name('workers.show');
     });
 
@@ -45,5 +45,8 @@ Route::middleware([SetLocale::class])->group(function () {
 
     Route::prefix('user')->name('user.')->group(function () {
         require base_path('routes/user.php');
+    });
+    Route::middleware('auth:account')->prefix('account')->name('account.')->group(function () {
+        require base_path('routes/account.php');
     });
 });

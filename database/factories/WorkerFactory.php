@@ -47,7 +47,7 @@ class WorkerFactory extends Factory
             'work_experience_country' => $this->faker->country,
             'years_of_experience' => $this->faker->numberBetween(0, 20),
             'office_id' => null, // This should be filled later when attaching workers to offices
-            'status_id' => $this->faker->numberBetween(Status::ACTIVE, Status::NOT_ACTIVE), // Assuming 'active' status is id = 1
+            'status_id' => $this->faker->numberBetween(Status::PUBLISHED, Status::NOT_PUBLISHED),
         ];
     }
 }

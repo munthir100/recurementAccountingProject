@@ -6,21 +6,8 @@
 <header class="header-with-topbar">
     @include('main-site.layouts.shared.includes.header')
 </header>
-<section class="top-space-margin half-section bg-gradient-very-light-gray">
-    <div class="container">
-        <div class="row align-items-center justify-content-center" data-anime='{ "el": "childs", "translateY": [-15, 0], "opacity": [0,1], "duration": 300, "delay": 0, "staggervalue": 200, "easing": "easeOutQuad" }'>
-            <div class="col-12 col-xl-8 col-lg-10 text-center position-relative page-title-extra-large">
-                <h1 class="alt-font fw-600 text-dark-gray mb-10px">Contact Us</h1>
-            </div>
-            <div class="col-12 breadcrumb breadcrumb-style-01 d-flex justify-content-center">
-                <ul>
-                    <li><a href="demo-fashion-store.html">Home</a></li>
-                    <li>Contact Us</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</section>
+
+<x-main-site.page-header title="Contact Us" />
 <!-- start section -->
 <section id="down-section">
     <div class="container">
@@ -130,24 +117,7 @@
                     <!-- end contact form -->
                 </div>
             </div>
-            <div class="row align-items-center justify-content-center mt-8">
-                <div class="col-md-auto text-center text-md-end sm-mb-20px">
-                    <h6 class="text-dark-gray fw-600 mb-0 ls-minus-1px">Connect with social media </h6>
-                </div>
-                <div class="col-2 d-none d-lg-inline-block">
-                    <span class="w-100 h-1px bg-dark-gray opacity-2 d-flex mx-auto"></span>
-                </div>
-                <!-- start social icon -->
-                <div class="col-md-auto elements-social social-icon-style-04 text-center text-md-start ps-lg-0">
-                    <ul class="large-icon dark">
-                        <li class="m-0"><a class="facebook" href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook-f"></i><span></span></a></li>
-                        <li class="m-0"><a class="dribbble" href="http://www.dribbble.com" target="_blank"><i class="fa-brands fa-dribbble"></i><span></span></a></li>
-                        <li class="m-0"><a class="twitter" href="http://www.twitter.com" target="_blank"><i class="fa-brands fa-twitter"></i><span></span></a></li>
-                        <li class="m-0"><a class="instagram" href="http://www.instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i><span></span></a></li>
-                    </ul>
-                </div>
-                <!-- end social icon -->
-            </div>
+            
         </div>
     </div>
 </section>

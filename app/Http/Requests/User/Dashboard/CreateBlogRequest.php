@@ -30,8 +30,16 @@ class CreateBlogRequest extends FormRequest
             'context' => [
                 'required', // The context is required and cannot be empty
                 'string', // The context should be a string
-                'min:10', // The context should have a minimum length of 10 characters
-                'max:5000', // The context should not exceed 5000 characters
+            ],
+            'image' => [
+                'required', // The image is required
+                'image', // The file should be an image
+                'mimes:jpeg,jpg,png', // The file must be of one of the allowed image types
+                'max:2048', // The file size should not exceed 2MB
+            ],
+            'is_published' => [
+                'boolean', // The field should be a boolean (true or false)
+                'nullable', // The field can be null
             ],
         ];
     }

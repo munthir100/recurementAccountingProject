@@ -54,6 +54,7 @@
                                 <th scope="col">{{ __("ID") }}</th>
                                 <th scope="col">{{ __("Name") }}</th>
                                 <th scope="col">{{ __("Location") }}</th>
+                                <th scope="col">{{ __("Status") }}</th>
                                 <th scope="col">{{ __("Actions") }}</th>
                             </tr>
                         </thead>
@@ -67,6 +68,8 @@
                                 <td><a href="#" class="fw-semibold">{{ $office->id }}</a></td>
                                 <td>{{ $office->account->name }}</td>
                                 <td>{{ $office->location }}</td>
+                                <td> <x-dashboard.table-status-badge statusId="{{ $office->account->status_id }}" /> </td>
+
                                 <td>
                                     <div class="d-flex gap-2">
                                         <div class="edit">

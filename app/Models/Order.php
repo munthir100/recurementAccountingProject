@@ -2,17 +2,21 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Worker;
+use App\Models\Account;
+use App\Traits\HasStatus;
+use App\Filters\OrderFilters;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Order extends Model
 {
-    use HasFactory;
-
+    use HasFactory, HasStatus;
+    protected string $default_filters = OrderFilters::class;
+    
     protected $fillable = [
         'customer_id',
         'worker_id',
-        'currency',
         'contract_type',
         'contract_start_duration',
         'contract_end_duration',
@@ -31,8 +35,4 @@ class Order extends Model
         return $this->belongsTo(Worker::class);
     }
 
-    public function status()
-    {
-        return $this->belongsTo(Status::class);
-    }
 }

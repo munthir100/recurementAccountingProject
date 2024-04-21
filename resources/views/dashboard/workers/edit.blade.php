@@ -12,16 +12,8 @@
 @endsection
 @section('content')
 <div class="row">
+    <x-dashboard.alerts />
     <div class="card">
-        @if($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach($errors->all() as $error)
-                <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-        @endif
         <div class="card-body">
             <form action="{{ route('user.dashboard.workers.update', $worker->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -205,8 +197,8 @@
                         <div class="form-floating">
                             <select name="status_id" id="status_id" class="form-select">
                                 <option value="">{{ __('Select Status') }}</option>
-                                <option value="{{ \App\Models\Status::ACTIVE }}" {{ old('status_id', $worker->status_id) == \App\Models\Status::ACTIVE ? 'selected' : '' }}>{{ __('Active') }}</option>
-                                <option value="{{ \App\Models\Status::NOT_ACTIVE }}" {{ old('status_id', $worker->status_id) == \App\Models\Status::NOT_ACTIVE ? 'selected' : '' }}>{{ __('Not Active') }}</option>
+                                <option value="{{ \App\Models\Status::PUBLISHED }}" {{ old('status_id', $worker->status_id) == \App\Models\Status::PUBLISHED ? 'selected' : '' }}>{{ __('Published') }}</option>
+                                <option value="{{ \App\Models\Status::NOT_PUBLISHED }}" {{ old('status_id', $worker->status_id) == \App\Models\Status::NOT_PUBLISHED ? 'selected' : '' }}>{{ __('Not Published') }}</option>
                             </select>
                             <label for="status_id">{{ __('Status') }}</label>
                             @error('status_id')

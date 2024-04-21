@@ -2,12 +2,19 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Filters\BlogFilters;
+use App\Traits\HasStatus;
+use Essa\APIToolKit\Filters\Filterable;
+use Spatie\MediaLibrary\HasMedia;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Blog extends Model
+class Blog extends Model implements HasMedia
 {
-    use HasFactory;
+    use HasFactory, HasStatus, InteractsWithMedia, Filterable;
+
+    protected $default_filters = BlogFilters::class;
 
     protected $fillable = ['title', 'context', 'author_id', 'status_id', 'published_at'];
 

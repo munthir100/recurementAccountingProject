@@ -24,6 +24,13 @@
             <div class="card-header">
                 <div class="mb-2"></div>
                 <div class="row g-4 mb-3">
+                    <div class="col-sm-auto">
+                        <div>
+                            <a href="{{route('user.dashboard.workers.create')}}" class="btn btn-success add-btn" id="create-btn">
+                                <i class="ri-add-line align-bottom me-1"></i> {{ __("Create") }}
+                            </a>
+                        </div>
+                    </div>
                     <div class="col-sm">
                         <div class="d-flex justify-content-sm-end">
                             <div class="search-box ms-2">
@@ -47,8 +54,8 @@
                                 <th>{{__('ID')}}</th>
                                 <th>{{ __("Full Name") }}</th>
                                 <th>{{ __("Job") }}</th>
-                                <th>{{ __("Month Salary") }}</th>
                                 <th>{{ __("Office") }}</th>
+                                <th>{{ __("Status") }}</th>
                                 <th>{{ __("Actions") }}</th>
                             </tr>
                         </thead>
@@ -67,9 +74,9 @@
                                     </a>
                                 </td>
                                 <td>{{ $worker->job }}</td>
-                                <td>{{ $worker->month_salary }}</td>
-                                <td>{{ $worker->office->account->name }}</td>
 
+                                <td>{{ $worker->office->account->name }}</td>
+                                <td> <x-dashboard.table-status-badge statusId="{{ $worker->status_id }}" /> </td>
                                 <td>
                                     <div class="d-flex gap-2">
                                         <div class="edit">

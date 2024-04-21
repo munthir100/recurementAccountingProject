@@ -10,6 +10,8 @@ use App\Models\Worker;
 use App\Models\Account;
 use App\Models\Customer;
 use App\Models\AccountType;
+use App\Models\Country;
+use App\Models\Status;
 use Illuminate\Database\Seeder;
 
 class MainSeeder extends Seeder
@@ -45,5 +47,6 @@ class MainSeeder extends Seeder
 
         Blog::factory(30)->create();
         Order::factory(30)->create();
+        Country::factory(30)->create();
     }
 }

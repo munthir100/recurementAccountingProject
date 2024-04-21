@@ -21,7 +21,8 @@ class BlogController extends Controller
 
     public function store(CreateBlogRequest $request)
     {
-        request()->user()->blogs()->create($request->validated());
+        $blog = request()->user()->blogs()->create($request->only(['title', 'context']));
+        $blog->addMediaFromRequest('image')->ToMediaCollection('blog_images');
 
         return redirect()->route('user.dashboard.blogs.index')->with('success', 'Blog created successfully.');
     }
@@ -35,7 +36,11 @@ class BlogController extends Controller
     public function update(UpdateBlogRequest $request, Blog $blog)
     {
         $blog->update($request->validated());
-
+        if($request->hasFile('image')){
+            $blog->clearMediaCollection();
+            $blog->addMediaFromRequest('image')->ToMediaCollection('blog_images');
+        }
+        
         return back()->with('success', 'Blog updated successfully.');
     }
 

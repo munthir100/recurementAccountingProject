@@ -13,14 +13,13 @@
     <div class="card">
         <div class="card-body">
             <div class="container">
-                <h1>{{ __('Edit Office') }}</h1>
                 <form action="{{ route('user.dashboard.offices.update', $office->id) }}" method="POST">
                     @csrf
                     @method('PUT')
 
                     <div class="form-group">
                         <label for="name">{{ __('Name') }}:</label>
-                        <input type="text" id="name" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name', $office->account->name) }}">
+                        <input type="text" id="name" name="name" class="form-control mb-2 @error('name') is-invalid @enderror" value="{{ old('name', $office->account->name) }}">
                         @error('name')
                         <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -28,7 +27,7 @@
 
                     <div class="form-group">
                         <label for="email">{{ __('Email') }}:</label>
-                        <input type="email" id="email" name="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email', $office->account->email) }}">
+                        <input type="email" id="email" name="email" class="form-control mb-2 @error('email') is-invalid @enderror" value="{{ old('email', $office->account->email) }}">
                         @error('email')
                         <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -36,7 +35,7 @@
 
                     <div class="form-group">
                         <label for="location">{{ __('Location') }}:</label>
-                        <input type="text" id="location" name="location" class="form-control @error('location') is-invalid @enderror" value="{{ old('location', $office->location) }}">
+                        <input type="text" id="location" name="location" class="form-control mb-2 @error('location') is-invalid @enderror" value="{{ old('location', $office->location) }}">
                         @error('location')
                         <div class="invalid-feedback">{{ $message }}</div>
                         @enderror

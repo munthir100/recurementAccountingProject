@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('cvs', function (Blueprint $table) {
             $table->id();
             $table->foreignId('office_id')->constrained();
+            $table->foreignId('status_id')->constrained();
             $table->timestamps();
         });
     }

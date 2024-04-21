@@ -42,7 +42,7 @@ class CreateWorkerRequest extends FormRequest
             'related_images' => ['nullable', 'array'],
             'cv' => ['required', 'file', 'mimes:pdf', 'max:2048'],
             'office_id' => ['required', 'exists:offices,id'],
-            'status_id' => ['required', Rule::in(Status::ACTIVE,Status::NOT_ACTIVE)],
+            'status_id' => ['required', Rule::in(Status::PUBLISHED, Status::NOT_PUBLISHED)],
         ];
     }
 }

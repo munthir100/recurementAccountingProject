@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
-use App\Models\Status;
 use App\Models\Worker;
+use App\Models\Country;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use App\Http\Controllers\Controller;
@@ -13,7 +13,9 @@ class MainController extends Controller
 {
     public function home()
     {
-        return view('main-site.home');
+        $countries = Country::with('media')->isPublished()->get();
+
+        return view('main-site.home', compact('countries'));
     }
 
     public function contact()
@@ -23,16 +25,16 @@ class MainController extends Controller
 
     public function blog()
     {
-        $blogs = Blog::with('author')->whereStatusId(Status::PUBLISHED)->dynamicPaginate();
+        $blogs = Blog::with('author')->isPublished()->useFilters()->dynamicPaginate();
 
         return view('main-site.blogs.index', compact('blogs'));
     }
 
     public function blogDetails($blogId)
     {
-        $blog = Blog::whereStatusId(Status::PUBLISHED)->findOrFail($blogId);
+        $blog = Blog::isPublished()->findOrFail($blogId);
 
-        $relatedBlogs = Blog::whereStatusId(Status::PUBLISHED)
+        $relatedBlogs = Blog::isPublished()
             ->where('title', '%like%', $blog->title)
             ->limit(20)->get();
 
@@ -47,14 +49,15 @@ class MainController extends Controller
 
     public function workers()
     {
-        $workers = Worker::whereStatusId(Status::ACTIVE)->dynamicPaginate();
+        $workers = Worker::isPublished()->useFilters()->dynamicPaginate();
 
         return view('main-site.workers.index', compact('workers'));
     }
 
     public function workerDetails($workerId)
     {
-        $worker = Worker::where('status_id', Status::ACTIVE)->findOrFail($workerId);
+        $worker = Worker::isPublished()->findOrFail($workerId);
+
         return view('main-site.workers.show', compact('worker'));
     }
 

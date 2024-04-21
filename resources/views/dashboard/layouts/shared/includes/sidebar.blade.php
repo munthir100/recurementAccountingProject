@@ -68,7 +68,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link {{ request()->routeIs('user.dashboard.settings') ? 'active' : '' }}" href="{{ route('user.dashboard.settings') }}" aria-expanded="false" aria-controls="sidebarSettings">
+                    <a class="nav-link menu-link {{ request()->routeIs('user.dashboard.settings.*') ? 'active' : '' }}" href="{{ route('user.dashboard.settings.index') }}" aria-expanded="false" aria-controls="sidebarSettings">
                         <i class="ri-settings-3-line"></i> <span id="sidebar-span">{{ __('Settings') }}</span>
                     </a>
                 </li>

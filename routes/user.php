@@ -10,6 +10,7 @@ use App\Http\Controllers\User\Dashboard\WorkerController;
 use App\Http\Controllers\User\Dashboard\CustomerController;
 use App\Http\Controllers\User\Dashboard\SecurityController;
 use App\Http\Controllers\User\Dashboard\SettingsController;
+use App\Http\Controllers\User\Dashboard\Settings\CountryController;
 
 
 Route::middleware('guest:web')->group(function () {
@@ -26,10 +27,13 @@ Route::middleware('auth:web')->group(function () {
         Route::resource('blogs', BlogController::class);
         Route::put('offices/{office}/password/update', [OfficeController::class, 'updatePassword'])->name('offices.update.password');
         Route::put('callCenters/{callCenter}/password/update', [CustomerController::class, 'updatePassword'])->name('callCenters.update.password');
-
-
-        Route::get('settings', [SettingsController::class, 'showSettings'])->name('settings');
         Route::get('/security', [SecurityController::class, 'showSecurity'])->name('security');
+
+        Route::prefix('settings')->name('settings.')->group(function () {
+            Route::get('', [SettingsController::class, 'showSettings'])->name('index');
+            Route::get('genral', [SettingsController::class, 'genral'])->name('genral');
+            Route::resource('countries', CountryController::class);
+        });
         Route::put('/settings/update', [SettingsController::class, 'updateSettings'])->name('settings.update');
         Route::put('/security/update', [SecurityController::class, 'updateSecurity'])->name('security.update');
     });

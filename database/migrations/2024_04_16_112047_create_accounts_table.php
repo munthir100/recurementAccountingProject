@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use App\Models\Status;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
 {
@@ -18,6 +19,7 @@ return new class extends Migration
             $table->string('phone')->unique();
             $table->string('password');
             $table->foreignId('account_type_id')->constrained();
+            $table->foreignId('status_id')->default(Status::ACTIVE)->constrained();
             $table->timestamps(); 
         });
     }

@@ -10,8 +10,13 @@ class SettingsController extends Controller
 {
     public function showSettings()
     {
+        return view('dashboard.settings.index');
+    }
+
+    public function genral()
+    {
         $user = request()->user();
-        return view('dashboard.settings', compact('user'));
+        return view('dashboard.settings.genral', compact('user'));
     }
 
     public function updateSettings(UpdateSettingsRequest $request)
@@ -21,6 +26,6 @@ class SettingsController extends Controller
             'name' => $request->input('name'),
         ]);
 
-        return redirect()->route('user.dashboard.settings')->with('success', 'Profile updated successfully.');
+        return back()->with('success', 'Profile updated successfully.');
     }
 }

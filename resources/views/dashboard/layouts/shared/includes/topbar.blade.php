@@ -6,7 +6,7 @@
                 <div class="navbar-brand-box horizontal-logo">
                     <a href="/" class="logo logo-dark">
                         <span class="logo-sm">
-                            <img src="{{ asset('assets/images/logo-sm.png') }}" alt="" height="22">
+                            <img src="{{ asset('dashboard/assets/images/logo-sm.png') }}" alt="" height="22">
                         </span>
                         <span class="logo-lg">
                             <img src="{{asset('dashboard/assets/images/logo-dark.png')}}" alt="" height="17">
@@ -15,10 +15,10 @@
 
                     <a href="/" class="logo logo-light">
                         <span class="logo-sm">
-                            <img src="{{ asset('assets/images/logo-sm.png') }}" alt="" height="22">
+                            <img src="{{ asset('dashboard/assets/images/logo-sm.png') }}" alt="" height="22">
                         </span>
                         <span class="logo-lg">
-                            <img src="{{ asset('assets/images/logo-light.png') }}" alt="" height="17">
+                            <img src="{{ asset('dashboard/assets/images/logo-light.png') }}" alt="" height="17">
                         </span>
                     </a>
                 </div>
@@ -54,19 +54,19 @@
 
                 <div class="dropdown ms-1 topbar-head-dropdown header-item">
                     <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img id="header-lang-img" src="{{ asset('assets/images/flags/' . (app()->getLocale() == 'ar' ? 'sa' : 'us') . '.svg') }}" alt="{{ __('Header Language') }}" height="20" class="rounded">
+                        <img id="header-lang-img" src="{{ asset('dashboard/assets/images/flags/' . (app()->getLocale() == 'ar' ? 'sa' : 'us') . '.svg') }}" alt="{{ __('Header Language') }}" height="20" class="rounded">
                     </button>
                     <div class="dropdown-menu dropdown-menu-end">
                         <!-- item - English -->
                         @if(app()->getLocale() == 'ar')
                         <a href="#" onclick="document.getElementById('enForm').submit()" class="dropdown-item notify-item language py-2" data-lang="en" title="{{ __('English') }}">
-                            <img src="{{ asset('assets/images/flags/us.svg') }}" alt="user-image" class="me-2 rounded" height="18">
+                            <img src="{{ asset('dashboard/assets/images/flags/us.svg') }}" alt="user-image" class="me-2 rounded" height="18">
                             <span class="align-middle">{{ __('English') }}</span>
                         </a>
                         @else
                         <!-- item - Arabic -->
                         <a href="#" onclick="document.getElementById('arForm').submit()" class="dropdown-item notify-item language" data-lang="ar" title="{{ __('Arabic') }}">
-                            <img src="{{ asset('assets/images/flags/sa.svg') }}" alt="user-image" class="me-2 rounded" height="18">
+                            <img src="{{ asset('dashboard/assets/images/flags/sa.svg') }}" alt="user-image" class="me-2 rounded" height="18">
                             <span class="align-middle">{{ __('Arabic') }}</span>
                         </a>
                         @endif

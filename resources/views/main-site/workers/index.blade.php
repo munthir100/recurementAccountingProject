@@ -7,30 +7,25 @@
     @include('main-site.layouts.shared.includes.header')
 </header>
 <!-- start page title -->
-<section class="top-space-margin half-section bg-gradient-very-light-gray">
-    <div class="container">
-        <div class="row align-items-center justify-content-center" data-anime='{ "el": "childs", "translateY": [-15, 0], "opacity": [0,1], "duration": 300, "delay": 0, "staggervalue": 200, "easing": "easeOutQuad" }'>
-            <div class="col-12 col-xl-8 col-lg-10 text-center position-relative page-title-extra-large">
-                <h1 class="alt-font fw-600 text-dark-gray mb-10px">Workers</h1>
-            </div>
-            <div class="col-12 breadcrumb breadcrumb-style-01 d-flex justify-content-center">
-                <ul>
-                    <li><a href="demo-fashion-store.html">Home</a></li>
-                    <li>Workers</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</section>
+<x-main-site.page-header title="Workers" />
+
+<x-main-site.search-bar />
+
 <!-- end page title -->
 <section class="section" id="findJob">
     <div class="container-fluid bg-grey">
         <div class="row">
+            <x-main-site.search-result-text />
             @forelse($workers as $worker)
             <div class="col-md-4 mb-2">
                 <div class="row g-0 box-shadow-extra-large box-shadow-quadruple-large-hover border-radius-6px overflow-hidden">
-                    <div class="col-5 cover-background" style="background-image: url(dashboard/assets/images/users/avatar-1.jpg)">
+                    @php
+                    $src = $worker->hasMedia('main_images') ? $worker->getFirstMedia('main_images')->getUrl() : 'https://via.placeholder.com/300x300';
+                    @endphp
+
+                    <div class="col-5 cover-background" style=" background-image: url('{{ $src }}')">
                     </div>
+
                     <div class="col-7 bg-white ps-35px pt-30px pb-30px xs-ps-20px">
                         <a href="{{route('home.workers.show',$worker->id)}}">
                             <span class="primary-font fs-18 fw-600 text-dark-gray d-block">
@@ -43,7 +38,7 @@
 
                             <div class="col-12">
                                 <i class="far fa-calendar-check"></i>&nbsp;
-                                 &nbsp;
+                                &nbsp;
                                 {{date("F j, Y", strtotime($worker->created_at)) }}
                             </div>
                         </div>

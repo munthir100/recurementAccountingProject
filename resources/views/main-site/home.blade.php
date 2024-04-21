@@ -7,18 +7,21 @@
     @include('main-site.layouts.shared.includes.header')
 </header>
 <!-- start banner -->
-<section class="top-space-margin p-0 full-screen md-h-600px sm-h-500px section-dark" data-parallax-background-ratio="0.8" style="background-image: url('/images/custom/backround.jpeg')">
+<section class="top-space-margin p-0 full-screen md-h-600px sm-h-500px section-dark section-dark-highlight" data-parallax-background-ratio="0.8" style="background-image: url(images/custom/backround.jpeg); margin-top: 141px; height: 775px; background-position: 50% 64.5px;">
     <div class="container h-100">
         <div class="row align-items-center h-100">
             <div class="col-xl-7 col-md-9 col-sm-9 position-relative text-white" data-anime='{ "el": "childs", "opacity": [0, 1], "translateY": [30, 0], "staggervalue": 200, "easing": "easeInOutSine" }'>
-                <div class="fs-80 lh-75 sm-fs-65 fw-600 mb-20px text-shadow-large ls-minus-2px">Your first destination for competitive recruitment prices</div>
+                <div class="fs-30 lh-75 sm-fs-65 mb-20px text-shadow-large ls-minus-2px">Your first destination for competitive recruitment prices</div>
                 <div>
-                    <span class="opacity-5 fs-20 w-70 md-w-85 mb-25px fw-300 d-inline-block">We meet your domestic labor needs at the best prices</span>
+                    <span class="fs-20 w-70 md-w-85 mb-25px fw-300 d-inline-block">We meet your domestic labor needs at the best prices</span>
                 </div>
                 <div class="icon-with-text-style-08">
                     <div class="feature-box feature-box-left-icon-middle">
                         <div class="feature-box-icon feature-box-icon-rounded w-65px h-65px rounded-circle bg-yellow me-15px rounded-box">
                             <i class="feather icon-feather-arrow-right text-dark-gray icon-extra-medium"></i>
+                        </div>
+                        <div class="feature-box-content">
+                            <a href="{{route('home.workers.index')}}" class="d-inline-block fs-19 text-white text-shadow-double-large">Explore Workers</a>
                         </div>
                     </div>
                 </div>
@@ -26,7 +29,6 @@
         </div>
     </div>
 </section>
-
 <!-- end banner -->
 <!-- start section -->
 <section>
@@ -425,6 +427,7 @@
 </section>
 
 <!-- end section -->
+@if($countries->isNotEmpty())
 <!-- start section -->
 <section class="py-0">
     <div class="container">
@@ -434,10 +437,25 @@
             </div>
         </div>
         <div class="row row-cols-1 row-cols-lg-4 row-cols-sm-2" data-anime='{ "el": "childs", "translateX": [-50, 0], "opacity": [0,1], "duration": 1200, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }'>
-            <!-- start team member item -->
+
+
+
+
+
+
+
+
+
+
+
+
+            @foreach($countries as $country)
             <div class="col text-center team-style-01 md-mb-30px">
                 <figure class="mb-0 hover-box box-hover position-relative">
-                    <img src="/images/custom/india.png" alt="" class="border-radius-6px" />
+                    @php
+                    $src = $country->hasMedia('countries') ? $country->getFirstMedia('countries')->getUrl() : 'https://via.placeholder.com/300x300';
+                    @endphp
+                    <img src="{{ $src }}" alt="" class="border-radius-6px" />
                     <figcaption class="w-100 p-30px lg-p-25px bg-white">
                         <div class="position-relative z-index-1 overflow-hidden lg-pb-5px">
                         </div>
@@ -445,45 +463,26 @@
                     </figcaption>
                 </figure>
             </div>
-            <!-- end team member item -->
-            <!-- start team member item -->
-            <div class="col text-center team-style-01 md-mb-30px">
-                <figure class="mb-0 hover-box box-hover position-relative">
-                    <img src="/images/custom/gana.png" alt="" class="border-radius-6px" />
-                    <figcaption class="w-100 p-30px lg-p-25px bg-white">
-                        <div class="position-relative z-index-1 overflow-hidden lg-pb-5px">
-                        </div>
-                        <div class="box-overlay bg-white box-shadow-quadruple-large border-radius-6px"></div>
-                    </figcaption>
-                </figure>
-            </div>
-            <!-- end team member item -->
-            <!-- start team member item -->
-            <div class="col text-center team-style-01 xs-mb-30px">
-                <figure class="mb-0 hover-box box-hover position-relative">
-                    <img src="/images/custom/Philippines.jpg" alt="" class="border-radius-6px" />
-                    <figcaption class="w-100 p-30px lg-p-25px bg-white">
-                        <div class="box-overlay bg-white box-shadow-quadruple-large border-radius-6px"></div>
-                    </figcaption>
-                </figure>
-            </div>
-            <!-- end team member item -->
-            <!-- start team member item -->
-            <div class="col text-center team-style-01">
-                <figure class="mb-0 hover-box box-hover position-relative">
-                    <img src="/images/custom/Morocco.png" alt="" class="border-radius-6px" />
-                    <figcaption class="w-100 p-30px lg-p-25px bg-white">
-                        <div class="position-relative z-index-1 overflow-hidden lg-pb-5px">
-                        </div>
-                        <div class="box-overlay bg-white box-shadow-quadruple-large border-radius-6px"></div>
-                    </figcaption>
-                </figure>
-            </div>
-            <!-- end team member item -->
+            @endforeach
+
+
+
+
+
+
+
+
         </div>
+
+
+
+
+
+
+
     </div>
 </section>
-
+@endif
 <!-- end section -->
 <!-- start section -->
 <section class="p-0 h-280px sm-h-350px overlap-height" id="location">

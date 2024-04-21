@@ -14,6 +14,9 @@
                 <span class="fs-18 mb-30px d-inline-block sm-mb-20px">By <a href="#" class="text-dark-gray text-dark-gray-hover text-decoration-line-bottom">{{$blog->author->name}}</a> on {{date("F j, Y", strtotime($blog->published_at)) }}</span>
                 <h1 class="alt-font fw-600 text-dark-gray ls-minus-2px mb-0">{{$blog->title}}</h1>
             </div>
+            @if ($blog->hasMedia('blog_images'))
+            <img src="{{ $blog->getFirstMedia('blog_images')->getUrl() }}" alt="Blog Image" />
+            @endif
         </div>
     </div>
 </section>

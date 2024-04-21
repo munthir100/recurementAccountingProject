@@ -37,7 +37,7 @@
                             <li><a href="{{ route('home.contact') }}" class="dropdown-item">Contact Us</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item"><a href="{{ route('home.workers') }}" class="nav-link">Workers</a></li>
+                    <li class="nav-item"><a href="{{ route('home.workers.index') }}" class="nav-link">Workers</a></li>
                     @auth('account')
                     @if(request()->user('account')->isOfficeAccount)
                     <li class="nav-item">
@@ -77,10 +77,12 @@
                     @guest('account')
                     <a href="{{ route('account.login') }}" class="btn btn-small btn-rounded btn-base-color btn-box-shadow">Log In</a>
                     @else
-                    <a class="btn btn-small btn-rounded btn-base-color btn-box-shadow" onclick="event.preventDefault(); document.getElementById('logoutForm').submit();">Logout</a>
+                    <a href="{{route('account.dashboard.index')}}" class="btn btn-small btn-rounded btn-base-color btn-box-shadow">Dashboard</a>
+
+                    <!-- <a class="btn btn-small btn-rounded btn-base-color btn-box-shadow" onclick="event.preventDefault(); document.getElementById('logoutForm').submit();">Logout</a>
                     <form id="logoutForm" action="{{ route('account.logout') }}" method="POST" style="display: none;">
                         @csrf
-                    </form>
+                    </form> -->
                     @endguest
                 </div>
             </div>
