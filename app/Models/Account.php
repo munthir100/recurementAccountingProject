@@ -19,6 +19,14 @@ class Account extends Authenticatable
         'password' => 'hashed',
     ];
 
+    const STATUSES = [
+        Status::ACTIVE,
+        Status::NOT_ACTIVE,
+        Status::CLOSED,
+        Status::BLOCKED,
+        Status::OVERDUE
+    ];
+
     public function office()
     {
         return $this->hasOne(Office::class);

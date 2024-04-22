@@ -1,0 +1,11 @@
+{
+    "main_site": {
+        "top_bar": {
+            "text": "Our accounting experts waiting for you!",
+            "phone": "0222 8899900",
+            "address": "Broadway, 24th Floor, San Francisco",
+            "visibility": true
+        }
+    }
+}
+

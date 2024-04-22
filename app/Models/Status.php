@@ -40,4 +40,7 @@ class Status extends Model
     const VOID = 30;
     const ARCHIVED = 31;
     const FILLED = 32;
+    const REJECTED = 33;
+    const PAID = 34;
+    const PARTIALLY_PAID = 35;
 }

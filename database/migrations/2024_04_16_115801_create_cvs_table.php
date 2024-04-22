@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Status;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,8 +14,8 @@ return new class extends Migration
     {
         Schema::create('cvs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('office_id')->constrained();
-            $table->foreignId('status_id')->constrained();
+            $table->foreignId('office_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('status_id')->default(Status::NEW)->constrained();
             $table->timestamps();
         });
     }

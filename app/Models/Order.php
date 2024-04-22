@@ -13,7 +13,7 @@ class Order extends Model
 {
     use HasFactory, HasStatus;
     protected string $default_filters = OrderFilters::class;
-    
+
     protected $fillable = [
         'customer_id',
         'worker_id',
@@ -25,6 +25,18 @@ class Order extends Model
         'status_id',
     ];
 
+    const STATUSES = [
+        Status::NEW,
+        Status::PENDING,
+        Status::PROCESSING,
+        Status::DELIVERED,
+        Status::PARTIALLY_COMPLETED,
+        Status::COMPLETED,
+        Status::FAILED,
+        Status::CANCELLED
+    ];
+
+
     public function customer()
     {
         return $this->belongsTo(Account::class);
@@ -34,5 +46,4 @@ class Order extends Model
     {
         return $this->belongsTo(Worker::class);
     }
-
 }

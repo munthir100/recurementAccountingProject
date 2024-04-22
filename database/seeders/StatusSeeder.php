@@ -42,6 +42,9 @@ class StatusSeeder extends Seeder
             'VOID',
             'ARCHIVED',
             'FILLED',
+            'REJECTED',
+            'PAID',
+            'PARTIALLY_PAID'
         ];
 
         foreach ($statuses as $status) {

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('context');
             $table->timestamp('published_at')->nullable();
             $table->foreignId('status_id')->default(Status::PUBLISHED)->constrained();
-            $table->foreignId('author_id')->constrained('users');
+            $table->foreignId('author_id')->constrained('users')->cascadeOnDelete();
             $table->timestamps();
         });
     }

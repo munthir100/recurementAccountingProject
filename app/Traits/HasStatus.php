@@ -167,6 +167,26 @@ trait HasStatus
         return $query->where('status_id', Status::ARCHIVED);
     }
 
+    public function scopeIsFilled($query)
+    {
+        return $query->where('status_id', Status::FILLED);
+    }
+
+    public function scopeIsRejected($query)
+    {
+        return $query->where('status_id', Status::REJECTED);
+    }
+
+    public function scopeIsPaid($query)
+    {
+        return $query->where('status_id', Status::PAID);
+    }
+
+    public function scopeIsPartiallyPaid($query)
+    {
+        return $query->where('status_id', Status::PARTIALLY_PAID);
+    }
+
     public function setStatus($status)
     {
         $this->status_id = $status;

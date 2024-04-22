@@ -8,6 +8,7 @@ use App\Http\Controllers\User\Dashboard\MainController;
 use App\Http\Controllers\User\Dashboard\OfficeController;
 use App\Http\Controllers\User\Dashboard\WorkerController;
 use App\Http\Controllers\User\Dashboard\CustomerController;
+use App\Http\Controllers\User\Dashboard\OrderController;
 use App\Http\Controllers\User\Dashboard\SecurityController;
 use App\Http\Controllers\User\Dashboard\SettingsController;
 use App\Http\Controllers\User\Dashboard\Settings\CountryController;
@@ -24,6 +25,7 @@ Route::middleware('auth:web')->group(function () {
         Route::resource('offices', OfficeController::class);
         Route::resource('workers', WorkerController::class);
         Route::resource('customers', CustomerController::class);
+        Route::resource('orders', OrderController::class);
         Route::resource('blogs', BlogController::class);
         Route::put('offices/{office}/password/update', [OfficeController::class, 'updatePassword'])->name('offices.update.password');
         Route::put('callCenters/{callCenter}/password/update', [CustomerController::class, 'updatePassword'])->name('callCenters.update.password');

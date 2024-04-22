@@ -32,6 +32,9 @@ $statusBadge = [
 \App\Models\Status::VOID => ['label' => 'Void', 'class' => 'danger'],
 \App\Models\Status::ARCHIVED => ['label' => 'Archived', 'class' => 'dark'],
 \App\Models\Status::FILLED => ['label' => 'Filled', 'class' => 'success'],
+\App\Models\Status::REJECTED => ['label' => 'Rejected', 'class' => 'danger'],
+\App\Models\Status::PAID => ['label' => 'Paid', 'class' => 'success'],
+\App\Models\Status::PARTIALLY_PAID => ['label' => 'Partially Paid', 'class' => 'warning'],
 ];
 @endphp
 

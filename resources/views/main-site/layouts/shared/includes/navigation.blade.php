@@ -38,36 +38,6 @@
                         </ul>
                     </li>
                     <li class="nav-item"><a href="{{ route('home.workers.index') }}" class="nav-link">Workers</a></li>
-                    @auth('account')
-                    @if(request()->user('account')->isOfficeAccount)
-                    <li class="nav-item">
-                        <a href="#modal-popup4" class="btn-hover-animation-switch slide-up-animation btn btn-link btn-hover-animation-switch btn-large fw-700 text-base-color">
-                            <span>
-                                <span class="btn-text">Upload CV</span>
-                                <span class="btn-icon"><i class="fa-solid fa-file-arrow-up"></i></span>
-                                <span class="btn-icon"><i class="fa-solid fa-file-arrow-up"></i></span>
-                            </span>
-                        </a>
-                    </li>
-
-                    <div id="modal-popup4" class="slide-up-popup mfp-hide col-xl-4 col-lg-6 col-md-7 col-11 mx-auto bg-white text-center modal-popup-main">
-                        <span class="text-dark-gray fw-600 fs-24 mb-10px d-block">Upload CV</span>
-                        <form action="{{route('account.office.cv.store')}}" method="POST" enctype="multipart/form-data">
-                            @csrf
-                            <div class="mb-3 text-start">
-                                <label for="cv" class="form-label">Select a CV</label>
-                                <input type="file" class="form-control" id="cv" name="cv" accept=".doc,.docx,.pdf" required>
-                                @error('cv')
-                                <span class="text-danger">
-                                    {{$message}}
-                                </span>
-                                @enderror
-                            </div>
-                            <button type="submit" class="btn btn-small btn-rounded btn-dark-gray mt-10px">Upload</button>
-                        </form>
-                    </div>
-                    @endif
-                    @endauth
                 </ul>
             </div>
         </div>
@@ -76,14 +46,15 @@
                 <div class="header-button">
                     @guest('account')
                     <a href="{{ route('account.login') }}" class="btn btn-small btn-rounded btn-base-color btn-box-shadow">Log In</a>
-                    @else
-                    <a href="{{route('account.dashboard.index')}}" class="btn btn-small btn-rounded btn-base-color btn-box-shadow">Dashboard</a>
-
-                    <!-- <a class="btn btn-small btn-rounded btn-base-color btn-box-shadow" onclick="event.preventDefault(); document.getElementById('logoutForm').submit();">Logout</a>
-                    <form id="logoutForm" action="{{ route('account.logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form> -->
                     @endguest
+                    @auth('account')
+                    @if(request()->user('account')->isCustomerAccount)
+                    <a href="{{route('account.dashboard.customer.index')}}" class="btn btn-small btn-rounded btn-base-color btn-box-shadow">Dashboard</a>
+                    @endif
+                    @if(request()->user('account')->isOfficeAccount)
+                    <a href="{{route('account.dashboard.office.index')}}" class="btn btn-small btn-rounded btn-base-color btn-box-shadow">Dashboard</a>
+                    @endif
+                    @endauth
                 </div>
             </div>
         </div>

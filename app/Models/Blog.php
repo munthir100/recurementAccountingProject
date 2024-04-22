@@ -18,6 +18,11 @@ class Blog extends Model implements HasMedia
 
     protected $fillable = ['title', 'context', 'author_id', 'status_id', 'published_at'];
 
+    const STATUSES = [
+        Status::PUBLISHED,
+        Status::NOT_PUBLISHED,
+    ];
+    
     public function author()
     {
         return $this->belongsTo(User::class, 'author_id');

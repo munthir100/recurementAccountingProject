@@ -6,10 +6,12 @@ use App\Models\Cv;
 use App\Models\Blog;
 use App\Models\Office;
 use App\Models\Country;
+use App\Models\SiteSetting;
 use App\Observers\CvObserver;
 use App\Observers\BlogObserver;
 use App\Observers\OfficeObserver;
 use App\Observers\CountryObserver;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -31,5 +33,11 @@ class AppServiceProvider extends ServiceProvider
         Blog::observe(BlogObserver::class);
         Country::observe(CountryObserver::class);
         Office::observe(OfficeObserver::class);
+        $siteSettings = SiteSetting::first()->settings;
+
+        // Share the $siteSettings variable with all views related to the main site
+        View::composer('main-site.*', function ($view) use ($siteSettings) {
+            $view->with('siteSettings', $siteSettings);
+        });
     }
 }

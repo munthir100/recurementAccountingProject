@@ -1,10 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Account\Dashboard;
+namespace App\Http\Controllers\Account\Dashboard\Customer;
 
-use App\Models\Order;
 use App\Http\Controllers\Controller;
-use App\Models\Status;
 
 class MainController extends Controller
 {
@@ -19,7 +17,7 @@ class MainController extends Controller
         $totalOrders = request()->user('account')->customer->orders()->count();
         $orders = request()->user('account')->customer->orders()->dynamicPaginate()->take(6);
 
-        return view('account.dashboard.index', compact(
+        return view('account.dashboard.customer.index', compact(
             'newOrders',
             'pendingOrders',
             'processingOrders',
