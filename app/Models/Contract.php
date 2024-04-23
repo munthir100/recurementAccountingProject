@@ -2,14 +2,18 @@
 
 namespace App\Models;
 
+use App\Filters\ContractFilters;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Traits\HasStatus;
+use Essa\APIToolKit\Filters\Filterable;
 
 class Contract extends Model
 {
-    use HasFactory, HasStatus;
+    use HasFactory, HasStatus, Filterable;
 
+    protected $default_filters = ContractFilters::class;
+    
     protected $fillable = [
         'title',
         'description',
@@ -20,13 +24,15 @@ class Contract extends Model
         'start_date',
         'end_date',
         'status_id',
+        'contractable_type',
+        'contractable_id',
     ];
 
     const STATUSES = [
-        Status::ACTIVE,
-        Status::EXPIRED,
-        Status::TERMINATED,
-        Status::RENEWED,
-        Status::CANCELLED
+        Status::ACTIVE => 'Active',
+        Status::EXPIRED => 'Expired',
+        Status::TERMINATED => 'Terminated',
+        Status::RENEWED => 'Renewed',
+        Status::CANCELLED => 'Cancelled',
     ];
 }

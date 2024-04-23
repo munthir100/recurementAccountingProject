@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\User\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\User\Auth\LoginRequest;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\User\Auth\LoginRequest;
 
 class LoginController extends Controller
 {
@@ -19,5 +20,12 @@ class LoginController extends Controller
         }
 
         return redirect()->back()->withErrors(['email' => 'Invalid credentials.']);
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::guard('web')->logout();
+
+        return redirect('/');
     }
 }

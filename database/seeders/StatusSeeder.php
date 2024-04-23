@@ -37,7 +37,7 @@ class StatusSeeder extends Seeder
             'SCHEDULED',
             'SUSPENDED',
             'DEACTIVATED',
-            'LIMITED_AVAILABILITYAVAILABILITY',
+            'LIMITED_AVAILABILITY',
             'DISPUTED',
             'VOID',
             'ARCHIVED',

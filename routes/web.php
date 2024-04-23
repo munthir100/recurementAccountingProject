@@ -1,17 +1,13 @@
 <?php
 
-use App\Models\Office;
 use App\Http\Middleware\isOffice;
 use App\Http\Middleware\SetLocale;
 use App\Http\Middleware\isCustomer;
-use App\Http\Middleware\isCallCenter;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\Account\AuthController;
 use App\Http\Controllers\Account\Office\CvController;
-use App\Http\Controllers\Account\Auth\LoginController;
 use App\Http\Controllers\Account\Dashboard\Customer\OrderController;
-use App\Http\Controllers\Account\CallCenter\InquiryRequestController;
 
 Route::middleware([SetLocale::class])->group(function () {
 

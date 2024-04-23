@@ -22,7 +22,7 @@ class CreateBondRequest extends FormRequest
             'maturity_date' => 'required|date',
             'issuer' => 'required|string',
             'date_of_issue' => 'required|date',
-            'status_id' => 'required|in:' . implode(',', Bond::STATUSES),
+            'status_id' => 'required|in:' . implode(',', array_keys(Bond::STATUSES)),
         ];
     }
 }

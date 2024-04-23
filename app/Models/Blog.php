@@ -19,9 +19,9 @@ class Blog extends Model implements HasMedia
     protected $fillable = ['title', 'context', 'author_id', 'status_id', 'published_at'];
 
     const STATUSES = [
-        Status::PUBLISHED,
-        Status::NOT_PUBLISHED,
-    ];
+        Status::PUBLISHED => 'Published',
+        Status::NOT_PUBLISHED => 'Not Published',
+    ];    
     
     public function author()
     {

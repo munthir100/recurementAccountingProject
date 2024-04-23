@@ -73,7 +73,7 @@
                                 <td>{{ $order->contract_type }}</td>
                                 <td>{{ $order->contract_start_duration }}</td>
                                 <td>{{ $order->contract_end_duration }}</td>
-                                <td>{{ $order->amount }}</td>
+                                <td>{{ $order->amount }} {{__('SAR')}} </td>
                                 <td> <x-dashboard.table-status-badge statusId="{{ $order->status_id }}" /> </td>
                                 <td>
                                     <div class="d-flex gap-2">

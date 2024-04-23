@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Blog;
 use App\Models\Status;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -22,7 +23,7 @@ class BlogFactory extends Factory
             'title' => $this->faker->sentence,
             'context' => $this->faker->paragraphs(3, true),
             'author_id' => User::inRandomOrder()->first()->id,
-            'status_id' => Status::PUBLISHED,
+            'status_id' => $this->faker->randomElement(array_keys(Blog::STATUSES)),
             'published_at' => now(),
         ];
     }

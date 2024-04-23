@@ -2,14 +2,17 @@
 
 namespace App\Models;
 
+use App\Filters\InvoiceFilters;
 use App\Traits\HasStatus;
+use Essa\APIToolKit\Filters\Filterable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Invoice extends Model
 {
-    use HasFactory, HasStatus;
-
+    use HasFactory, HasStatus, Filterable;
+    protected $default_filters = InvoiceFilters::class;
+    
     protected $fillable = [
         'title',
         'description',
@@ -19,16 +22,18 @@ class Invoice extends Model
         'account_id',
         'billing_address',
         'worker_id',
+        'status_id'
     ];
 
     const STATUSES = [
-        Status::OVERDUE,
-        Status::CANCELLED,
-        Status::REFUNDED,
-        Status::DISPUTED,
-        Status::VOID,
-        Status::ARCHIVED,
-        Status::SCHEDULED
+        Status::PAID => 'Paid',
+        Status::OVERDUE => 'Overdue',
+        Status::CANCELLED => 'Cancelled',
+        Status::REFUNDED => 'Refunded',
+        Status::DISPUTED => 'Disputed',
+        Status::VOID => 'Void',
+        Status::ARCHIVED => 'Archived',
+        Status::SCHEDULED => 'Scheduled'
     ];
 
 

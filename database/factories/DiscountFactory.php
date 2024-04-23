@@ -18,7 +18,7 @@ class DiscountFactory extends Factory
             'type' => $this->faker->randomElement(['fixed', 'percentage']),
             'amount' => $this->faker->randomFloat(2, 10, 100),
             'due_date' => $this->faker->date(),
-            'status_id' => $this->faker->randomElement(Discount::STATUSES),
+            'status_id' => $this->faker->randomElement(array_keys(Discount::STATUSES)),
             'account_id' => Account::inRandomOrder()->first()->id,
         ];
     }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\User\Dashboard;
 
+use App\Models\Discount;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CreateDiscountRequest extends FormRequest
@@ -27,7 +28,7 @@ class CreateDiscountRequest extends FormRequest
             'type' => 'required|in:fixed,percentage',
             'amount' => 'required|numeric',
             'due_date' => 'required|date',
-            'status_id' => 'required|exists:statuses,id',
+            'status_id' => 'required|in:' . implode(',', array_keys(Discount::STATUSES)),
             'account_id' => 'required|exists:accounts,id',
         ];
     }

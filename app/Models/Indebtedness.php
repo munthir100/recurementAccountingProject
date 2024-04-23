@@ -3,12 +3,18 @@
 namespace App\Models;
 
 use App\Traits\HasStatus;
+use Spatie\MediaLibrary\HasMedia;
+use App\Filters\IndebtednessFilters;
+use Essa\APIToolKit\Filters\Filterable;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Indebtedness extends Model
+class Indebtedness extends Model implements HasMedia
 {
-    use HasFactory, HasStatus;
+    use HasFactory, HasStatus, InteractsWithMedia, Filterable;
+
+    protected $default_filters = IndebtednessFilters::class;
 
     protected $fillable = [
         'title',
@@ -24,15 +30,15 @@ class Indebtedness extends Model
     ];
 
     const STATUSES = [
-        Status::PENDING,
-        Status::ACTIVE,
-        Status::OVERDUE,
-        Status::PAID,
-        Status::PARTIALLY_PAID,
-        Status::CANCELLED,
-        Status::REFUNDED,
-        Status::DISPUTED,
-        Status::VOID
+        Status::PENDING => 'Pending',
+        Status::ACTIVE => 'Active',
+        Status::OVERDUE => 'Overdue',
+        Status::PAID => 'Paid',
+        Status::PARTIALLY_PAID => 'Partially Paid',
+        Status::CANCELLED => 'Cancelled',
+        Status::REFUNDED => 'Refunded',
+        Status::DISPUTED => 'Disputed',
+        Status::VOID => 'Void',
     ];
 
 

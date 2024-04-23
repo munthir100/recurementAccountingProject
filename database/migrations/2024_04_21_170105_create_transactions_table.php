@@ -16,10 +16,10 @@ return new class extends Migration
             $table->string('description');
             $table->decimal('amount', 10, 2);
             $table->date('date');
-            $table->string('type');
-            $table->foreignId('status_id')->constrained('statuses');
+            $table->foreignId('transaction_type_id')->constrained();
+            $table->foreignId('status_id')->constrained();
             $table->morphs('transactionable');
-            
+
             $table->timestamps();
         });
     }

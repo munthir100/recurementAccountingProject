@@ -18,8 +18,8 @@ class UpdateTransactionRequest extends FormRequest
             'description' => 'string',
             'amount' => 'numeric',
             'date' => 'date',
-            'type' => 'string',
-            'status_id' => 'required|in:' . implode(',', Transaction::STATUSES),
+            'transaction_type_id' => 'string|exists:transaction_types,id',
+            'status_id' => 'required|in:' . implode(',', array_keys(Transaction::STATUSES)),
             'transactionable_type' => 'string',
             'transactionable_id' => 'integer'
         ];

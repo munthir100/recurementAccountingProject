@@ -11,13 +11,13 @@ class OrderController extends Controller
 {
     public function index()
     {
-        $orders = auth()->user('account')->customer->orders()->dynamicPaginate();
+        $orders = request()->user('account')->orders()->dynamicPaginate();
 
         return view('account.dashboard.customer.orders.index', compact('orders'));
     }
     public function show($id)
     {
-        $order = auth()->user('account')->customer->orders()->findOrFail($id);
+        $order = request()->user('account')->orders()->findOrFail($id);
 
         return view('account.dashboard.customer.orders.show', compact('order'));
     }
@@ -31,14 +31,14 @@ class OrderController extends Controller
 
     public function edit($id)
     {
-        $order = auth()->user('account')->customer->orders()->findOrFail($id);
+        $order = request()->user('account')->orders()->findOrFail($id);
 
         return view('account.dashboard.customer.orders.edit', compact('order'));
     }
 
     public function update(PlaceOrderRequest $request, $id)
     {
-        $order = auth()->user('account')->customer->orders()->findOrFail($id);
+        $order = request()->user('account')->orders()->findOrFail($id);
 
         $order->update($request->validated());
 
@@ -47,21 +47,21 @@ class OrderController extends Controller
 
     public function store(PlaceOrderRequest $request)
     {
-        $request->user('account')->customer->orders()->create($request->validated());
+        $request->user('account')->orders()->create($request->validated());
 
         return back()->with('success', 'order created');
     }
 
     public function placeOrder(PlaceOrderRequest $request)
     {
-        $request->user('account')->customer->orders()->create($request->validated());
+        $request->user('account')->orders()->create($request->validated());
 
         return back()->with('success', 'order created');
     }
 
     public function cancelOrder($id)
     {
-        $order = auth()->user('account')->customer->orders()->findOrFail($id);
+        $order = request()->user('account')->orders()->findOrFail($id);
         $order->setStatus(Status::CANCELLED);
 
         return back()->with('success', 'order canceled');

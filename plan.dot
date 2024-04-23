@@ -99,7 +99,7 @@ Transaction:
     description,
     amount,
     date,
-    type,
+    transaction_type_id,
     status_id,
     transactionable_type,
     transactionable_id,

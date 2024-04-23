@@ -2,17 +2,21 @@
 
 namespace App\Models;
 
+use App\Filters\AccountFilters;
 use App\Models\Office;
 use App\Models\AccountType;
 use App\Traits\HasStatus;
+use Essa\APIToolKit\Filters\Filterable;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Account extends Authenticatable
 {
-    use HasFactory, HasStatus;
-
+    use HasFactory, HasStatus, Filterable;
+    
+    protected $default_filters = AccountFilters::class;
+    
     protected $fillable = ['name', 'email', 'phone', 'password', 'account_type_id', 'status_id'];
 
     protected $casts = [
@@ -20,11 +24,11 @@ class Account extends Authenticatable
     ];
 
     const STATUSES = [
-        Status::ACTIVE,
-        Status::NOT_ACTIVE,
-        Status::CLOSED,
-        Status::BLOCKED,
-        Status::OVERDUE
+        Status::ACTIVE => 'Active',
+        Status::NOT_ACTIVE => 'Not Active',
+        Status::CLOSED => 'Closed',
+        Status::BLOCKED => 'Blocked',
+        Status::OVERDUE => 'Overdue'
     ];
 
     public function office()
@@ -35,6 +39,16 @@ class Account extends Authenticatable
     public function customer()
     {
         return $this->hasOne(Customer::class);
+    }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
+
+    public function contracts()
+    {
+        return $this->morphMany(Contract::class, 'contractable');
     }
 
     protected function isOfficeAccount(): Attribute

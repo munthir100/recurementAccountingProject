@@ -19,7 +19,7 @@ class ContractFactory extends Factory
             'amount_type' => $this->faker->randomElement(['monthly', 'daily', 'weekly', 'annually']),
             'start_date' => $this->faker->date(),
             'end_date' => $this->faker->date(),
-            'status_id' => $this->faker->randomElement(Contract::STATUSES),
+            'status_id' => $this->faker->randomElement(array_keys(Contract::STATUSES)),
             'location' => $this->faker->address,
             'renewal_terms' => $this->faker->sentence,
             'contractable_type' => Account::class, // Replace with your logic for contractable_type

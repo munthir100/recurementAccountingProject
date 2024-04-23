@@ -18,7 +18,7 @@ class BondFactory extends Factory
             'maturity_date' => $this->faker->date(),
             'issuer' => $this->faker->company,
             'date_of_issue' => $this->faker->date(),
-            'status_id' => $this->faker->randomElement(Bond::STATUSES),
+            'status_id' => $this->faker->randomElement(array_keys(Bond::STATUSES)),
         ];
     }
 }

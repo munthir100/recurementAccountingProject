@@ -57,11 +57,11 @@
                         <i class="ri-user-line"></i> <span id="sidebar-span">{{ __('Customers') }}</span>
                     </a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link menu-link {{ request()->routeIs('user.dashboard.orders.*') ? 'active' : '' }}" href="{{route('user.dashboard.orders.index')}}" aria-expanded="false" aria-controls="sidebarSecurity">
                         <i class="ri-shopping-bag-line"></i> <span id="sidebar-span">{{ __('Orders') }}</span>
                     </a>
-                </li>
+                </li> -->
                 <li class="nav-item">
                     <a class="nav-link menu-link {{ request()->routeIs('user.dashboard.blogs.*') ? 'active' : '' }}" href="{{route('user.dashboard.blogs.index')}}" aria-expanded="false" aria-controls="sidebarSecurity">
                         <i class="ri-headphone-line"></i> <span id="sidebar-span">{{ __('Blogs') }}</span>
@@ -78,8 +78,13 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link {{ request()->routeIs('user.dashboard.settings.*') ? 'active' : '' }}" href="{{ route('user.dashboard.settings.index') }}" aria-expanded="false" aria-controls="sidebarSettings">
+                    <a class="nav-link menu-link {{ request()->routeIs('user.dashboard.reports.*') ? 'active' : '' }}" href="{{ route('user.dashboard.reports.index') }}" aria-expanded="false" aria-controls="sidebarSettings">
                         <i class="ri-file-list-3-line"></i> <span id="sidebar-span">{{ __('Accounting Reports') }}</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link {{ request()->routeIs('user.dashboard.accounts.*') ? 'active' : '' }}" href="{{ route('user.dashboard.accounts.index') }}" aria-expanded="false" aria-controls="sidebarSettings">
+                        <i class="ri-file-list-3-line"></i> <span id="sidebar-span">{{ __('Accounts') }}</span>
                     </a>
                 </li>
             </ul>

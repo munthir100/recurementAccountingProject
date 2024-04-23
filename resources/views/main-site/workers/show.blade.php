@@ -3,6 +3,7 @@
 @section('title')
 @include("main-site.layouts.shared.includes.title-meta", ["title" => __("Worker Profile")])
 @endsection
+
 @section('content')
 <header class="header-with-topbar">
     @include('main-site.layouts.shared.includes.header')
@@ -121,29 +122,20 @@
     <div class="text-center mt-4">
         @auth('account')
         @if(request()->user('account')->isCustomerAccount)
-        <a href="#modal-popup2" class="popup-with-zoom-anim btn btn-large btn-rounded btn-base-color btn-hover-animation-switch btn-icon-left d-table d-lg-inline-block lg-mb-15px md-mx-auto">
-            <span>
-                <span class="btn-text">Request Now</span>
-                <span class="btn-icon"><i class="feather icon-feather-shopping-bag"></i></span>
-                <span class="btn-icon"><i class="feather icon-feather-shopping-bag"></i></span>
-            </span>
+        <a href="#modal-popup2" class="popup-with-zoom-anim btn-rounded btn-base-color btn btn-large btn-transparent-dark-gray d-table d-lg-inline-block lg-mb-15px md-mx-auto">
+            <span class="btn-text">{{__('Request Now')}}</span>
+            <span class="btn-icon"><i class="feather icon-feather-shopping-bag"></i></span>
         </a>
         @elseif(request()->user('account')->isOfficeAccount)
-        <a disabled class="disabled popup-with-zoom-anim btn btn-large btn-rounded btn-base-color btn-hover-animation-switch btn-icon-left d-table d-lg-inline-block lg-mb-15px md-mx-auto">
-            <span>
-                <span class="btn-text">Request Now</span>
-                <span class="btn-icon"><i class="feather icon-feather-shopping-bag"></i></span>
-                <span class="btn-icon"><i class="feather icon-feather-shopping-bag"></i></span>
-            </span>
+        <a disabled class="disabled btn-rounded btn-base-color btn btn-large btn-transparent-dark-gray d-table d-lg-inline-block lg-mb-15px md-mx-auto">
+            <span class="btn-text">{{__('Request Now')}}</span>
+            <i class="feather icon-feather-shopping-bag"></i>
         </a>
         @endif
         @else
-        <a href="{{route('account.login')}}" class="btn btn-large btn-rounded btn-base-color btn-hover-animation-switch btn-icon-left d-table d-lg-inline-block lg-mb-15px md-mx-auto">
-            <span>
-                <span class="btn-text">Request Now</span>
-                <span class="btn-icon"><i class="feather icon-feather-shopping-bag"></i></span>
-                <span class="btn-icon"><i class="feather icon-feather-shopping-bag"></i></span>
-            </span>
+        <a href="{{route('account.login')}}" class="btn-rounded btn-base-color btn btn-large btn-transparent-dark-gray d-table d-lg-inline-block lg-mb-15px md-mx-auto">
+            <span class="btn-text">{{__('Request Now')}}</span>
+            <i class="feather icon-feather-shopping-bag"></i>
         </a>
         @endauth
 
@@ -151,20 +143,20 @@
 
     <!-- start modal pop-up -->
     <div id="modal-popup2" class="zoom-anim-dialog mfp-hide col-xl-6 col-lg-6 col-md-7 col-112 mx-auto bg-white text-center modal-popup-main p-50px">
-        <span class="text-dark-gray fw-600 fs-24 mb-10px d-block">Create Order</span>
+        <span class="text-dark-gray fw-600 fs-24 mb-10px d-block">{{__('Create Order')}}</span>
         <form action="{{ route('account.customer.orders.store') }}" method="post">
             @csrf
             <input hidden name="worker_id" value="{{ $worker->id }}" required>
             <div class="row">
                 <div class="col-6 mb-3 text-start">
-                    <label for="amount" class="form-label">Amount</label>
+                    <label for="amount" class="form-label">{{__('Amount')}}</label>
                     <input type="number" step="0.01" class="form-control @error('amount') is-invalid @enderror" id="amount" name="amount" value="{{ old('amount') }}" required min="0">
                     @error('amount')
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="col-6 mb-3 text-start">
-                    <label for="contract_type" class="form-label">Contract Type</label>
+                    <label for="contract_type" class="form-label">{{__('Contract Type')}}</label>
                     <input type="text" class="form-control @error('contract_type') is-invalid @enderror" id="contract_type" name="contract_type" value="{{ old('contract_type') }}" required maxlength="255">
                     @error('contract_type')
                     <div class="invalid-feedback">{{ $message }}</div>
@@ -174,14 +166,14 @@
 
             <div class="row">
                 <div class="col-6 mb-3 text-start">
-                    <label for="contract_start_duration" class="form-label">Contract Start Date</label>
+                    <label for="contract_start_duration" class="form-label">{{__('Contract Start Date')}}</label>
                     <input type="date" class="form-control @error('contract_start_duration') is-invalid @enderror" id="contract_start_duration" name="contract_start_duration" value="{{ old('contract_start_duration') }}" required>
                     @error('contract_start_duration')
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="col-6 mb-3 text-start">
-                    <label for="contract_end_duration" class="form-label">Contract End Date</label>
+                    <label for="contract_end_duration" class="form-label">{{__('Contract End Date')}}</label>
                     <input type="date" class="form-control @error('contract_end_duration') is-invalid @enderror" id="contract_end_duration" name="contract_end_duration" value="{{ old('contract_end_duration') }}" required>
                     @error('contract_end_duration')
                     <div class="invalid-feedback">{{ $message }}</div>
@@ -191,7 +183,7 @@
 
             <div class="row">
                 <div class="col-12 mb-3 text-start">
-                    <label for="additional_information" class="form-label">Additional Information (Optional)</label>
+                    <label for="additional_information" class="form-label">{{__('Additional Information (Optional)')}}</label>
                     <textarea class="form-control @error('additional_information') is-invalid @enderror" id="additional_information" name="additional_information" maxlength="1000">{{ old('additional_information') }}</textarea>
                     @error('additional_information')
                     <div class="invalid-feedback">{{ $message }}</div>
@@ -199,12 +191,10 @@
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-large btn-rounded btn-base-color btn-hover-animation-switch btn-icon-left d-table d-lg-inline-block lg-mb-15px md-mx-auto">
-                <span>
-                    <span class="btn-text">Place Order</span>
-                    <span class="btn-icon"><i class="feather icon-feather-shopping-bag"></i></span>
-                    <span class="btn-icon"><i class="feather icon-feather-shopping-bag"></i></span>
-                </span>
+            <button type="submit" class="btn-rounded btn-base-color btn btn-large btn-transparent-dark-gray d-table d-lg-inline-block lg-mb-15px md-mx-auto">
+                <span class="btn-text">{{__('Place Order')}}</span>
+                <i class="feather icon-feather-shopping-bag">
+                </i>
             </button>
         </form>
     </div>

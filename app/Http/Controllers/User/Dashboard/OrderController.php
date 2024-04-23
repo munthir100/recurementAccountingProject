@@ -11,44 +11,73 @@ class OrderController extends Controller
 {
     public function index()
     {
-        $orders = Order::dynamicPaginate();
+        // const STATUSES = [
+        //     Status::NEW => 'New',
+        //     Status::PENDING => 'Pending',
+        //     Status::PROCESSING => 'Processing',
+        //     Status::DELIVERED => 'Delivered',
+        //     Status::PARTIALLY_COMPLETED => 'Partially Completed',
+        //     Status::COMPLETED => 'Completed',
+        //     Status::FAILED => 'Failed',
+        //     Status::CANCELLED => 'Cancelled'
+        // ];
+        $new = Order::isNew()->sum('amount');
+        $pending = Order::isPending()->sum('amount');
+        $processing = Order::isProcessing()->sum('amount');
+        $delivered = Order::isDelivered()->sum('amount');
+        $partially_completed = Order::isPartiallyCompleted()->sum('amount');
+        $completed = Order::isCompleted()->sum('amount');
+        $failed = Order::isFailed()->sum('amount');
+        $cancelled = Order::isCancelled()->sum('amount');
 
-        return view('user.dashboard.orders.index', compact('orders'));
+        $orders = Order::useFilters()->dynamicPaginate();
+
+        return view('user.dashboard.reports.orders.index', compact(
+            'orders',
+            'new',
+            'pending',
+            'processing',
+            'delivered',
+            'partially_completed',
+            'completed',
+            'failed',
+            'cancelled'
+        ));
     }
 
     public function create()
     {
-        return view('user.dashboard.orders.create');
+        return view('user.dashboard.reports.orders.create');
     }
 
     public function store(CreateOrderRequest $request)
     {
         $order = Order::create($request->validated());
 
-        return view('user.dashboard.orders.index', compact('orders'));
+        return to_route('user.dashboard.reports.orders.index')->with('success', 'created successfully');
     }
 
     public function show(Order $order)
     {
-        view('user.dashboard.orders.show', compact('order'));
+        return view('user.dashboard.reports.orders.show', compact('order'));
     }
 
     public function edit(Order $order)
     {
-        return view('user.dashboard.orders.edit', compact('order'));
+        return view('user.dashboard.reports.orders.edit', compact('order'));
     }
 
     public function update(UpdateOrderRequest $request, Order $order)
     {
         $order->update($request->validated());
 
-        return view('user.dashboard.orders.index', compact('orders'));
+        return to_route('user.dashboard.reports.orders.index')->with('success', 'updated successfully');
     }
 
     public function destroy(Order $order)
     {
         $order->delete();
 
-        return view('user.dashboard.orders.index', compact('orders'));
+        return to_route('user.dashboard.reports.orders.index')->with('success', 'deleted successfully');
     }
 }

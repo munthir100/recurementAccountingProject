@@ -2,14 +2,19 @@
 
 namespace App\Models;
 
+use App\Models\Status;
+use App\Models\Account;
+use App\Traits\HasStatus;
+use App\Filters\DiscountFilters;
+use Essa\APIToolKit\Filters\Filterable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use App\Traits\HasStatus;
 
 class Discount extends Model
 {
-    use HasFactory, HasStatus;
+    use HasFactory, HasStatus, Filterable;
 
+    protected $default_filters = DiscountFilters::class;
     protected $fillable = [
         'title',
         'description',
@@ -21,16 +26,16 @@ class Discount extends Model
     ];
 
     const STATUSES = [
-        Status::ACTIVE,
-        Status::NOT_ACTIVE,
-        Status::EXPIRED,
-        Status::CANCELLED,
-        Status::USED,
-        Status::REJECTED,
-        Status::SCHEDULED,
-        Status::SUSPENDED,
-        Status::DEACTIVATED,
-        Status::LIMITED_AVAILABILITY,
+        Status::ACTIVE => 'Active',
+        Status::NOT_ACTIVE => 'Not Active',
+        Status::EXPIRED => 'Expired',
+        Status::CANCELLED => 'Cancelled',
+        Status::USED => 'Used',
+        Status::REJECTED => 'Rejected',
+        Status::SCHEDULED => 'Scheduled',
+        Status::SUSPENDED => 'Suspended',
+        Status::DEACTIVATED => 'Deactivated',
+        Status::LIMITED_AVAILABILITY => 'Limited Availability',
     ];
 
 

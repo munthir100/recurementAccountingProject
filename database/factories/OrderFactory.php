@@ -5,7 +5,7 @@ namespace Database\Factories;
 use App\Models\Status;
 use App\Models\Worker;
 use App\Models\Account;
-use App\Models\Customer;
+use App\Models\Order;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -20,19 +20,18 @@ class OrderFactory extends Factory
      */
     public function definition(): array
     {
-        $customerId = Customer::inRandomOrder()->first()->id;
+        $accountId = Account::inRandomOrder()->first()->id;
         $workerId = Worker::inRandomOrder()->first()->id;
-        $statusId = Status::inRandomOrder()->first()->id;
 
         return [
-            'customer_id' => $customerId,
+            'account_id' => $accountId,
             'worker_id' => $workerId,
             'contract_type' => $this->faker->word,
             'contract_start_duration' => $this->faker->date,
             'contract_end_duration' => $this->faker->date,
             'amount' => $this->faker->randomFloat(2, 10, 1000),
             'additional_information' => $this->faker->sentence,
-            'status_id' => $statusId,
+            'status_id' => $this->faker->randomElement(array_keys(Order::STATUSES)),
         ];
     }
 }

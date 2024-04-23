@@ -18,7 +18,7 @@ class IndebtednessFactory extends Factory
             'amount' => $this->faker->randomFloat(2, 100, 1000),
             'due_date' => $this->faker->date(),
             'type' => $this->faker->randomElement(['Creditor', 'Debtor']),
-            'status_id' => $this->faker->randomElement(Indebtedness::STATUSES),
+            'status_id' => $this->faker->randomElement(array_keys(Indebtedness::STATUSES)),
             'account_id' => Account::inRandomOrder()->first()->id,
             'collateral' => $this->faker->sentence,
         ];

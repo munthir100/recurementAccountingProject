@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\User\Dashboard;
 
+use App\Models\Invoice;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateInvoiceRequest extends FormRequest
@@ -27,7 +28,7 @@ class UpdateInvoiceRequest extends FormRequest
             'amount' => 'numeric',
             'due_date' => 'date',
             'type' => 'string',
-            'status_id' => 'exists:statuses,id',
+            'status_id' => 'in:' . implode(',', array_keys(Invoice::STATUSES)),
             'account_id' => 'exists:accounts,id',
             'worker_id' => 'exists:workers,id',
             'billing_address' => 'string',

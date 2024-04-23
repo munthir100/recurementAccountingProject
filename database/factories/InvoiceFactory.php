@@ -19,7 +19,7 @@ class InvoiceFactory extends Factory
             'amount' => $this->faker->randomFloat(2, 100, 1000),
             'due_date' => $this->faker->date(),
             'type' => $this->faker->randomElement(['standard', 'recurring']),
-            'status_id' => $this->faker->randomElement(Invoice::STATUSES),
+            'status_id' => $this->faker->randomElement(array_keys(Invoice::STATUSES)),
             'account_id' => Account::inRandomOrder()->first()->id,
             'worker_id' => Worker::inRandomOrder()->first()->id,
             'billing_address' => $this->faker->address,

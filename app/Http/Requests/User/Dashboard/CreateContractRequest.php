@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\User\Dashboard;
 
+use App\Models\Contract;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CreateContractRequest extends FormRequest
@@ -28,12 +29,11 @@ class CreateContractRequest extends FormRequest
             'amount_type' => 'required|string|in:monthly,daily,weekly,annually',
             'start_date' => 'required|date',
             'end_date' => 'required|date',
-            'status_id' => 'required|exists:statuses,id',
+            'status_id' => 'required|in:' . implode(',', array_keys(Contract::STATUSES)),
             'location' => 'required|string',
             'renewal_terms' => 'required|string',
             'contractable_type' => 'required|string',
-            'contractable_id' => 'nullable|integer',
-            // Add other fields as needed
+            'contractable_id' => 'required|integer',
         ];
     }
 }

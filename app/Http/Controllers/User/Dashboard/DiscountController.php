@@ -11,44 +11,68 @@ class DiscountController extends Controller
 {
     public function index()
     {
-        $discounts = Discount::dynamicPaginate();
+        $active = Discount::isActive()->sum('amount');
+        $not_active = Discount::isNotActive()->sum('amount');
+        $expired = Discount::isExpired()->sum('amount');
+        $cancelled = Discount::isCancelled()->sum('amount');
+        $used = Discount::isUsed()->sum('amount');
+        $rejected = Discount::isRejected()->sum('amount');
+        $scheduled = Discount::isScheduled()->sum('amount');
+        $suspended = Discount::isSuspended()->sum('amount');
+        $deactivated = Discount::isDeactivated()->sum('amount');
+        $limited_availability = Discount::isLimitedAvailability()->sum('amount');
 
-        return view('user.dashboard.discounts.index', compact('discounts'));
+
+        $discounts = Discount::useFilters()->dynamicPaginate();
+
+        return view('user.dashboard.reports.discounts.index', compact(
+            'discounts',
+            'active',
+            'not_active',
+            'expired',
+            'cancelled',
+            'used',
+            'rejected',
+            'scheduled',
+            'suspended',
+            'deactivated',
+            'limited_availability',
+        ));
     }
 
     public function create()
     {
-        return view('user.dashboard.discounts.create');
+        return view('user.dashboard.reports.discounts.create');
     }
 
     public function store(CreateDiscountRequest $request)
     {
         $discount = Discount::create($request->validated());
 
-        return to_route('user.dashboard.discounts.index')->with('success', 'created successfully');
+        return to_route('user.dashboard.reports.discounts.index')->with('success', 'created successfully');
     }
 
     public function show(Discount $discount)
     {
-        view('user.dashboard.discounts.show', compact('discount'));
+        return view('user.dashboard.reports.discounts.show', compact('discount'));
     }
 
     public function edit(Discount $discount)
     {
-        return view('user.dashboard.discounts.edit', compact('discount'));
+        return view('user.dashboard.reports.discounts.edit', compact('discount'));
     }
 
     public function update(UpdateDiscountRequest $request, Discount $discount)
     {
         $discount->update($request->validated());
 
-        return to_route('user.dashboard.discounts.index')->with('success', 'updated successfully');
+        return to_route('user.dashboard.reports.discounts.index')->with('success', 'updated successfully');
     }
 
     public function destroy(Discount $discount)
     {
         $discount->delete();
 
-        return to_route('user.dashboard.discounts.index')->with('success', 'deleted successfully');
+        return to_route('user.dashboard.reports.discounts.index')->with('success', 'deleted successfully');
     }
 }

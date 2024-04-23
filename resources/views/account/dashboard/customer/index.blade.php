@@ -27,8 +27,8 @@
                             </div>
                             <div class="d-flex align-items-end justify-content-between mt-4">
                                 <div>
-                                    <h4 class="fs-22 fw-semibold ff-secondary mb-4">$<span class="counter-value" data-target="{{$newOrders}}">{{$newOrders}}</span></h4>
-                                    <a href="{{route('account.dashboard.customer.orders.index',[ 'status' => 'new' ])}}" class="text-decoration-underline">View All</a>
+                                    <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value" data-target="{{$newOrders}}">{{$newOrders}}</span></h4>
+                                    <a href="{{route('account.dashboard.customer.orders.index',[ 'status' => 'new' ])}}" class="text-decoration-underline">{{__('View')}}</a>
                                 </div>
                                 <div class="avatar-sm flex-shrink-0">
                                     <span class="avatar-title bg-primary-subtle rounded fs-3">
@@ -44,13 +44,13 @@
                         <div class="card-body">
                             <div class="d-flex align-items-center">
                                 <div class="flex-grow-1 overflow-hidden">
-                                    <p class="text-uppercase fw-medium text-muted text-truncate mb-0"> Pending Orders</p>
+                                    <p class="text-uppercase fw-medium text-muted text-truncate mb-0"> {{__('Pending')}}</p>
                                 </div>
                             </div>
                             <div class="d-flex align-items-end justify-content-between mt-4">
                                 <div>
                                     <h4 class="fs-22 fw-semibold ff-secondary mb-4">$<span class="counter-value" data-target="{{$pendingOrders}}">{{$pendingOrders}}</span></h4>
-                                    <a href="{{route('account.dashboard.customer.orders.index',[ 'status' => 'pending' ])}}" class="text-decoration-underline">View All</a>
+                                    <a href="{{route('account.dashboard.customer.orders.index',[ 'status' => 'pending' ])}}" class="text-decoration-underline">{{__('View')}}</a>
                                 </div>
                                 <div class="avatar-sm flex-shrink-0">
                                     <span class="avatar-title bg-warning-subtle rounded fs-3">
@@ -72,7 +72,7 @@
                             <div class="d-flex align-items-end justify-content-between mt-4">
                                 <div>
                                     <h4 class="fs-22 fw-semibold ff-secondary mb-4">$<span class="counter-value" data-target="{{$processingOrders}}">{{$processingOrders}}</span></h4>
-                                    <a href="{{route('account.dashboard.customer.orders.index',[ 'status' => 'processing' ])}}" class="text-decoration-underline">View All</a>
+                                    <a href="{{route('account.dashboard.customer.orders.index',[ 'status' => 'processing' ])}}" class="text-decoration-underline">{{__('View')}}</a>
                                 </div>
                                 <div class="avatar-sm flex-shrink-0">
                                     <span class="avatar-title bg-secondary-subtle rounded fs-3">
@@ -94,7 +94,7 @@
                             <div class="d-flex align-items-end justify-content-between mt-4">
                                 <div>
                                     <h4 class="fs-22 fw-semibold ff-secondary mb-4">$<span class="counter-value" data-target="{{$cancelledOrders}}">{{$cancelledOrders}}</span></h4>
-                                    <a href="{{route('account.dashboard.customer.orders.index',[ 'status' => 'cancelled' ])}}" class="text-decoration-underline">View All</a>
+                                    <a href="{{route('account.dashboard.customer.orders.index',[ 'status' => 'cancelled' ])}}" class="text-decoration-underline">{{__('View')}}</a>
                                 </div>
                                 <div class="avatar-sm flex-shrink-0">
                                     <span class="avatar-title bg-danger-subtle rounded fs-3">
@@ -116,7 +116,7 @@
                             <div class="d-flex align-items-end justify-content-between mt-4">
                                 <div>
                                     <h4 class="fs-22 fw-semibold ff-secondary mb-4">$<span class="counter-value" data-target="{{$deliveredOrders}}">{{$deliveredOrders}}</span></h4>
-                                    <a href="{{route('account.dashboard.customer.orders.index',[ 'status' => 'delivered' ])}}" class="text-decoration-underline">View All</a>
+                                    <a href="{{route('account.dashboard.customer.orders.index',[ 'status' => 'delivered' ])}}" class="text-decoration-underline">{{__('View')}}</a>
                                 </div>
                                 <div class="avatar-sm flex-shrink-0">
                                     <span class="avatar-title bg-info-subtle rounded fs-3">
@@ -139,7 +139,7 @@
                             <div class="d-flex align-items-end justify-content-between mt-4">
                                 <div>
                                     <h4 class="fs-22 fw-semibold ff-secondary mb-4">$<span class="counter-value" data-target="{{$completedOrders}}">{{$completedOrders}}</span></h4>
-                                    <a href="{{route('account.dashboard.customer.orders.index',[ 'status' => 'completed' ])}}" class="text-decoration-underline">View All</a>
+                                    <a href="{{route('account.dashboard.customer.orders.index',[ 'status' => 'completed' ])}}" class="text-decoration-underline">{{__('View')}}</a>
                                 </div>
                                 <div class="avatar-sm flex-shrink-0">
                                     <span class="avatar-title bg-success-subtle rounded fs-3">

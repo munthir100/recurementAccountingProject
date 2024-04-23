@@ -16,9 +16,9 @@ class Cv extends Model implements HasMedia
     protected $fillable = ['office_id', 'status_id'];
 
     const STATUSES = [
-        Status::NEW,
-        Status::FILLED,
-    ];
+        Status::NEW => 'New',
+        Status::FILLED => 'Filled',
+    ];    
     public function office()
     {
         return $this->belongsTo(Office::class);

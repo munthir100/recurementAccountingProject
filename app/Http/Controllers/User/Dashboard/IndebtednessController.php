@@ -11,44 +11,65 @@ class IndebtednessController extends Controller
 {
     public function index()
     {
-        $indebtednesses = Indebtedness::dynamicPaginate();
+        $pending = Indebtedness::isPending()->sum('amount');
+        $active = Indebtedness::isActive()->sum('amount');
+        $overdue = Indebtedness::isOverdue()->sum('amount');
+        $paid = Indebtedness::isPaid()->sum('amount');
+        $partially_paid = Indebtedness::isPartiallyPaid()->sum('amount');
+        $cancelled = Indebtedness::isCancelled()->sum('amount');
+        $refunded = Indebtedness::isRefunded()->sum('amount');
+        $disputed = Indebtedness::isDisputed()->sum('amount');
+        $void = Indebtedness::isVoid()->sum('amount');
 
-        return view('user.dashboard.indebtednesses.index', compact('indebtednesses'));
+        $indebtednesses = Indebtedness::useFilters()->dynamicPaginate();
+
+        return view('user.dashboard.reports.indebtedness.index', compact(
+            'indebtednesses',
+            'pending',
+            'active',
+            'overdue',
+            'paid',
+            'partially_paid',
+            'cancelled',
+            'refunded',
+            'disputed',
+            'void',
+        ));
     }
 
     public function create()
     {
-        return view('user.dashboard.indebtednesses.create');
+        return view('user.dashboard.reports.indebtedness.create');
     }
 
     public function store(CreateIndebtednessRequest $request)
     {
         $indebtedness = Indebtedness::create($request->validated());
 
-        return to_route('user.dashboard.indebtednesses.index')->with('success', 'created successfully');
+        return to_route('user.dashboard.reports.indebtedness.index')->with('success', 'created successfully');
     }
 
     public function show(Indebtedness $indebtedness)
     {
-        view('user.dashboard.indebtednesses.show', compact('bond'));
+        return view('user.dashboard.reports.indebtedness.show', compact('indebtedness'));
     }
 
     public function edit(Indebtedness $indebtedness)
     {
-        return view('user.dashboard.indebtednesses.edit', compact('bond'));
+        return view('user.dashboard.reports.indebtedness.edit', compact('indebtedness'));
     }
 
     public function update(UpdateIndebtednessRequest $request, Indebtedness $indebtedness)
     {
         $indebtedness->update($request->validated());
 
-        return to_route('user.dashboard.indebtednesses.index')->with('success', 'updated successfully');
+        return to_route('user.dashboard.reports.indebtedness.index')->with('success', 'updated successfully');
     }
 
     public function destroy(Indebtedness $indebtedness)
     {
         $indebtedness->delete();
 
-        return to_route('user.dashboard.indebtednesses.index')->with('success', 'deleted successfully');
+        return back()->with('success', 'deleted successfully');
     }
 }

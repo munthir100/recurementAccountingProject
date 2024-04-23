@@ -15,7 +15,7 @@ class Country extends Model implements HasMedia
     protected $fillable = ['name', 'status_id'];
 
     const STATUSES = [
-        Status::PUBLISHED,
-        Status::NOT_PUBLISHED,
-    ];
+        Status::PUBLISHED => 'Published',
+        Status::NOT_PUBLISHED => 'Not Published',
+    ];    
 }

@@ -8,36 +8,36 @@
             </a>
         </div>
         <div class="col-auto menu-order position-static">
-            <button class="navbar-toggler float-start" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-label="Toggle navigation">
+            <button class="navbar-toggler float-start" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-label="{{ __('Toggle navigation') }}">
                 <span class="navbar-toggler-line"></span>
                 <span class="navbar-toggler-line"></span>
                 <span class="navbar-toggler-line"></span>
                 <span class="navbar-toggler-line"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav fw-600">
-                    <li class="nav-item"><a href="{{ route('home.index') }}" class="nav-link">Home</a></li>
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a href="{{ route('home.index') }}" class="nav-link">{{ __('Home') }}</a></li>
                     <li class="nav-item dropdown dropdown-with-icon-style02">
-                        <a href="#" class="nav-link">Our Services</a>
+                        <a href="#" class="nav-link">{{ __('Our Services') }}</a>
                         <i class="fa-solid fa-angle-down dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a href="#"><img src="/images/demo-accounting-company-icon02.svg" alt="">Recruitment Procedures</a></li>
-                            <li><a href="#"><img src="/images/demo-accounting-company-icon03.svg" alt="">Worker Selection</a></li>
-                            <li><a href="#"><img src="/images/demo-accounting-company-icon-04.svg" alt="">Recruitment Contracting</a></li>
-                            <li><a href="#"><img src="/images/demo-accounting-company-icon-05.svg" alt="">Recruitment Policies</a></li>
+                            <li><a href="#"><img src="/images/demo-accounting-company-icon02.svg" alt="">{{ __('Recruitment Procedures') }}</a></li>
+                            <li><a href="#"><img src="/images/demo-accounting-company-icon03.svg" alt="">{{ __('Worker Selection') }}</a></li>
+                            <li><a href="#"><img src="/images/demo-accounting-company-icon-04.svg" alt="">{{ __('Recruitment Contracting') }}</a></li>
+                            <li><a href="#"><img src="/images/demo-accounting-company-icon-05.svg" alt="">{{ __('Recruitment Policies') }}</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item"><a href="#" class="nav-link">Recruitment Journey</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">{{ __('Recruitment Journey') }}</a></li>
                     <li class="nav-item dropdown dropdown-with-icon-style02">
-                        <a href="#" class="nav-link">Pages</a>
+                        <a href="#" class="nav-link">{{ __('Pages') }}</a>
                         <i class="fa-solid fa-angle-down dropdown-toggle" id="pages" role="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
                         <ul class="dropdown-menu" aria-labelledby="pages">
-                            <li><a href="{{ route('home.blog') }}" class="dropdown-item">Blog</a></li>
-                            <li><a href="{{ route('home.about') }}" class="dropdown-item">About</a></li>
-                            <li><a href="{{ route('home.contact') }}" class="dropdown-item">Contact Us</a></li>
+                            <li><a href="{{ route('home.blog') }}" class="dropdown-item">{{ __('Blog') }}</a></li>
+                            <li><a href="{{ route('home.about') }}" class="dropdown-item">{{ __('About') }}</a></li>
+                            <li><a href="{{ route('home.contact') }}" class="dropdown-item">{{ __('Contact Us') }}</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item"><a href="{{ route('home.workers.index') }}" class="nav-link">Workers</a></li>
+                    <li class="nav-item"><a href="{{ route('home.workers.index') }}" class="nav-link">{{ __('Workers') }}</a></li>
                 </ul>
             </div>
         </div>
@@ -45,21 +45,33 @@
             <div class="header-icon">
                 <div class="header-button">
                     @guest('account')
-                    <a href="{{ route('account.login') }}" class="btn btn-small btn-rounded btn-base-color btn-box-shadow">Log In</a>
+                    <a href="{{ route('account.login') }}" class="btn btn-small btn-rounded btn-base-color btn-box-shadow">{{ __('Log In') }}</a>
                     @endguest
                     @auth('account')
                     @if(request()->user('account')->isCustomerAccount)
-                    <a href="{{route('account.dashboard.customer.index')}}" class="btn btn-small btn-rounded btn-base-color btn-box-shadow">Dashboard</a>
+                    <a href="{{ route('account.dashboard.customer.index') }}" class="btn btn-small btn-rounded btn-base-color btn-box-shadow">{{ __('Dashboard') }}</a>
                     @endif
                     @if(request()->user('account')->isOfficeAccount)
-                    <a href="{{route('account.dashboard.office.index')}}" class="btn btn-small btn-rounded btn-base-color btn-box-shadow">Dashboard</a>
+                    <a href="{{ route('account.dashboard.office.index') }}" class="btn btn-small btn-rounded btn-base-color btn-box-shadow">{{ __('Dashboard') }}</a>
                     @endif
                     @endauth
+
                 </div>
             </div>
         </div>
+        @auth('web')
+        <a href="{{ route('user.dashboard.index') }}" class="btn btn-small btn-rounded btn-base-color btn-box-shadow">{{ __('Admin') }}</a>
+        @endauth
     </div>
     <form id="logoutForm" action="{{ route('account.logout') }}" method="POST" style="display: none;">
         @csrf
     </form>
 </nav>
+
+<style>
+    /* For RTL layouts */
+    [dir="rtl"] .me-auto {
+        margin-left: auto !important;
+        margin-right: 0 !important;
+    }
+</style>

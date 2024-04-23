@@ -3,7 +3,7 @@
         <div class="row h-45px xs-h-auto align-items-center m-0 xs-pt-5px xs-pb-5px">
             <div class="col-lg-6 col-md-7 text-center text-md-start xs-px-0">
                 <div class="fs-15 text-dark-gray fw-500">{{ $siteSettings['main_site']['top_bar']['text'] }}
-                    <a href="demo-accounting-contact.html" class="text-dark-gray text-decoration-line-bottom fw-600">
+                    <a href="{{route('home.contact')}}" class="text-dark-gray text-decoration-line-bottom fw-600">
                         Contact now
                     </a>
                 </div>

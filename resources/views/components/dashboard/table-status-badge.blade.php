@@ -8,8 +8,8 @@ $statusBadge = [
 \App\Models\Status::OVERDUE => ['label' => 'Overdue', 'class' => 'danger'],
 \App\Models\Status::NEW => ['label' => 'New', 'class' => 'primary'],
 \App\Models\Status::NOT_PUBLISHED => ['label' => 'Not Published', 'class' => 'danger'],
-\App\Models\Status::PENDING => ['label' => 'Pending', 'class' => 'primary'],
-\App\Models\Status::CANCELLED => ['label' => 'Cancelled', 'class' => 'danger'],
+\App\Models\Status::PENDING => ['label' => 'Pending', 'class' => 'warning'],
+\App\Models\Status::CANCELLED => ['label' => 'Cancelled', 'class' => 'dark'],
 \App\Models\Status::EXPIRED => ['label' => 'Expired', 'class' => 'danger'],
 \App\Models\Status::TERMINATED => ['label' => 'Terminated', 'class' => 'danger'],
 \App\Models\Status::RENEWED => ['label' => 'Renewed', 'class' => 'success'],
@@ -38,6 +38,6 @@ $statusBadge = [
 ];
 @endphp
 
-<span class="mt-2 badge bg-{{ $statusBadge[$statusId]['class'] ?? 'danger' }}">
-    {{ $statusBadge[$statusId]['label'] ?? 'Unknown' }}
+<span class="mt-2 badge bg-{{ $statusBadge[$statusId]['class'] ?? 'danger' }}-subtle text-{{$statusBadge[$statusId]['class']}}">
+    {{ __($statusBadge[$statusId]['label']) ?? __('Unknown') }}
 </span>

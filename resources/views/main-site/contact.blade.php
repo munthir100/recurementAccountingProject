@@ -7,7 +7,7 @@
     @include('main-site.layouts.shared.includes.header')
 </header>
 
-<x-main-site.page-header title="Contact Us" />
+<x-main-site.page-header title="{{ _('Contact Us') }}" />
 <!-- start section -->
 <section id="down-section">
     <div class="container">
@@ -19,8 +19,8 @@
                         <i class="line-icon-Geo2-Love icon-extra-large text-base-color mb-25px"></i>
                     </div>
                     <div class="feature-box-content last-paragraph-no-margin">
-                        <span class="d-inline-block alt-font fw-600 text-dark-gray mb-5px fs-20">Crafto office</span>
-                        <p>401 Broadway, 24th Floor,<br> Orchard View, London, UK</p>
+                        <span class="d-inline-block alt-font fw-600 text-dark-gray mb-5px fs-20">{{ _('Crafto office') }}</span>
+                        <p>{{ _('401 Broadway, 24th Floor, Orchard View, London, UK') }}</p>
                     </div>
                 </div>
             </div>
@@ -32,10 +32,10 @@
                         <i class="line-icon-Headset icon-extra-large text-base-color mb-25px"></i>
                     </div>
                     <div class="feature-box-content last-paragraph-no-margin">
-                        <span class="d-inline-block alt-font fw-600 text-dark-gray mb-5px fs-20">Call us directly</span>
+                        <span class="d-inline-block alt-font fw-600 text-dark-gray mb-5px fs-20">{{ _('Call us directly') }}</span>
                         <div class="w-100 d-block">
-                            <span class="d-block">Phone: <a href="tel:1800222000" class="text-base-color-hover">1-800-222-000</a></span>
-                            <span class="d-block">Fax: 1-800-222-002</span>
+                            <span class="d-block">{{ _('Phone') }}: <a href="tel:1800222000" class="text-base-color-hover">1-800-222-000</a></span>
+                            <span class="d-block">{{ _('Fax') }}: 1-800-222-002</span>
                         </div>
                     </div>
                 </div>
@@ -48,7 +48,7 @@
                         <i class="line-icon-Mail-Read icon-extra-large text-base-color mb-25px"></i>
                     </div>
                     <div class="feature-box-content last-paragraph-no-margin">
-                        <span class="d-inline-block alt-font fw-600 text-dark-gray mb-5px fs-20">E-mail us</span>
+                        <span class="d-inline-block alt-font fw-600 text-dark-gray mb-5px fs-20">{{ _('E-mail us') }}</span>
                         <div class="w-100 d-block">
                             <a href="mailto:info@yourdomain.com" class="d-block">info@yourdomain.com</a>
                             <a href="mailto:hr@yourdomain.com" class="d-block">hr@yourdomain.com</a>
@@ -80,7 +80,7 @@
                 <div class="bg-white p-8 border-radius-6px box-shadow-double-large">
                     <div class="row">
                         <div class="col-9">
-                            <h3 class="alt-font text-dark-gray fw-700 ls-minus-2px mb-50px xs-mb-35px">How we can help you?</h3>
+                            <h3 class="alt-font text-dark-gray fw-700 ls-minus-2px mb-50px xs-mb-35px">{{ _('How we can help you?') }}</h3>
                         </div>
                         <div class="col-3 text-end" data-anime='{ "translateY": [30, 0], "translateX": [-30, 0], "opacity": [0,1], "duration": 600, "delay": 300, "staggervalue": 300, "easing": "easeOutQuad" }'>
                             <i class="bi bi-send icon-large text-dark-gray animation-zoom"></i>
@@ -89,26 +89,26 @@
                     <!-- start contact form -->
                     <form action="email-templates/contact-form.php" method="post" class="row contact-form-style-02">
                         <div class="col-md-6 mb-30px">
-                            <input class="input-name form-control required" type="text" name="name" placeholder="Your name*" />
+                            <input class="input-name form-control required" type="text" name="name" placeholder="{{ _('Your name*') }}" />
                         </div>
                         <div class="col-md-6 mb-30px">
-                            <input class="form-control required" type="email" name="email" placeholder="Your email address*" />
+                            <input class="form-control required" type="email" name="email" placeholder="{{ _('Your email address*') }}" />
                         </div>
                         <div class="col-md-6 mb-30px">
-                            <input class="form-control" type="tel" name="phone" placeholder="Your phone" />
+                            <input class="form-control" type="tel" name="phone" placeholder="{{ _('Your phone') }}" />
                         </div>
                         <div class="col-md-6 mb-30px">
-                            <input class="form-control" type="text" name="subject" placeholder="Your subject" />
+                            <input class="form-control" type="text" name="subject" placeholder="{{ _('Your subject') }}" />
                         </div>
                         <div class="col-md-12 mb-30px">
-                            <textarea class="form-control" cols="40" rows="4" name="message" placeholder="Your message"></textarea>
+                            <textarea class="form-control" cols="40" rows="4" name="message" placeholder="{{ _('Your message') }}"></textarea>
                         </div>
                         <div class="col-xl-7 col-md-7 last-paragraph-no-margin">
-                            <p class="text-center text-md-start fs-15 lh-26">We are committed to protecting your privacy. We will never collect information about you without your explicit consent.</p>
+                            <p class="text-center text-md-start fs-15 lh-26">{{ _('We are committed to protecting your privacy. We will never collect information about you without your explicit consent.') }}</p>
                         </div>
                         <div class="col-xl-5 col-md-5 text-center text-md-end sm-mt-20px">
                             <input type="hidden" name="redirect" value="">
-                            <button class="btn btn-base-color btn-medium btn-rounded btn-box-shadow submit" type="submit">Send message</button>
+                            <button class="btn btn-base-color btn-medium btn-rounded btn-box-shadow submit" type="submit">{{ _('Send message') }}</button>
                         </div>
                         <div class="col-12">
                             <div class="form-results mt-20px d-none"></div>
@@ -117,7 +117,7 @@
                     <!-- end contact form -->
                 </div>
             </div>
-            
+
         </div>
     </div>
 </section>

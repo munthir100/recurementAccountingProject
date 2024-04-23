@@ -22,8 +22,8 @@
                         <div class="card-icon display-4">
                             <i class="ri-home-3-line text-primary"></i>
                         </div>
-                        <h5 class="card-title mb-2">Genral Settings</h5>
-                        <p class="card-text text-muted">update persional data</p>
+                        <h5 class="card-title mb-2">{{ __('Genral Settings') }}</h5>
+                        <p class="card-text text-muted">{{ __('update personal data') }}</p>
                     </div>
                 </a>
             </div>
@@ -36,8 +36,8 @@
                         <div class="card-icon display-4">
                             <i class="ri-flag-line text-primary"></i>
                         </div>
-                        <h5 class="card-title mb-2">Countries</h5>
-                        <p class="card-text text-muted">Generate available countries</p>
+                        <h5 class="card-title mb-2">{{ __('Countries') }}</h5>
+                        <p class="card-text text-muted">{{ __('Generate available countries') }}</p>
                     </div>
                 </a>
             </div>

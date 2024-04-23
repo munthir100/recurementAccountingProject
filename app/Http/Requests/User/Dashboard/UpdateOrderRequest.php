@@ -23,14 +23,14 @@ class UpdateOrderRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'customer_id' => 'sometimes|required|exists:accounts,id',
+            'account_id' => 'sometimes|required|exists:accounts,id',
             'worker_id' => 'sometimes|required|exists:workers,id',
             'contract_type' => 'sometimes|required|string',
             'contract_start_duration' => 'sometimes|required|date',
             'contract_end_duration' => 'sometimes|required|date',
             'amount' => 'sometimes|required|numeric',
             'additional_information' => 'nullable|string',
-            'status_id' => 'sometimes|required|in:' . implode(',', Order::STATUSES),
+            'status_id' => 'sometimes|required|in:' . implode(',', array_keys(Order::STATUSES)),
         ];
     }
 }

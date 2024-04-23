@@ -19,7 +19,7 @@ return new class extends Migration
             $table->decimal('amount', 10, 2);
             $table->date('due_date');
             $table->foreignId('status_id')->constrained('statuses');
-            $table->foreignId('account_id')->constrained('accounts');
+            $table->foreignId('account_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

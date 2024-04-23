@@ -6,11 +6,9 @@ use Essa\APIToolKit\Filters\QueryFilters;
 
 class OrderFilters extends QueryFilters
 {
-    protected array $allowedFilters = [];
+    protected array $allowedFilters = ['status_id'];
 
-    protected array $columnSearch = ['contract_type'];
-
-
+    protected array $columnSearch = ['status_id'];
     protected array $relationSearch = [
         'status' => ['name']
     ];

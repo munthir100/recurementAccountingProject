@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Account;
 use App\Models\AccountType;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -23,6 +24,7 @@ class AccountFactory extends Factory
             'phone' => $this->faker->phoneNumber,
             'password' => 12345678,
             'account_type_id' => $this->faker->randomElement([AccountType::OFFICE, AccountType::CUSTOMER]),
+            'status_id' => $this->faker->randomElement(array_keys(Account::STATUSES)),
         ];
     }
 }

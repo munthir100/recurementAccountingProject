@@ -6,16 +6,17 @@ use App\Models\Worker;
 use App\Models\Account;
 use App\Traits\HasStatus;
 use App\Filters\OrderFilters;
+use Essa\APIToolKit\Filters\Filterable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Order extends Model
 {
-    use HasFactory, HasStatus;
+    use HasFactory, HasStatus, Filterable;
     protected string $default_filters = OrderFilters::class;
 
     protected $fillable = [
-        'customer_id',
+        'account_id',
         'worker_id',
         'contract_type',
         'contract_start_duration',
@@ -26,18 +27,19 @@ class Order extends Model
     ];
 
     const STATUSES = [
-        Status::NEW,
-        Status::PENDING,
-        Status::PROCESSING,
-        Status::DELIVERED,
-        Status::PARTIALLY_COMPLETED,
-        Status::COMPLETED,
-        Status::FAILED,
-        Status::CANCELLED
+        Status::NEW => 'New',
+        Status::PENDING => 'Pending',
+        Status::PROCESSING => 'Processing',
+        Status::DELIVERED => 'Delivered',
+        Status::PARTIALLY_COMPLETED => 'Partially Completed',
+        Status::COMPLETED => 'Completed',
+        Status::FAILED => 'Failed',
+        Status::CANCELLED => 'Cancelled'
     ];
 
 
-    public function customer()
+
+    public function account()
     {
         return $this->belongsTo(Account::class);
     }

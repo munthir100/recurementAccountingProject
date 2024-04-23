@@ -12,3 +12,6 @@
 <link rel="stylesheet" href="/css/style.css" />
 <link rel="stylesheet" href="/css/responsive.css" />
 <link rel="stylesheet" href="/demos/accounting/accounting.css" />
+@if(app()->isLocale('ar'))
+<link rel="stylesheet" href=" {{asset('css/style-rtl.css')}}" />
+@endif

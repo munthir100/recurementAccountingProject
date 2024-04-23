@@ -26,7 +26,7 @@
                     <div class="col-5 cover-background" style=" background-image: url('{{ $src }}')">
                     </div>
 
-                    <div class="col-7 bg-white ps-35px pt-30px pb-30px xs-ps-20px">
+                    <div class="col-7 bg-white ps-35px pt-30px pb-30px xs-ps-20px text-center">
                         <a href="{{route('home.workers.show',$worker->id)}}">
                             <span class="primary-font fs-18 fw-600 text-dark-gray d-block">
                                 {{$worker->first_name}} {{$worker->last_name}}

@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\User\Dashboard;
 
+use App\Models\Indebtedness;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateIndebtednessRequest extends FormRequest
@@ -27,13 +28,10 @@ class UpdateIndebtednessRequest extends FormRequest
             'amount' => 'numeric',
             'due_date' => 'date',
             'type' => 'string',
-            'status_id' => 'exists:statuses,id',
+            'status_id' => 'in:' . implode(',', array_keys(Indebtedness::STATUSES)),
             'account_id' => 'exists:accounts,id',
             'customer_id' => 'exists:customers,id',
-            'worker_id' => 'exists:workers,id',
-            'collateral' => 'string',
-            'attachments' => 'array',
-            'attachments.*' => 'file|mimes:pdf,doc,docx',
+            'collateral' => 'nullable|string',
         ];
     }
 }

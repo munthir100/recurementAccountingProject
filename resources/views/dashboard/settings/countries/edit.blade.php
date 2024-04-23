@@ -13,7 +13,6 @@
     <div class="card">
         <div class="card-body">
             <div class="container">
-                <h1>{{ __('Edit Country') }}</h1>
                 <form action="{{ route('user.dashboard.settings.countries.update', $country->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
@@ -54,7 +53,7 @@
                     </div>
 
                     <!-- Submit button -->
-                    <button type="submit" class="btn btn-primary mt-4">{{ __('Update Country') }}</button>
+                    <button type="submit" class="btn btn-primary mt-4">{{ __('Update') }}</button>
                 </form>
             </div>
         </div>
