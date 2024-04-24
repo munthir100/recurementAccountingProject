@@ -33,11 +33,5 @@ class AppServiceProvider extends ServiceProvider
         Blog::observe(BlogObserver::class);
         Country::observe(CountryObserver::class);
         Office::observe(OfficeObserver::class);
-        $siteSettings = SiteSetting::first()->settings;
-
-        // Share the $siteSettings variable with all views related to the main site
-        View::composer('main-site.*', function ($view) use ($siteSettings) {
-            $view->with('siteSettings', $siteSettings);
-        });
     }
 }
