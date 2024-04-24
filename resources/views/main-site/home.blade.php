@@ -17,7 +17,7 @@
                 </div>
                 <div class="icon-with-text-style-08">
                     <div class="feature-box feature-box-left-icon-middle">
-                       
+
                         <div class="feature-box-content">
                             <a href="{{route('home.workers.index')}}" class="btn btn-base-color btn-lg d-inline-block fs-19 text-white text-shadow-double-large">{{__('Explore Workers')}}</a>
                         </div>

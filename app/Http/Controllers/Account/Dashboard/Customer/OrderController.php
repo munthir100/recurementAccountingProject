@@ -11,9 +11,29 @@ class OrderController extends Controller
 {
     public function index()
     {
-        $orders = request()->user('account')->orders()->dynamicPaginate();
+        $new = request()->user('account')->orders()->isNew()->sum('amount');
+        $pending = request()->user('account')->orders()->isPending()->sum('amount');
+        $processing = request()->user('account')->orders()->isProcessing()->sum('amount');
+        $delivered = request()->user('account')->orders()->isDelivered()->sum('amount');
+        $partially_completed = request()->user('account')->orders()->isPartiallyCompleted()->sum('amount');
+        $completed = request()->user('account')->orders()->isCompleted()->sum('amount');
+        $failed = request()->user('account')->orders()->isFailed()->sum('amount');
+        $cancelled = request()->user('account')->orders()->isCancelled()->sum('amount');
 
-        return view('account.dashboard.customer.orders.index', compact('orders'));
+        $orders = request()->user('account')->orders()->useFilters()->dynamicPaginate();
+
+        return view('account.dashboard.customer.orders.index', compact(
+            'orders',
+            'new',
+            'pending',
+            'processing',
+            'delivered',
+            'partially_completed',
+            'completed',
+            'failed',
+            'cancelled'
+        ));
+
     }
     public function show($id)
     {

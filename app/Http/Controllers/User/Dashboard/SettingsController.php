@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\User\Dashboard;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\UpdateSettingsRequest;
 
@@ -10,13 +9,13 @@ class SettingsController extends Controller
 {
     public function showSettings()
     {
-        return view('dashboard.settings.index');
+        return view('user.dashboard.settings.index');
     }
 
     public function genral()
     {
         $user = request()->user();
-        return view('dashboard.settings.genral', compact('user'));
+        return view('user.dashboard.settings.genral', compact('user'));
     }
 
     public function updateSettings(UpdateSettingsRequest $request)
@@ -28,4 +27,5 @@ class SettingsController extends Controller
 
         return back()->with('success', 'Profile updated successfully.');
     }
+
 }

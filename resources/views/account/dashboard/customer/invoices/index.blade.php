@@ -1,11 +1,11 @@
 @extends('account.dashboard.layouts.shared.app-layout')
 
 @section('title')
-@include("account.dashboard.layouts.shared.includes.title-meta", ["title" => __("Orders")])
+@include("account.dashboard.layouts.shared.includes.title-meta", ["title" => __("Invoices")])
 @endsection
 
 @section('page-title')
-@include("account.dashboard.layouts.shared.includes.page-title", ["pagetitle" => __("Orders"), "title" => __("Orders")])
+@include("account.dashboard.layouts.shared.includes.page-title", ["pagetitle" => __("Invoices"), "title" => __("Invoices")])
 @endsection
 
 @section('content')
@@ -13,8 +13,8 @@
     <div class="col">
         <div class="h-100">
             <div class="row">
-                @foreach(\App\Models\Order::STATUSES as $status => $statusLabel)
-                <!-- Total {{ $statusLabel }} Orders Card -->
+                @foreach(\App\Models\Invoice::STATUSES as $status => $statusLabel)
+                <!-- Total {{ $statusLabel }} Invoices Card -->
                 <div class="col-xl-3 col-md-6">
                     <div class="card card-animate">
                         <div class="card-body">
@@ -32,7 +32,7 @@
 
                                     <h4 class="fs-18 fw-semibold ff-secondary mb-4">{{ __('SAR') }} {{ $value }}</h4>
 
-                                    <a href="{{ route('account.dashboard.customer.orders.index', ['status_id' => $status]) }}" class="text-decoration-underline">{{__('View')}}</a>
+                                    <a href="{{ route('account.dashboard.customer.invoices.index', ['status_id' => $status]) }}" class="text-decoration-underline">{{__('View')}}</a>
                                 </div>
 
                                 @php
@@ -64,30 +64,6 @@
         </div>
         @endif
         <div class="card">
-            <div class="card-header">
-                <div class="mb-2"></div>
-                <div class="row g-4 mb-3">
-                    <div class="col-sm-auto">
-                        <div>
-                            <a href="{{ route('account.dashboard.customer.orders.create') }}" class="btn btn-success add-btn" id="create-btn">
-                                <i class="ri-add-line align-bottom me-1"></i> {{ __("Add") }}
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-sm">
-                        <div class="d-flex justify-content-sm-end">
-                            <div class="search-box ms-2">
-                                <form action="" method="get">
-                                    <div class="form-floating">
-                                        <input type="text" name="search" class="form-control search" id="search" placeholder="{{ __("Search...") }}">
-                                        <label for="search">{{ __("Type a Keyword...") }}</label>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div><!-- end card header -->
 
             <div class="card-body">
                 <div class="table-responsive table-card">
@@ -96,7 +72,7 @@
                             <tr>
                                 <th scope="col">{{ __("ID") }}</th>
                                 <th scope="col">{{ __("Account") }}</th>
-                                <th scope="col">{{ __("Contract Type") }}</th>
+                                <th scope="col">{{ __("Due Date") }}</th>
                                 <th scope="col">{{ __("Amount") }}</th>
                                 <th scope="col">{{ __("Date") }}</th>
                                 <th scope="col">{{ __("Status") }}</th>
@@ -104,30 +80,18 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($orders as $order)
-                            <form id="form{{ $order->id }}" action="{{ route('account.dashboard.customer.orders.cancel', $order->id) }}" method="post" class="hidden">
-                                @csrf
-                                @method('PUT')
-                            </form>
+                            @forelse ($invoices as $invoice)
                             <tr>
-                                <td>{{ $order->id }}</td>
-                                <td>{{ $order->account->name }}</td>
-                                <td>{{ $order->contract_type }}</td>
-                                <td>{{ $order->amount }} {{__('SAR')}} </td>
-                                <td>{{ $order->created_at->diffForHumans() }}</td>
-                                <td> <x-dashboard.table-status-badge statusId="{{ $order->status_id }}" /> </td>
+                                <td>{{ $invoice->id }}</td>
+                                <td>{{ $invoice->account->name }}</td>
+                                <td>{{ $invoice->due_date }}</td>
+                                <td>{{ $invoice->amount }} {{__('SAR')}} </td>
+                                <td>{{ $invoice->created_at->diffForHumans() }}</td>
+                                <td> <x-dashboard.table-status-badge statusId="{{ $invoice->status_id }}" /> </td>
                                 <td>
                                     <div class="d-flex gap-2">
-                                        <div class="edit">
-                                            <a href="{{ route('account.dashboard.customer.orders.edit', $order->id) }}" class="btn btn-icon btn-primary edit-item-btn" title="{{__('Edit')}}"><i class="bx bx-edit"></i></a>
-                                        </div>
                                         <div class="show">
-                                            <a href="{{ route('account.dashboard.customer.orders.show', $order->id) }}" class="btn btn-icon btn-info edit-item-btn" title="{{__('Show')}}"><i class="ri-eye-line"></i></a>
-                                        </div>
-                                        <div class="remove">
-                                            <button class="btn btn-icon btn-danger remove-item-btn" title="{{__('Cancel')}}" data-id="{{ $order->id }}"
-                                            ><i class="mdi mdi-cancel"></i>
-                                        </button>
+                                            <a href="{{ route('account.dashboard.customer.invoices.show', $invoice->id) }}" class="btn btn-icon btn-info edit-item-btn" title="{{__('Show')}}"><i class="ri-eye-line"></i></a>
                                         </div>
                                     </div>
                                 </td>
@@ -140,7 +104,7 @@
                         </tbody>
                     </table>
                     <div class="d-flex justify-content-center">
-                        <x-dashboard.pagination :model="$orders" />
+                        <x-dashboard.pagination :model="$invoices" />
                     </div>
                 </div>
             </div><!-- end card-body -->

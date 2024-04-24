@@ -1,11 +1,15 @@
 {
-    "main_site": {
-        "top_bar": {
-            "text": "Our accounting experts waiting for you!",
+    "top_bar": {
+        "en": {
+            "text": "contact do not hasitate to contact with if you have any problems",
             "phone": "0222 8899900",
-            "address": "Broadway, 24th Floor, San Francisco",
-            "visibility": true
-        }
+            "address": "Broadway, 24th Floor, San Francisco"
+        },
+        "ar": {
+            "text": "لا تتردد في التواصل معنا اذا واجهت أي مشكلة",
+            "phone": "0222 8899900",
+            "address": "برودواي، الطابق 24، سان فرانسيسكو"
+        },
+        "visibility": true
     }
 }
-

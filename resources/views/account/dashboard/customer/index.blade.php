@@ -49,7 +49,7 @@
                             </div>
                             <div class="d-flex align-items-end justify-content-between mt-4">
                                 <div>
-                                    <h4 class="fs-22 fw-semibold ff-secondary mb-4">$<span class="counter-value" data-target="{{$pendingOrders}}">{{$pendingOrders}}</span></h4>
+                                    <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value" data-target="{{$pendingOrders}}">{{$pendingOrders}}</span></h4>
                                     <a href="{{route('account.dashboard.customer.orders.index',[ 'status' => 'pending' ])}}" class="text-decoration-underline">{{__('View')}}</a>
                                 </div>
                                 <div class="avatar-sm flex-shrink-0">
@@ -71,7 +71,7 @@
                             </div>
                             <div class="d-flex align-items-end justify-content-between mt-4">
                                 <div>
-                                    <h4 class="fs-22 fw-semibold ff-secondary mb-4">$<span class="counter-value" data-target="{{$processingOrders}}">{{$processingOrders}}</span></h4>
+                                    <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value" data-target="{{$processingOrders}}">{{$processingOrders}}</span></h4>
                                     <a href="{{route('account.dashboard.customer.orders.index',[ 'status' => 'processing' ])}}" class="text-decoration-underline">{{__('View')}}</a>
                                 </div>
                                 <div class="avatar-sm flex-shrink-0">
@@ -93,7 +93,7 @@
                             </div>
                             <div class="d-flex align-items-end justify-content-between mt-4">
                                 <div>
-                                    <h4 class="fs-22 fw-semibold ff-secondary mb-4">$<span class="counter-value" data-target="{{$cancelledOrders}}">{{$cancelledOrders}}</span></h4>
+                                    <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value" data-target="{{$cancelledOrders}}">{{$cancelledOrders}}</span></h4>
                                     <a href="{{route('account.dashboard.customer.orders.index',[ 'status' => 'cancelled' ])}}" class="text-decoration-underline">{{__('View')}}</a>
                                 </div>
                                 <div class="avatar-sm flex-shrink-0">
@@ -115,7 +115,7 @@
                             </div>
                             <div class="d-flex align-items-end justify-content-between mt-4">
                                 <div>
-                                    <h4 class="fs-22 fw-semibold ff-secondary mb-4">$<span class="counter-value" data-target="{{$deliveredOrders}}">{{$deliveredOrders}}</span></h4>
+                                    <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value" data-target="{{$deliveredOrders}}">{{$deliveredOrders}}</span></h4>
                                     <a href="{{route('account.dashboard.customer.orders.index',[ 'status' => 'delivered' ])}}" class="text-decoration-underline">{{__('View')}}</a>
                                 </div>
                                 <div class="avatar-sm flex-shrink-0">
@@ -138,7 +138,7 @@
                             </div>
                             <div class="d-flex align-items-end justify-content-between mt-4">
                                 <div>
-                                    <h4 class="fs-22 fw-semibold ff-secondary mb-4">$<span class="counter-value" data-target="{{$completedOrders}}">{{$completedOrders}}</span></h4>
+                                    <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value" data-target="{{$completedOrders}}">{{$completedOrders}}</span></h4>
                                     <a href="{{route('account.dashboard.customer.orders.index',[ 'status' => 'completed' ])}}" class="text-decoration-underline">{{__('View')}}</a>
                                 </div>
                                 <div class="avatar-sm flex-shrink-0">

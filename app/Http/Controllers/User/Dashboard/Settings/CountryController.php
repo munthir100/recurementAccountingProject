@@ -13,7 +13,7 @@ class CountryController extends Controller
     {
         $countries = Country::with('media')->dynamicPaginate();
 
-        return view('dashboard.settings.countries.index', compact('countries'));
+        return view('user.dashboard.settings.countries.index', compact('countries'));
     }
 
     public function store(CreateCountryRequest $request)
@@ -26,7 +26,7 @@ class CountryController extends Controller
 
     public function edit(Country $country)
     {
-        return view('dashboard.settings.countries.edit', compact('country'));
+        return view('user.dashboard.settings.countries.edit', compact('country'));
     }
 
     public function update(UpdateCountryRequest $request, Country $country)

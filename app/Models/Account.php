@@ -14,9 +14,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class Account extends Authenticatable
 {
     use HasFactory, HasStatus, Filterable;
-    
+
     protected $default_filters = AccountFilters::class;
-    
+
     protected $fillable = ['name', 'email', 'phone', 'password', 'account_type_id', 'status_id'];
 
     protected $casts = [
@@ -44,6 +44,11 @@ class Account extends Authenticatable
     public function orders()
     {
         return $this->hasMany(Order::class);
+    }
+
+    public function invoices()
+    {
+        return $this->hasMany(Invoice::class);
     }
 
     public function contracts()

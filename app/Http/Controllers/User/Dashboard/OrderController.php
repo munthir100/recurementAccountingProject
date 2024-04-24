@@ -11,16 +11,6 @@ class OrderController extends Controller
 {
     public function index()
     {
-        // const STATUSES = [
-        //     Status::NEW => 'New',
-        //     Status::PENDING => 'Pending',
-        //     Status::PROCESSING => 'Processing',
-        //     Status::DELIVERED => 'Delivered',
-        //     Status::PARTIALLY_COMPLETED => 'Partially Completed',
-        //     Status::COMPLETED => 'Completed',
-        //     Status::FAILED => 'Failed',
-        //     Status::CANCELLED => 'Cancelled'
-        // ];
         $new = Order::isNew()->sum('amount');
         $pending = Order::isPending()->sum('amount');
         $processing = Order::isProcessing()->sum('amount');

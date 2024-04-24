@@ -1,12 +1,8 @@
 <?php
 
-use App\Models\Bond;
-use App\Models\Order;
-use App\Models\Contract;
-use App\Models\Discount;
-use App\Models\Transaction;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\Auth\LoginController;
+use App\Http\Controllers\User\Dashboard\Account\Settings\SiteSettingsController;
 use App\Http\Controllers\User\Dashboard\CvController;
 use App\Http\Controllers\User\Dashboard\BlogController;
 use App\Http\Controllers\User\Dashboard\BondController;
@@ -53,7 +49,13 @@ Route::middleware(IsAdmin::class)->group(function () {
             Route::get('', [SettingsController::class, 'showSettings'])->name('index');
             Route::get('genral', [SettingsController::class, 'genral'])->name('genral');
             Route::resource('countries', CountryController::class);
+            Route::prefix('siteSettings')->name('siteSettings.')->group(function () {
+                Route::get('', [SiteSettingsController::class, 'index'])->name('index');
+                Route::put('update', [SiteSettingsController::class, 'update'])->name('update');
+                Route::get('topBar', [SiteSettingsController::class, 'topBar'])->name('topBar');
+            });
         });
+
         Route::put('/settings/update', [SettingsController::class, 'updateSettings'])->name('settings.update');
         Route::put('/security/update', [SecurityController::class, 'updateSecurity'])->name('security.update');
         Route::prefix('reports')->name('reports.')->group(function () {

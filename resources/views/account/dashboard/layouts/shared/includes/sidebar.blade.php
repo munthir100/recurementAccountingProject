@@ -43,6 +43,11 @@
                         <i class="ri-shopping-bag-3-line"></i> <span id="sidebar-span">{{ __('Orders') }}</span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link {{ request()->routeIs('account.dashboard.customer.invoices.*') ? 'active' : '' }}" href="{{route('account.dashboard.customer.invoices.index')}}" aria-expanded="false" aria-controls="sidebarSecurity">
+                        <i class="mdi mdi-clipboard-list-outline"></i> <span id="sidebar-span">{{ __('Invoices') }}</span>
+                    </a>
+                </li>
                 @endif
                 @if(request()->user('account')->isOfficeAccount)
                 <li class="nav-item">

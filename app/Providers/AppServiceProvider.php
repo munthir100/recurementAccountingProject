@@ -33,5 +33,9 @@ class AppServiceProvider extends ServiceProvider
         Blog::observe(BlogObserver::class);
         Country::observe(CountryObserver::class);
         Office::observe(OfficeObserver::class);
+        // share data to views inside folder main-site
+        View::composer('main-site.*', function ($view) {
+            $view->with('siteSettings', SiteSetting::first());
+        });
     }
 }
