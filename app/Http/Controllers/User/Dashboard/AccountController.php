@@ -14,6 +14,7 @@ class AccountController extends Controller
 {
     public function index()
     {
+        $this->authorize('read account');
         $active = Account::isActive()->count();
         $not_active = Account::isNotActive()->count();
         $closed = Account::isClosed()->count();
@@ -34,13 +35,15 @@ class AccountController extends Controller
 
     public function create()
     {
+        $this->authorize('create account');
         return view('user.dashboard.accounts.create');
     }
 
     public function store(CreateAccountRequest $request)
     {
+        $this->authorize('create account');
         $account = Account::create($request->validated());
-        if($account->isOfficeAccount){
+        if ($account->isOfficeAccount) {
             $account->office()->create($request->only('location'));
         }
         return to_route('user.dashboard.accounts.index')->with('success', 'created successfully');
@@ -48,23 +51,29 @@ class AccountController extends Controller
 
     public function show(Account $account)
     {
+        $this->authorize('read account');
         return view('user.dashboard.accounts.show', compact('account'));
     }
 
     public function edit(Account $account)
     {
+        $this->authorize('update account');
         return view('user.dashboard.accounts.edit', compact('account'));
     }
 
     public function update(UpdateAccountRequest $request, Account $account)
     {
+        $this->authorize('read account');
         $account->update($request->validated());
-
+        if ($account->isOfficeAccount) {
+            $account->office()->update($request->only('location'));
+        }
         return to_route('user.dashboard.accounts.index')->with('success', 'updated successfully');
     }
 
     public function destroy(Account $account)
     {
+        $this->authorize('delete account');
         $account->delete();
 
         return to_route('user.dashboard.accounts.index')->with('success', 'deleted successfully');

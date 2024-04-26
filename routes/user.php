@@ -21,6 +21,7 @@ use App\Http\Controllers\User\Dashboard\SettingsController;
 use App\Http\Controllers\User\Dashboard\TransactionController;
 use App\Http\Controllers\User\Dashboard\IndebtednessController;
 use App\Http\Controllers\User\Dashboard\Settings\CountryController;
+use App\Http\Controllers\User\Dashboard\UserController;
 use App\Http\Middleware\AuthenticatedToDashboard;
 use App\Http\Middleware\IsAdmin;
 
@@ -40,6 +41,7 @@ Route::middleware(IsAdmin::class)->group(function () {
         Route::resource('orders', OrderController::class);
         Route::resource('blogs', BlogController::class);
         Route::resource('accounts', AccountController::class);
+        Route::resource('users', UserController::class);
 
         Route::put('offices/{office}/password/update', [OfficeController::class, 'updatePassword'])->name('offices.update.password');
         Route::put('callCenters/{callCenter}/password/update', [CustomerController::class, 'updatePassword'])->name('callCenters.update.password');

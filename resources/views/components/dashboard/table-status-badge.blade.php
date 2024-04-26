@@ -9,7 +9,7 @@ $statusBadge = [
 \App\Models\Status::NEW => ['label' => 'New', 'class' => 'primary'],
 \App\Models\Status::NOT_PUBLISHED => ['label' => 'Not Published', 'class' => 'danger'],
 \App\Models\Status::PENDING => ['label' => 'Pending', 'class' => 'warning'],
-\App\Models\Status::CANCELLED => ['label' => 'Cancelled', 'class' => 'dark'],
+\App\Models\Status::CANCELLED => ['label' => 'Cancelled', 'class' => 'secondary'],
 \App\Models\Status::EXPIRED => ['label' => 'Expired', 'class' => 'danger'],
 \App\Models\Status::TERMINATED => ['label' => 'Terminated', 'class' => 'danger'],
 \App\Models\Status::RENEWED => ['label' => 'Renewed', 'class' => 'success'],
@@ -30,11 +30,12 @@ $statusBadge = [
 \App\Models\Status::LIMITED_AVAILABILITY => ['label' => 'Limited Availability', 'class' => 'warning'],
 \App\Models\Status::DISPUTED => ['label' => 'Disputed', 'class' => 'danger'],
 \App\Models\Status::VOID => ['label' => 'Void', 'class' => 'danger'],
-\App\Models\Status::ARCHIVED => ['label' => 'Archived', 'class' => 'dark'],
+\App\Models\Status::ARCHIVED => ['label' => 'Archived', 'class' => 'secondary'],
 \App\Models\Status::FILLED => ['label' => 'Filled', 'class' => 'success'],
 \App\Models\Status::REJECTED => ['label' => 'Rejected', 'class' => 'danger'],
 \App\Models\Status::PAID => ['label' => 'Paid', 'class' => 'success'],
 \App\Models\Status::PARTIALLY_PAID => ['label' => 'Partially Paid', 'class' => 'warning'],
+\App\Models\Status::ADMIN => ['label' => 'Admin', 'class' => 'primary'],
 ];
 @endphp
 

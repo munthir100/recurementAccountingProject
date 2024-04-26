@@ -41,7 +41,7 @@
                         @enderror
                     </div>
 
-                    <button type="submit" class="btn btn-primary mt-4">{{ __('Update Office') }}</button>
+                    <button type="submit" class="btn btn-primary mt-4">{{ __('Update') }}</button>
                 </form>
             </div>
         </div>

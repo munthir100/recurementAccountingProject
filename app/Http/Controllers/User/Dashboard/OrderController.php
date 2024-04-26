@@ -11,6 +11,7 @@ class OrderController extends Controller
 {
     public function index()
     {
+        $this->authorize('read order');
         $new = Order::isNew()->sum('amount');
         $pending = Order::isPending()->sum('amount');
         $processing = Order::isProcessing()->sum('amount');
@@ -37,11 +38,13 @@ class OrderController extends Controller
 
     public function create()
     {
+        $this->authorize('create order');
         return view('user.dashboard.reports.orders.create');
     }
 
     public function store(CreateOrderRequest $request)
     {
+        $this->authorize('create order');
         $order = Order::create($request->validated());
 
         return to_route('user.dashboard.reports.orders.index')->with('success', 'created successfully');
@@ -49,16 +52,19 @@ class OrderController extends Controller
 
     public function show(Order $order)
     {
+        $this->authorize('read order');
         return view('user.dashboard.reports.orders.show', compact('order'));
     }
 
     public function edit(Order $order)
     {
+        $this->authorize('update order');
         return view('user.dashboard.reports.orders.edit', compact('order'));
     }
 
     public function update(UpdateOrderRequest $request, Order $order)
     {
+        $this->authorize('update order');
         $order->update($request->validated());
 
         return to_route('user.dashboard.reports.orders.index')->with('success', 'updated successfully');
@@ -66,6 +72,7 @@ class OrderController extends Controller
 
     public function destroy(Order $order)
     {
+        $this->authorize('delete order');
         $order->delete();
 
         return to_route('user.dashboard.reports.orders.index')->with('success', 'deleted successfully');

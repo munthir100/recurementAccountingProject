@@ -11,6 +11,7 @@ class ContractController extends Controller
 {
     public function index()
     {
+        $this->authorize('read contract');
         $active = Contract::isActive()->sum('amount');
         $expired = Contract::isExpired()->sum('amount');
         $terminated = Contract::isTerminated()->sum('amount');
@@ -31,11 +32,13 @@ class ContractController extends Controller
 
     public function create()
     {
+        $this->authorize('create contract');
         return view('user.dashboard.reports.contracts.create');
     }
 
     public function store(CreateContractRequest $request)
     {
+        $this->authorize('create contract');
         $contract = Contract::create($request->validated());
 
         return to_route('user.dashboard.reports.contracts.index')->with('success', 'created successfully');
@@ -43,16 +46,19 @@ class ContractController extends Controller
 
     public function show(Contract $contract)
     {
+        $this->authorize('read contract');
         return view('user.dashboard.reports.contracts.show', compact('contract'));
     }
 
     public function edit(Contract $contract)
     {
+        $this->authorize('update contract');
         return view('user.dashboard.reports.contracts.edit', compact('contract'));
     }
 
     public function update(UpdateContractRequest $request, Contract $contract)
     {
+        $this->authorize('update contract');
         $contract->update($request->validated());
 
         return to_route('user.dashboard.reports.contracts.index')->with('success', 'updated successfully');
@@ -60,6 +66,7 @@ class ContractController extends Controller
 
     public function destroy(Contract $contract)
     {
+        $this->authorize('delete contract');
         $contract->delete();
 
         return to_route('user.dashboard.reports.contracts.index')->with('success', 'deleted successfully');

@@ -187,6 +187,11 @@ trait HasStatus
         return $query->where('status_id', Status::PARTIALLY_PAID);
     }
 
+    public function scopeIsAdmin($query)
+    {
+        return $query->where('status_id', Status::ADMIN);
+    }
+
     public function setStatus($status)
     {
         $this->status_id = $status;

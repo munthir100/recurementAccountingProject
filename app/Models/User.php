@@ -3,13 +3,20 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use App\Filters\UserFilters;
+use App\Traits\HasStatus;
+use Essa\APIToolKit\Filters\Filterable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, HasStatus, Filterable, HasRoles;
+
+    protected $default_filters = UserFilters::class;
 
     /**
      * The attributes that are mass assignable.
@@ -19,7 +26,17 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'phone',
         'password',
+    ];
+
+    const STATUSES = [
+        Status::ACTIVE => 'Active',
+        Status::NOT_ACTIVE => 'Not Active',
+        Status::CLOSED => 'Closed',
+        Status::BLOCKED => 'Blocked',
+        Status::OVERDUE => 'Overdue',
+        Status::ADMIN => 'Admin',
     ];
 
     /**

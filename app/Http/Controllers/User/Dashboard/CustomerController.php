@@ -7,8 +7,9 @@ use App\Models\Customer;
 use App\Models\AccountType;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\User\Customer\CreateCustomerRequest;
-use App\Http\Requests\User\Customer\UpdateCustomerRequest;
+use App\Http\Requests\User\Custoemr\CreateCustomerRequest;
+use App\Http\Requests\User\Custoemr\UpdateCustomerRequest;
+
 
 class CustomerController extends Controller
 {
@@ -30,13 +31,13 @@ class CustomerController extends Controller
         );
         $account->Customer()->create([]);
 
-        return redirect()->route('user.dashboard.customers.index')->with('success', 'Call center created successfully.');
+        return redirect()->route('user.dashboard.customers.index')->with('success', 'created successfully.');
     }
 
     public function edit(Customer $customer)
     {
         $customer->load('account');
-        return view('dashboard.customers.edit', compact('Customer'));
+        return view('dashboard.customers.edit', compact('customer'));
     }
 
     public function update(UpdateCustomerRequest $request, Customer $customer)
@@ -44,7 +45,7 @@ class CustomerController extends Controller
         $customer->update($request->validated());
         $customer->account()->update($request->validated());
 
-        return back()->with('success', 'Call center updated successfully.');
+        return back()->with('success', 'updated successfully.');
     }
 
     public function show(Customer $customer)
@@ -57,7 +58,7 @@ class CustomerController extends Controller
     {
         $customer->account()->delete();
 
-        return redirect()->route('user.dashboard.customers.index')->with('success', 'Call center deleted successfully.');
+        return redirect()->route('user.dashboard.customers.index')->with('success', 'deleted successfully.');
     }
 
     public function updatePassword(Customer $customer, Request $request)

@@ -26,6 +26,6 @@ class LoginController extends Controller
     {
         Auth::guard('web')->logout();
 
-        return redirect('/');
+        return to_route('user.login');
     }
 }

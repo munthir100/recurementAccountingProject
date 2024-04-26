@@ -56,6 +56,16 @@ class Account extends Authenticatable
         return $this->morphMany(Contract::class, 'contractable');
     }
 
+    public function transactions()
+    {
+        return $this->morphMany(Transaction::class, 'transactionable');
+    }
+
+    public function accountType()
+    {
+        return $this->belongsTo(AccountType::class);
+    }
+
     protected function isOfficeAccount(): Attribute
     {
         return Attribute::make()->get(fn () => $this->account_type_id == AccountType::OFFICE);

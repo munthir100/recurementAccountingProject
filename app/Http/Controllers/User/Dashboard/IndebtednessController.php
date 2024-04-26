@@ -11,6 +11,7 @@ class IndebtednessController extends Controller
 {
     public function index()
     {
+        $this->authorize('read indebtedness');
         $pending = Indebtedness::isPending()->sum('amount');
         $active = Indebtedness::isActive()->sum('amount');
         $overdue = Indebtedness::isOverdue()->sum('amount');
@@ -39,11 +40,13 @@ class IndebtednessController extends Controller
 
     public function create()
     {
+        $this->authorize('create indebtedness');
         return view('user.dashboard.reports.indebtedness.create');
     }
 
     public function store(CreateIndebtednessRequest $request)
     {
+        $this->authorize('create indebtedness');
         $indebtedness = Indebtedness::create($request->validated());
 
         return to_route('user.dashboard.reports.indebtedness.index')->with('success', 'created successfully');
@@ -51,16 +54,19 @@ class IndebtednessController extends Controller
 
     public function show(Indebtedness $indebtedness)
     {
+        $this->authorize('read indebtedness');
         return view('user.dashboard.reports.indebtedness.show', compact('indebtedness'));
     }
 
     public function edit(Indebtedness $indebtedness)
     {
+        $this->authorize('update indebtedness');
         return view('user.dashboard.reports.indebtedness.edit', compact('indebtedness'));
     }
 
     public function update(UpdateIndebtednessRequest $request, Indebtedness $indebtedness)
     {
+        $this->authorize('update indebtedness');
         $indebtedness->update($request->validated());
 
         return to_route('user.dashboard.reports.indebtedness.index')->with('success', 'updated successfully');
@@ -68,6 +74,7 @@ class IndebtednessController extends Controller
 
     public function destroy(Indebtedness $indebtedness)
     {
+        $this->authorize('delete indebtedness');
         $indebtedness->delete();
 
         return back()->with('success', 'deleted successfully');

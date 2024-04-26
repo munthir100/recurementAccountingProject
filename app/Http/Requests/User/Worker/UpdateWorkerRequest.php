@@ -3,8 +3,9 @@
 namespace App\Http\Requests\User\Worker;
 
 use App\Models\Status;
-use Illuminate\Foundation\Http\FormRequest;
+use App\Models\Worker;
 use Illuminate\Validation\Rule;
+use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateWorkerRequest extends FormRequest
 {
@@ -41,7 +42,7 @@ class UpdateWorkerRequest extends FormRequest
             'weight' => ['required', 'numeric'],
             'work_experience_country' => ['required', 'string', 'max:255'],
             'years_of_experience' => ['required', 'numeric'],
-            'status_id' => ['required', Rule::in(Status::PUBLISHED, Status::NOT_PUBLISHED)],
+            'status_id' => 'in:' . implode(',', array_keys(Worker::STATUSES)),
         ];
     }
 }

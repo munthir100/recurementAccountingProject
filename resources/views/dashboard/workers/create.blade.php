@@ -195,10 +195,11 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating">
-                            <select name="status_id" id="status_id" class="form-select">
-                                <option value="">{{ __('Select Status') }}</option>
-                                <option value="{{ \App\Models\Status::ACTIVE }}">{{ __('Active') }}</option>
-                                <option value="{{ \App\Models\Status::NOT_ACTIVE }}">{{ __('Not Active') }}</option>
+                            <select required class="form-select" id="status_id" name="status_id">
+                                <option value="">{{__('Select Status')}}</option>
+                                @foreach(\App\Models\Worker::STATUSES as $id => $name)
+                                <option value="{{ $id }}">{{ __($name) }}</option>
+                                @endforeach
                             </select>
                             <label for="status_id">{{ __('Status') }}</label>
                             @error('status_id')

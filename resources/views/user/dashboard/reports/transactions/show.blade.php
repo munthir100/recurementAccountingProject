@@ -47,7 +47,7 @@
                                         {{ __('Invoice Transaction') }}
                                     </a>
                                     @elseif ($transaction->transactionable_type === 'App\Models\Account')
-                                    <a href="#">
+                                    <a href="{{route('user.dashboard.accounts.show',$transaction->transactionable_id)}}">
                                         {{ __('Account Transaction') }}
                                     </a>
                                     <!-- Add more elseif statements for other transactionable types -->

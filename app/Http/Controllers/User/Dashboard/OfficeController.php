@@ -14,17 +14,20 @@ class OfficeController extends Controller
 {
     public function index()
     {
+        $this->authorize('read contract');
         $offices = Office::with('account')->dynamicPaginate();
         return view('dashboard.offices.index', compact('offices'));
     }
 
     public function create()
     {
+        $this->authorize('create contract');
         return view('dashboard.offices.create');
     }
 
     public function store(CreateOfficeRequest $request)
     {
+        $this->authorize('create contract');
         $account = Account::create(
             array_merge($request->validated(), ['account_type_id' => AccountType::OFFICE])
         );
@@ -35,18 +38,21 @@ class OfficeController extends Controller
 
     public function edit(Office $office)
     {
+        $this->authorize('read contract');
         $office->load('account');
         return view('dashboard.offices.edit', compact('office'));
     }
 
     public function show(Office $office)
     {
+        $this->authorize('update contract');
         $office->load('account');
         return view('dashboard.offices.show', compact('office'));
     }
 
     public function update(UpdateOfficeRequest $request, Office $office)
     {
+        $this->authorize('update contract');
         if ($request->filled('location')) {
             $office->update($request->only('location'));
         }
@@ -59,6 +65,7 @@ class OfficeController extends Controller
 
     public function destroy(Office $office)
     {
+        $this->authorize('delete contract');
         $office->account()->delete();
 
         return redirect()->route('user.dashboard.offices.index')->with('success', 'Office deleted successfully.');

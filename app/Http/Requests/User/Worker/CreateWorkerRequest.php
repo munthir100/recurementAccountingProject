@@ -3,6 +3,7 @@
 namespace App\Http\Requests\User\Worker;
 
 use App\Models\Status;
+use App\Models\Worker;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -42,7 +43,7 @@ class CreateWorkerRequest extends FormRequest
             'related_images' => ['nullable', 'array'],
             'cv' => ['required', 'file', 'mimes:pdf', 'max:2048'],
             'office_id' => ['required', 'exists:offices,id'],
-            'status_id' => ['required', Rule::in(Status::PUBLISHED, Status::NOT_PUBLISHED)],
+            'status_id' => 'required|in:' . implode(',', array_keys(Worker::STATUSES)),
         ];
     }
 }

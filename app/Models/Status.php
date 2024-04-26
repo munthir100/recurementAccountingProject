@@ -43,4 +43,5 @@ class Status extends Model
     const REJECTED = 33;
     const PAID = 34;
     const PARTIALLY_PAID = 35;
+    const ADMIN = 36;
 }

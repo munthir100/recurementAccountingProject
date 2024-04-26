@@ -12,13 +12,13 @@
 <div class="row">
     <div class="card">
         <div class="card-body">
-            <form action="{{ route('user.dashboard.callCenters.update', $callCenter->id) }}" method="POST">
+            <form action="{{ route('user.dashboard.customers.update', $customer->id) }}" method="POST">
                 @csrf
                 @method('PUT')
 
                 <div class="form-group">
                     <label for="name">{{ __('Name') }}:</label>
-                    <input type="text" id="name" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name', $callCenter->account->name) }}">
+                    <input type="text" id="name" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name', $customer->account->name) }}">
                     @error('name')
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -26,13 +26,13 @@
 
                 <div class="form-group">
                     <label for="email">{{ __('Email') }}:</label>
-                    <input type="email" id="email" name="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email', $callCenter->account->email) }}">
+                    <input type="email" id="email" name="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email', $customer->account->email) }}">
                     @error('email')
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
 
-                <button type="submit" class="btn btn-primary mt-4">{{ __('Update callCenter') }}</button>
+                <button type="submit" class="btn btn-primary mt-4">{{ __('Update') }}</button>
             </form>
         </div>
     </div>
@@ -43,7 +43,7 @@
         <div class="card-body">
             <div class="container">
                 <h1>{{ __('Update Password') }}</h1>
-                <form action="{{ route('user.dashboard.callCenters.update.password', $callCenter->id) }}" method="POST">
+                <form action="{{ route('user.dashboard.customers.update', $customer->id) }}" method="POST">
                     @csrf
                     @method('PUT')
 

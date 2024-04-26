@@ -19,6 +19,11 @@ class Worker extends Model implements HasMedia
 
     protected $fillable = ['first_name', 'last_name', 'job', 'month_salary', 'contract_period', 'languages', 'nationality', 'age', 'type', 'tall', 'religion', 'place_of_birth', 'children', 'education', 'birth_date', 'weight', 'has_practical_experience', 'practical_experience', 'work_experience_country', 'years_of_experience', 'main_image', 'related_images', 'office_id', 'status_id', 'cv_id'];
 
+    const STATUSES = [
+        Status::PUBLISHED => 'Published',
+        Status::NOT_PUBLISHED => 'Not Published',
+    ];
+
     public function office()
     {
         return $this->belongsTo(Office::class);

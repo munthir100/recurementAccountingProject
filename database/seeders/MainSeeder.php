@@ -3,11 +3,10 @@
 namespace Database\Seeders;
 
 use App\Models\Blog;
-use App\Models\User;
 use App\Models\Bond;
+use App\Models\User;
 use App\Models\Order;
 use App\Models\Office;
-use App\Models\Status;
 use App\Models\Worker;
 use App\Models\Account;
 use App\Models\Country;
@@ -19,6 +18,7 @@ use App\Models\AccountType;
 use App\Models\Transaction;
 use App\Models\Indebtedness;
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Permission;
 
 class MainSeeder extends Seeder
 {
@@ -26,11 +26,8 @@ class MainSeeder extends Seeder
     {
         $accountTypes = [AccountType::OFFICE, AccountType::CUSTOMER];
 
-        User::factory()->create([
-            'email' => 'admin@test.com',
-            'password' => bcrypt('12345678'),
-        ]);
-
+        $user = User::factory()->create();
+        $user->syncPermissions(Permission::all());
         $accounts = Account::factory(10)->create();
 
         $accounts->filter(function ($account) {

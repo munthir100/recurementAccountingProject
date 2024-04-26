@@ -11,6 +11,7 @@ class TransactionController extends Controller
 {
     public function index()
     {
+        $this->authorize('read transaction');
         $allTransactions = Transaction::sum('amount');
         $pending = Transaction::isPending()->sum('amount');
         $completed = Transaction::isCompleted()->sum('amount');
@@ -39,11 +40,13 @@ class TransactionController extends Controller
 
     public function create()
     {
+        $this->authorize('create transaction');
         return view('user.dashboard.reports.transactions.create');
     }
 
     public function store(CreateTransactionRequest $request)
     {
+        $this->authorize('create transaction');
         $transaction = Transaction::create($request->validated());
 
         return to_route('user.dashboard.reports.transactions.index')->with('success', 'created successfully');
@@ -51,16 +54,19 @@ class TransactionController extends Controller
 
     public function show(Transaction $transaction)
     {
+        $this->authorize('read transaction');
         return view('user.dashboard.reports.transactions.show', compact('transaction'));
     }
 
     public function edit(Transaction $transaction)
     {
+        $this->authorize('update transaction');
         return view('user.dashboard.reports.transactions.edit', compact('transaction'));
     }
 
     public function update(UpdateTransactionRequest $request, Transaction $transaction)
     {
+        $this->authorize('update transaction');
         $transaction->update($request->validated());
 
         return to_route('user.dashboard.reports.transactions.index')->with('success', 'updated successfully');
@@ -68,6 +74,7 @@ class TransactionController extends Controller
 
     public function destroy(Transaction $transaction)
     {
+        $this->authorize('delete transaction');
         $transaction->delete();
 
         return back()->with('success', 'deleted successfully');

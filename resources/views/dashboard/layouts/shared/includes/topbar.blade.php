@@ -109,11 +109,12 @@
                     <div class="dropdown-menu dropdown-menu-end">
                         <!-- item-->
                         <h6 class="dropdown-header">{{request()->user()->name}}</h6>
-                        <a class="dropdown-item" href="#"><i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span class="align-middle">{{ __('Profile') }}</span></a>
-                        <a class="dropdown-item" href="#"><i class=" ri-briefcase-5-line text-muted fs-16 align-middle me-1"></i> <span class="align-middle">{{ __('Projects') }}</span></a>
-                        <a class="dropdown-item" href="#"><i class="mdi mdi-calendar-check-outline text-muted fs-16 align-middle me-1"></i> <span class="align-middle">{{ __('Tasks') }}</span></a>
-                        <a class="dropdown-item" href="#"><i class="mdi mdi-cog-outline text-muted fs-16 align-middle me-1"></i> <span class="align-middle">{{ __('Settings') }}</span></a>
-                        <a class="dropdown-item" href="#"><i class="mdi mdi-lock text-muted fs-16 align-middle me-1"></i> <span class="align-middle">{{ __('Security') }}</span></a>
+                        <a class="dropdown-item" href="{{route('user.dashboard.offices.index')}}"><i class="ri-briefcase-line text-muted fs-16 align-middle me-1"></i> <span class="align-middle">{{ __('Offices') }}</span></a>
+                        <a class="dropdown-item" href="{{route('user.dashboard.workers.index')}}"><i class="ri-user-2-line text-muted fs-16 align-middle me-1"></i> <span class="align-middle">{{ __('Workers') }}</span></a>
+                        <a class="dropdown-item" href="{{route('user.dashboard.customers.index')}}"><i class="ri-user-line text-muted fs-16 align-middle me-1"></i> <span class="align-middle">{{ __('Customers') }}</span></a>
+                        <a class="dropdown-item" href="{{route('user.dashboard.settings.index')}}"><i class="mdi mdi-cog-outline text-muted fs-16 align-middle me-1"></i> <span class="align-middle">{{ __('Settings') }}</span></a>
+                        <a class="dropdown-item" href="{{route('user.dashboard.security')}}"><i class="mdi mdi-lock text-muted fs-16 align-middle me-1"></i> <span class="align-middle">{{ __('Security') }}</span></a>
+                        <a class="dropdown-item" href="{{route('user.dashboard.reports.index')}}"><i class="ri-file-list-3-line text-muted fs-16 align-middle me-1"></i> <span class="align-middle">{{ __('Accounting Reports') }}</span></a>
                         <button class="dropdown-item" onclick="logout()" href="#"><i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle" data-key="{{ __('Logout') }}">{{ __('Logout') }}</span></button>
                     </div>
                 </div>

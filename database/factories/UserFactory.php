@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Status;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -26,7 +27,9 @@ class UserFactory extends Factory
         return [
             'name' => 'admin',
             'email' => 'admin@test.com',
+            'phone' => '00955512345678',
             'password' => 12345678,
+            'status_id' => Status::ADMIN,
         ];
     }
 

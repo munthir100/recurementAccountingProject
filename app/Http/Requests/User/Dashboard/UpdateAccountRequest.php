@@ -33,27 +33,19 @@ class UpdateAccountRequest extends FormRequest
             ],
             'phone' => 'sometimes|string|max:20',
             'status_id' => 'sometimes|in:' . implode(',', array_keys(Account::STATUSES)),
-            'password' => 'sometimes|string|min:8|confirmed',
-            'account_type_id' => 'sometimes|integer|exists:account_types,id',
-            'location' => 'required_if:account_type_id,' . \App\Models\AccountType::OFFICE,
+            'location' => [
+                Rule::requiredIf(function () {
+                    return optional(request()->account)->account_type_id === AccountType::OFFICE;
+                }),
+                'string',
+            ],
+
         ];
     }
     public function messages(): array
     {
         return [
-            'name.string' => 'The name must be a string.',
-            'name.max' => 'The name may not be greater than :max characters.',
-            'email.email' => 'The email must be a valid email address.',
-            'email.unique' => 'The email has already been taken.',
-            'phone.string' => 'The phone must be a string.',
-            'phone.max' => 'The phone may not be greater than :max characters.',
-            'status_id.in' => 'The selected status is invalid.',
-            'password.string' => 'The password must be a string.',
-            'password.min' => 'The password must be at least :min characters.',
-            'password.confirmed' => 'The password confirmation does not match.',
-            'account_type_id.integer' => 'The account type must be an integer.',
-            'account_type_id.exists' => 'The selected account type is invalid.',
-            'location.required_if' => 'The location field is required when account type is office.',
+            'location.required_if' => __('The location field is required when account type is office account.'),
         ];
     }
 }

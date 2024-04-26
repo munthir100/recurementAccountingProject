@@ -87,6 +87,11 @@
                         <i class="ri-file-list-3-line"></i> <span id="sidebar-span">{{ __('Accounts') }}</span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link {{ request()->routeIs('user.dashboard.users.*') ? 'active' : '' }}" href="{{ route('user.dashboard.users.index') }}" aria-expanded="false" aria-controls="sidebarSettings">
+                        <i class="ri-admin-line"></i> <span id="sidebar-span">{{ __('Users') }}</span>
+                    </a>
+                </li>
             </ul>
         </div>
         <!-- Sidebar -->

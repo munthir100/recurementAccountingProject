@@ -11,6 +11,7 @@ class BondController extends Controller
 {
     public function index()
     {
+        $this->authorize('read bond');
         $new = Bond::isNew()->sum('amount');
         $active = Bond::isActive()->sum('amount');
         $expired = Bond::isExpired()->sum('amount');
@@ -35,11 +36,13 @@ class BondController extends Controller
 
     public function create()
     {
+        $this->authorize('create bond');
         return view('user.dashboard.reports.bonds.create');
     }
 
     public function store(CreateBondRequest $request)
     {
+        $this->authorize('create bond');
         $bond = Bond::create($request->validated());
 
         return to_route('user.dashboard.reports.bonds.index')->with('success', 'created successfully');
@@ -47,16 +50,19 @@ class BondController extends Controller
 
     public function show(Bond $bond)
     {
+        $this->authorize('read bond');
         return view('user.dashboard.reports.bonds.show', compact('bond'));
     }
 
     public function edit(Bond $bond)
     {
+        $this->authorize('update bond');
         return view('user.dashboard.reports.bonds.edit', compact('bond'));
     }
 
     public function update(UpdateBondRequest $request, Bond $bond)
     {
+        $this->authorize('update bond');
         $bond->update($request->validated());
 
         return to_route('user.dashboard.reports.bonds.index')->with('success', 'updated successfully');
@@ -64,6 +70,7 @@ class BondController extends Controller
 
     public function destroy(Bond $bond)
     {
+        $this->authorize('delete bond');
         $bond->delete();
 
         return back()->with('success', 'deleted successfully');

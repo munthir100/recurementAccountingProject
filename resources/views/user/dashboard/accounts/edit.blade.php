@@ -57,23 +57,6 @@
                         </div>
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <label for="password" class="form-label">{{ __("Password") }}</label>
-                                <input type="password" name="password" id="password" class="form-control @error('password') is-invalid @enderror">
-                                @error('password')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="password_confirmation" class="form-label">{{ __("Confirm Password") }}</label>
-                                <input type="password" name="password_confirmation" id="password_confirmation" class="form-control">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="mb-3">
                                 <label for="status_id" class="form-label">{{ __("Status") }}</label>
                                 <select required class="form-select @error('status_id') is-invalid @enderror" id="status_id" name="status_id">
                                     <option value="">{{__('Select Status')}}</option>
@@ -91,10 +74,10 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="account_type_id" class="form-label">{{ __("Account Type") }}</label>
-                                <select name="account_type_id" id="account_type_id" class="form-select @error('account_type_id') is-invalid @enderror">
+                                <select readonly disabled name="account_type_id" id="account_type_id" class="form-select @error('account_type_id') is-invalid @enderror">
                                     <option value="">{{ __("Select Account Type") }}</option>
                                     @foreach(\App\Models\AccountType::all() as $type)
-                                    <option value="{{ $type->id }}" @if($account->account_type_id == $type->id) selected @endif>{{ $type->name }}</option>
+                                    <option value="{{ $type->id }}" @if($account->account_type_id == $type->id) selected @endif>{{ __($type->name) }}</option>
                                     @endforeach
                                 </select>
                                 @error('account_type_id')
@@ -102,47 +85,22 @@
                                 @enderror
                             </div>
                         </div>
+                        @if($account->isOfficeAccount)
                         <div class="col-md-6" id="locationContainer" style="display: {{ $account->account_type_id === \App\Models\AccountType::OFFICE ? 'block' : 'none' }}">
                             <div class="mb-3">
                                 <label for="location" class="form-label">{{ __("Location") }}</label>
-                                <input type="text" name="location" id="location" class="form-control @error('location') is-invalid @enderror" value="{{ $account->location }}">
+                                <input type="text" name="location" value="@if($account->isOfficeAccount) {{$account->office->location}} @endif" id="location" class="form-control @error('location') is-invalid @enderror" value="{{ $account->location }}">
                                 @error('location')
                                 <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                         </div>
+                        @endif
                     </div>
-                    <div class="d-grid">
-                        <button type="submit" class="btn btn-primary">{{ __("Update Account") }}</button>
-                    </div>
+                    <button type="submit" class="btn btn-primary mt-4">{{ __('Update') }}</button>
                 </form>
             </div>
         </div>
     </div>
 </div>
-@endsection
-
-@section('scripts')
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const accountTypeSelect = document.getElementById('account_type_id');
-        const locationContainer = document.getElementById('locationContainer');
-
-        // Function to toggle visibility of location input based on account type
-        function toggleLocationVisibility() {
-            const selectedAccountType = accountTypeSelect.value;
-            if (selectedAccountType === '{{ \App\Models\AccountType::OFFICE }}') {
-                locationContainer.style.display = 'block';
-            } else {
-                locationContainer.style.display = 'none';
-            }
-        }
-
-        // Initial toggle based on current account type
-        toggleLocationVisibility();
-
-        // Add event listener to account type select
-        accountTypeSelect.addEventListener('change', toggleLocationVisibility);
-    });
-</script>
 @endsection
