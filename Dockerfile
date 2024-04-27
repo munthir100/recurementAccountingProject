@@ -1,28 +1,40 @@
+# Use an official PHP image as base
 FROM php:8.3-apache
 
-# Copy the application files
-COPY . /var/www/html/
-
-# Set the working directory
+# Set the working directory in the container
 WORKDIR /var/www/html
 
-# Enable Apache rewrite module
-RUN a2enmod rewrite
+# Copy composer.lock and composer.json
+COPY composer.lock composer.json ./
 
-# Install dependencies
+# Install PHP extensions and other dependencies
 RUN apt-get update && apt-get install -y \
-    libicu-dev \
-    libmariadb-dev \
-    unzip \
+    git \
     zip \
-    zlib1g-dev \
-    libpng-dev \
-    libjpeg-dev \
-    libfreetype6-dev \
-    libjpeg62-turbo-dev \
-    && rm -rf /var/lib/apt/lists/* \
-    && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install -j$(nproc) gd gettext intl pdo_mysql
+    unzip \
+    libexif-dev \
+    && docker-php-ext-install pdo pdo_mysql exif
+
+# Add a non-root user
+RUN useradd -ms /bin/bash laravel
+USER laravel
 
 # Install Composer
-COPY --from=composer:2.7.4 /usr/bin/composer /usr/bin/composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/home/laravel --filename=composer
+
+# Install PHP dependencies
+RUN /home/laravel/composer install --no-plugins --no-scripts
+
+# Copy the rest of the application code
+COPY . .
+
+# Set permissions
+USER root
+
+RUN chown -R www-data:www-data /var/www/html
+
+# Expose port 80
+EXPOSE 80
+
+# Start Apache
+CMD ["apache2-foreground"]

@@ -7,7 +7,7 @@
     @include('main-site.layouts.shared.includes.header')
 </header>
 <!-- start banner -->
-<section class="top-space-margin p-0 full-screen md-h-600px sm-h-500px section-dark section-dark-highlight" data-parallax-background-ratio="0.8" style="background-image: url(images/custom/backround.jpeg); margin-top: 141px; height: 775px; background-position: 50% 64.5px;">
+<section class="top-space-margin p-0 full-screen md-h-600px sm-h-500px section-dark section-dark-highlight" data-parallax-background-ratio="0.8" style="background-image: url({{asset('images/custom/backround.jpeg')}}); margin-top: 141px; height: 775px; background-position: 50% 64.5px;">
     <div class="container h-100">
         <div class="row align-items-center h-100">
             <div class="col-xl-7 col-md-9 col-sm-9 position-relative text-white" data-anime='{ "el": "childs", "opacity": [0, 1], "translateY": [30, 0], "staggervalue": 200, "easing": "easeInOutSine" }'>
@@ -683,7 +683,7 @@
                     <!-- end client item -->
                     <!-- start client item -->
                     <div class="swiper-slide">
-                        <a href="#"><img src="/images/logo-logitech-oxford-blue.svg" class="h-40px xs-h-30px" alt="" /></a>
+                        <a href="#"><img src="{{asset('images/logo-logitech-oxford-blue.svg')}}" class="h-40px xs-h-30px" alt="" /></a>
                     </div>
                     <!-- end client item -->
                 </div>
