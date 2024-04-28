@@ -26,7 +26,7 @@
                             <div class="d-flex align-items-end justify-content-between mt-4">
                                 <div>
                                     @php
-                                    $statusLabelLowerCase = strtolower($statusLabel);
+                                    $statusLabelLowerCase = str_replace(' ', '_', strtolower($statusLabel));
                                     $value = $$statusLabelLowerCase ?? null;
                                     @endphp
 

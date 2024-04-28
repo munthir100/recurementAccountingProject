@@ -21,28 +21,18 @@
         </div>
         @endif
         <div class="card">
-            <div class="card-header">
-                <div class="mb-2"></div>
-                <div class="row g-4 mb-3">
-                    <div class="col-sm-auto">
-                        <div>
-                            <a data-bs-toggle="modal" data-bs-target="#addOffice" class="btn btn-success add-btn" id="create-btn">
-                                <i class="ri-add-line align-bottom me-1"></i> {{ __("Add") }}
-                            </a>
-                        </div>
+            <div class="card-header align-items-center d-flex">
+                <div class="mb-0 flex-grow-1">
+                    <div class="col-3 custom-table-search">
+                        <form action="" method="GET" class="mb-0">
+                            <input type="text" name="search" class="form-control search" id="search" placeholder="{{ __("Type a Keyword...") }}">
+                        </form>
                     </div>
-                    <div class="col-sm">
-                        <div class="d-flex justify-content-sm-end">
-                            <div class="search-box ms-2">
-                                <form action="" method="get">
-                                    <div class="form-floating">
-                                        <input type="text" name="search" class="form-control search" id="search" placeholder="{{ __("Search...") }}">
-                                        <label for="search">{{ __("Type a Keyword...") }}</label>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+                </div>
+                <div class="flex-shrink-0">
+                    <a data-bs-toggle="modal" data-bs-target="#addOffice" class="btn btn-soft-info">
+                        <i class="ri-add-circle-line align-middle"></i> {{__('Add')}}
+                    </a>
                 </div>
             </div><!-- end card header -->
 

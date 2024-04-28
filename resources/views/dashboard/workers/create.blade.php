@@ -196,25 +196,41 @@
                     <div class="col-md-4">
                         <div class="form-floating">
                             <select required class="form-select" id="status_id" name="status_id">
-                                <option value="">{{__('Select Status')}}</option>
+                                <option value="">{{ __('Select Status') }}</option>
                                 @foreach(\App\Models\Worker::STATUSES as $id => $name)
-                                <option value="{{ $id }}">{{ __($name) }}</option>
+                                <option value="{{ $id }}" @if(old('status_id')==$id) selected @endif>{{ __($name) }}</option>
                                 @endforeach
                             </select>
+
                             <label for="status_id">{{ __('Status') }}</label>
                             @error('status_id')
                             <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
                     </div>
-
-                    <div class="col-md-12 mt-2">
-                        <div class="form-floating">
-                            <input class="form-control" type="file" id="main_image" name="main_image">
-                            <label for="main_image">{{ __('Profile Image') }}</label>
-                            @error('image')
-                            <div class="text-danger">{{ $message }}</div>
-                            @enderror
+                    <div class="row mb-2">
+                        <div class="col-md-6 mt-2">
+                            <div class="form-floating">
+                                <select required class="form-select" id="office_id" name="office_id">
+                                    <option value="">{{ __('Select Office') }}</option>
+                                    @foreach(\App\Models\Office::all() as $office)
+                                    <option value="{{ $office->id }}" @if(old('office_id')==$office->id) selected @endif>{{ $office->account->name }}</option>
+                                    @endforeach
+                                </select>
+                                <label for="status_id">{{ __('Office') }}</label>
+                                @error('office_id')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-md-6 mt-2">
+                            <div class="form-floating">
+                                <input class="form-control" type="file" id="main_image" name="main_image">
+                                <label for="main_image">{{ __('Profile Image') }}</label>
+                                @error('image')
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
                         </div>
                     </div>
                 </div>

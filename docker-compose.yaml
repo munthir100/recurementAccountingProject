@@ -4,6 +4,8 @@ services:
     build: .
     volumes:
       - .:/var/www/html
+      - ./apache-config:/etc/apache2/conf-available/httpd.conf:ro  # Mount custom config
+
     ports:
       - 9000:80
 

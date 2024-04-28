@@ -21,28 +21,18 @@
         </div>
         @endif
         <div class="card">
-            <div class="card-header">
-                <div class="mb-2"></div>
-                <div class="row g-4 mb-3">
-                    <div class="col-sm-auto">
-                        <div>
-                            <a data-bs-toggle="modal" data-bs-target="#addCountry" class="btn btn-success add-btn" id="create-btn">
-                                <i class="ri-add-line align-bottom me-1"></i> {{ __("Add") }}
-                            </a>
-                        </div>
+            <div class="card-header align-items-center d-flex">
+                <div class="mb-0 flex-grow-1">
+                    <div class="col-3 custom-table-search">
+                        <form action="" method="GET" class="mb-0">
+                            <input type="text" name="search" class="form-control search" id="search" placeholder="{{ __("Type a Keyword...") }}">
+                        </form>
                     </div>
-                    <div class="col-sm">
-                        <div class="d-flex justify-content-sm-end">
-                            <div class="search-box ms-2">
-                                <form action="" method="get">
-                                    <div class="form-floating">
-                                        <input type="text" name="search" class="form-control search" id="search" placeholder="{{ __("Search...") }}">
-                                        <label for="search">{{ __("Type a Keyword...") }}</label>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+                </div>
+                <div class="flex-shrink-0">
+                    <a data-bs-toggle="modal" data-bs-target="#addCountry" class="btn btn-soft-info">
+                        <i class="ri-add-circle-line align-middle"></i> {{__('Add')}}
+                    </a>
                 </div>
             </div><!-- end card header -->
             <div class="card-body">
@@ -125,7 +115,7 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="sidebar-span" id="addCountryLabel">{{ __("Add CV") }}</h5>
+                                    <h5 class="modal-title" id="sidebar-span" id="addCountryLabel">{{ __("Add Country") }}</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
@@ -143,7 +133,7 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="image">{{ __("image") }}:</label>
+                                            <label for="image">{{ __("Image") }}:</label>
                                             <input type="file" id="image" name="image" class="form-control @error('image') is-invalid @enderror" value="{{ old('image') }}" required>
                                             @error('image')
                                             <span class="invalid-feedback" role="alert">
@@ -153,10 +143,10 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="status_id">{{ __("image") }}:</label>
+                                            <label for="status_id">{{ __("Status") }}:</label>
                                             <select name="status_id" id="status_id" class="form-select">
-                                                <option value="{{\App\Models\Status::PUBLISHED}}"> Published </option>
-                                                <option value="{{\App\Models\Status::NOT_PUBLISHED}}"> Not Published </option>
+                                                <option value="{{\App\Models\Status::PUBLISHED}}"> {{__('Published')}} </option>
+                                                <option value="{{\App\Models\Status::NOT_PUBLISHED}}"> {{__('Not Published')}} </option>
                                             </select>
                                             @error('status_id')
                                             <span class="invalid-feedback" role="alert">
@@ -166,7 +156,7 @@
                                         </div>
 
 
-                                        <button type="submit" class="btn btn-primary mt-2">{{ __("Create Office") }}</button>
+                                        <button type="submit" class="btn btn-primary mt-2">{{ __("Create") }}</button>
                                     </form>
                                 </div>
                             </div>

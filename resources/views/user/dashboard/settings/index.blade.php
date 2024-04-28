@@ -51,7 +51,7 @@
                             <i class="ri-layout-line text-primary"></i>
                         </div>
                         <h5 class="card-title mb-2">{{ __('Site Settings') }}</h5>
-                        <p class="card-text text-muted">{{ __('top bar , contact information and more') }}</p>
+                        <p class="card-text text-muted">{{ __('top bar , and more') }}</p>
                     </div>
                 </a>
             </div>

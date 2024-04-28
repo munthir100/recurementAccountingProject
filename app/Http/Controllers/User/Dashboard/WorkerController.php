@@ -25,7 +25,8 @@ class WorkerController extends Controller
     public function store(CreateWorkerRequest $request)
     {
         $this->authorize('create worker');
-        $worker = Worker::create($request->validated());
+        $worker = Worker::create($request->except('main_image'));
+        $worker->addMedia($request->file('main_image'))->toMediaCollection('main_images');
         return redirect()->route('user.dashboard.workers.index')->with('success', 'Worker created successfully.');
     }
 
@@ -44,7 +45,7 @@ class WorkerController extends Controller
     public function update(UpdateWorkerRequest $request, Worker $worker)
     {
         $this->authorize('update worker');
-        $worker->update($request->validated());
+        $worker->update($request->except('main_image'));
         $request->validate(['main_image' => ['sometimes', 'image', 'max:2048']]);
         if ($request->hasFile('main_image')) {
             $worker->clearMediaCollection('main_images');

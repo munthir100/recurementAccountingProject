@@ -20,7 +20,7 @@ class TransactionController extends Controller
         $refunded = Transaction::isRefunded()->sum('amount');
         $reversed = Transaction::isReversed()->sum('amount');
         $processing = Transaction::isProcessing()->sum('amount');
-        $partiallyCompleted = Transaction::isPartiallyCompleted()->sum('amount');
+        $partially_completed = Transaction::isPartiallyCompleted()->sum('amount');
 
         $transactions = Transaction::useFilters()->dynamicPaginate();
 
@@ -34,7 +34,7 @@ class TransactionController extends Controller
             'refunded',
             'reversed',
             'processing',
-            'partiallyCompleted',
+            'partially_completed',
         ));
     }
 

@@ -203,7 +203,7 @@
                 <div class="card-header align-items-center d-flex">
                     <h4 class="card-title mb-0 flex-grow-1">{{__('Recent Transactions')}}</h4>
                     <div class="flex-shrink-0">
-                        <a href="{{route('user.dashboard.reports.transactions.index')}}" class="btn btn-soft-info btn-sm">
+                        <a href="{{route('user.dashboard.reports.transactions.index')}}" class="btn btn-soft-info">
                             <i class="ri-eye-line align-middle"></i> {{__('View All')}}
                         </a>
                     </div>

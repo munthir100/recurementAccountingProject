@@ -206,14 +206,30 @@
                             @enderror
                         </div>
                     </div>
+                    <div class="row mb-2">
+                        <div class="col-md-6 mt-2">
+                            <div class="form-floating">
+                                <select required class="form-select" id="office_id" name="office_id">
+                                    <option value="">{{ __('Select Office') }}</option>
+                                    @foreach(\App\Models\Office::all() as $office)
+                                    <option value="{{ $office->id }}" @if(old('office_id', $worker->office_id) == $office->id) selected @endif>{{ $office->account->name }}</option>
+                                    @endforeach
+                                </select>
 
-                    <div class="col-md-12 mt-2">
-                        <div class="form-floating">
-                            <input class="form-control" type="file" id="main_image" name="main_image">
-                            <label for="main_image">{{ __('Profile Image') }}</label>
-                            @error('image')
-                            <div class="text-danger">{{ $message }}</div>
-                            @enderror
+                                <label for="status_id">{{ __('Office') }}</label>
+                                @error('office_id')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-md-6 mt-2">
+                            <div class="form-floating">
+                                <input class="form-control" type="file" id="main_image" name="main_image">
+                                <label for="main_image">{{ __('Profile Image') }}</label>
+                                @error('image')
+                                <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
                         </div>
                     </div>
                 </div>

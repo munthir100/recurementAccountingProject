@@ -30,7 +30,7 @@ return new class extends Migration
             $table->string('education');
             $table->date('birth_date');
             $table->string('weight');
-            $table->boolean('has_practical_experience');
+            $table->boolean('has_practical_experience')->default(true);
             $table->json('practical_experience');
             $table->string('work_experience_country');
             $table->integer('years_of_experience');
