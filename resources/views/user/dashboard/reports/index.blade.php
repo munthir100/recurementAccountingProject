@@ -35,7 +35,7 @@
                                 </div>
                                 <div class="d-flex align-items-end justify-content-between mt-4">
                                     <div>
-                                        <h4 class="fs-18 fw-semibold ff-secondary mb-4">{{__('SAR')}} {{ $totalTransactions }}</h4>
+                                        <h4 class="fs-18 fw-semibold ff-secondary mb-4"> {{ $totalTransactions }} {{__('SAR')}}</h4>
                                         <a href="{{route('user.dashboard.reports.transactions.index')}}" class="text-decoration-underline">{{__('View Transactions')}}</a>
                                     </div>
                                     <div class="avatar-sm flex-shrink-0">
@@ -59,7 +59,7 @@
                                 </div>
                                 <div class="d-flex align-items-end justify-content-between mt-4">
                                     <div>
-                                        <h4 class="fs-18 fw-semibold ff-secondary mb-4">{{__('SAR')}} {{ $totalOrder }}</h4>
+                                        <h4 class="fs-18 fw-semibold ff-secondary mb-4"> {{ $totalOrder }} {{__('SAR')}}</h4>
                                         <a href="{{route('user.dashboard.reports.orders.index')}}" class="text-decoration-underline">{{__('View orders')}}</a>
                                     </div>
                                     <div class="avatar-sm flex-shrink-0">
@@ -83,7 +83,7 @@
                                 </div>
                                 <div class="d-flex align-items-end justify-content-between mt-4">
                                     <div>
-                                        <h4 class="fs-18 fw-semibold ff-secondary mb-4">{{__('SAR')}} {{ $totalInvoice }}</h4>
+                                        <h4 class="fs-18 fw-semibold ff-secondary mb-4"> {{ $totalInvoice }} {{__('SAR')}}</h4>
                                         <a href="{{route('user.dashboard.reports.invoices.index')}}" class="text-decoration-underline">{{__('View invoices')}}</a>
                                     </div>
                                     <div class="avatar-sm flex-shrink-0">
@@ -107,7 +107,7 @@
                                 </div>
                                 <div class="d-flex align-items-end justify-content-between mt-4">
                                     <div>
-                                        <h4 class="fs-18 fw-semibold ff-secondary mb-4">{{__('SAR')}} {{ $totalBond }}</h4>
+                                        <h4 class="fs-18 fw-semibold ff-secondary mb-4"> {{ $totalBond }} {{__('SAR')}}</h4>
                                         <a href="{{route('user.dashboard.reports.bonds.index')}}" class="text-decoration-underline">{{__('View bonds')}}</a>
                                     </div>
                                     <div class="avatar-sm flex-shrink-0">
@@ -131,7 +131,7 @@
                                 </div>
                                 <div class="d-flex align-items-end justify-content-between mt-4">
                                     <div>
-                                        <h4 class="fs-18 fw-semibold ff-secondary mb-4">{{__('SAR')}} {{ $totalContract }}</h4>
+                                        <h4 class="fs-18 fw-semibold ff-secondary mb-4"> {{ $totalContract }} {{__('SAR')}}</h4>
                                         <a href="{{route('user.dashboard.reports.contracts.index')}}" class="text-decoration-underline">{{__('View contracts')}}</a>
                                     </div>
                                     <div class="avatar-sm flex-shrink-0">
@@ -155,7 +155,7 @@
                                 </div>
                                 <div class="d-flex align-items-end justify-content-between mt-4">
                                     <div>
-                                        <h4 class="fs-18 fw-semibold ff-secondary mb-4">{{__('SAR')}} {{ $totalDiscount }}</h4>
+                                        <h4 class="fs-18 fw-semibold ff-secondary mb-4"> {{ $totalDiscount }} {{__('SAR')}}</h4>
                                         <a href="{{route('user.dashboard.reports.discounts.index')}}" class="text-decoration-underline">{{__('View discounts')}}</a>
                                     </div>
                                     <div class="avatar-sm flex-shrink-0">
@@ -179,7 +179,7 @@
                                 </div>
                                 <div class="d-flex align-items-end justify-content-between mt-4">
                                     <div>
-                                        <h4 class="fs-18 fw-semibold ff-secondary mb-4">{{__('SAR')}} {{ $totalIndebtedness }}</h4>
+                                        <h4 class="fs-18 fw-semibold ff-secondary mb-4"> {{ $totalIndebtedness }} {{__('SAR')}}</h4>
                                         <a href="{{route('user.dashboard.reports.indebtedness.index')}}" class="text-decoration-underline">{{__('View indebtedness')}}</a>
                                     </div>
                                     <div class="avatar-sm flex-shrink-0">
@@ -233,7 +233,7 @@
                                         <a href="#" class="fw-medium link-primary">{{ $transaction->id }}</a>
                                     </td>
                                     <td>
-                                        <span class="text-primary">{{__('SAR')}} {{$transaction->amount}}</span>
+                                        <span class="text-primary">{{$transaction->amount}} {{__('SAR')}}</span>
                                     </td>
                                     <td>{{$transaction->date}}</td>
                                     <td>

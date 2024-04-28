@@ -84,7 +84,7 @@
                                 <select class="form-select @error('status_id') is-invalid @enderror" id="status_id" name="status_id">
                                     <option value="">{{__('Select Status')}}</option>
                                     @foreach (\App\Models\Indebtedness::STATUSES as $statusId => $statusName)
-                                    <option value="{{ $statusId }}">{{ $statusName }}</option>
+                                    <option value="{{ $statusId }}">{{ __($statusName) }}</option>
                                     @endforeach
                                 </select>
                                 @error('status_id')
@@ -98,7 +98,7 @@
                             <div class="mb-3">
                                 <label for="account_id" class="form-label">{{ __("Account") }}</label>
                                 <select required class="form-select" id="account_id" name="account_id">
-                                    <option value="">Select Account</option>
+                                    <option value="">{{__('Select Account')}}</option>
                                     @foreach(\App\Models\Account::all() as $account)
                                     <option value="{{ $account->id }}">{{ $account->name }}</option>
                                     @endforeach

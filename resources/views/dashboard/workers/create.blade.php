@@ -266,7 +266,7 @@
 
 
                 <div class="form-group">
-                    <button type="button" id="submitButton" class="btn btn-primary mt-4">{{ __('Create Worker') }}</button>
+                    <button type="button" id="submitButton" class="btn btn-primary mt-4">{{ __('Create') }}</button>
                 </div>
             </form>
 

@@ -23,11 +23,10 @@ class WorkerFactory extends Factory
             'job' => $this->faker->jobTitle,
             'month_salary' => $this->faker->numberBetween(1000, 5000),
             'contract_period' => $this->faker->numberBetween(1, 24),
-            'languages' => json_encode([
+            'languages' => [
                 ['name' => 'English', 'percentage' => $this->faker->numberBetween(10, 100)],
                 ['name' => 'French', 'percentage' => $this->faker->numberBetween(10, 100)],
-                // Add more languages as needed
-            ]),
+            ],
             'nationality' => $this->faker->country,
             'age' => $this->faker->numberBetween(18, 60),
             'type' => $this->faker->randomElement(['Full-time', 'Part-time']),
@@ -39,11 +38,10 @@ class WorkerFactory extends Factory
             'birth_date' => $this->faker->dateTimeBetween('-60 years', '-18 years')->format('Y-m-d'),
             'weight' => $this->faker->numberBetween(50, 100),
             'has_practical_experience' => $this->faker->boolean,
-            'practical_experience' => json_encode([
+            'practical_experience' => [
                 ['name' => 'Skill A', 'value' => $this->faker->randomElement(['Beginner', 'Intermediate', 'Advanced'])],
                 ['name' => 'Skill B', 'value' => $this->faker->randomElement(['Beginner', 'Intermediate', 'Advanced'])],
-                // Add more practical experiences as needed
-            ]),
+            ],
             'work_experience_country' => $this->faker->country,
             'years_of_experience' => $this->faker->numberBetween(0, 20),
             'office_id' => null, // This should be filled later when attaching workers to offices

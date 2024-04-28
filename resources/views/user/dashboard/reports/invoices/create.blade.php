@@ -91,7 +91,7 @@
                             <div class="mb-3">
                                 <label for="account_id" class="form-label">{{ __("Account") }}</label>
                                 <select required class="form-select" id="account_id" name="account_id">
-                                    <option value="">Select Account</option>
+                                    <option value="">{{__('Select Account')}}</option>
                                     @foreach(\App\Models\Account::all() as $account)
                                     <option value="{{ $account->id }}">{{ $account->name }}</option>
                                     @endforeach
@@ -106,7 +106,7 @@
                                 <label for="worker_id" class="form-label">{{ __("Worker") }}</label>
                                 <div class="mb-3">
                                     <select required class="form-select" id="worker_id" name="worker_id">
-                                        <option value="">Select Worker</option>
+                                        <option value="">{{__('Select Worker')}}</option>
                                         @foreach(\App\Models\Worker::all() as $worker)
                                         <option value="{{ $worker->id }}">{{ $worker->first_name }} {{ $worker->last_name }}</option>
                                         @endforeach

@@ -56,7 +56,7 @@
             @enderror
         </div>
 
-        <button type="submit" class="btn btn-primary">{{ __('Create Office') }}</button>
+        <button type="submit" class="btn btn-primary">{{ __('Create') }}</button>
     </form>
 </div>
 @endsection

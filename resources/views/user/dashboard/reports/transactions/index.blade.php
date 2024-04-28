@@ -34,7 +34,7 @@
                                     $value = $$statusLabelLowerCase ?? null;
                                     @endphp
 
-                                    <h4 class="fs-18 fw-semibold ff-secondary mb-4">{{ __('SAR') }} {{ $value }}</h4>
+                                    <h4 class="fs-18 fw-semibold ff-secondary mb-4">{{ $value }} {{ __('SAR') }}</h4>
 
                                     <a href="{{ route('user.dashboard.reports.transactions.index', ['status_id' => $status]) }}" class="text-decoration-underline">{{__('View')}}</a>
                                 </div>
@@ -79,7 +79,7 @@
                     </div>
                 </div>
                 <div class="flex-shrink-0">
-                    <a href="{{route('user.dashboard.reports.transactions.index')}}" class="btn btn-soft-info">
+                    <a href="{{route('user.dashboard.reports.transactions.create')}}" class="btn btn-soft-info">
                         <i class="ri-add-circle-line align-middle"></i> {{__('Add')}}
                     </a>
                 </div>
@@ -105,7 +105,7 @@
                             </form>
                             <tr>
                                 <td>{{ $transaction->id }}</td>
-                                <td>SAR {{ $transaction->amount }} {{__('SAR')}} </td>
+                                <td>{{ $transaction->amount }} {{__('SAR')}} </td>
                                 <td>{{ $transaction->date }}</td>
                                 <td> <x-dashboard.table-status-badge statusId="{{ $transaction->status_id }}" /> </td>
                                 <td>

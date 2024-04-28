@@ -33,7 +33,7 @@
                                     $value = $$statusLabelLowerCase ?? null;
                                     @endphp
 
-                                    <h4 class="fs-18 fw-semibold ff-secondary mb-4">{{ __('SAR') }} {{ $value }}</h4>
+                                    <h4 class="fs-18 fw-semibold ff-secondary mb-4">{{ $value }} {{ __('SAR') }}</h4>
 
                                     <a href="{{ route('user.dashboard.reports.discounts.index', ['status_id' => $status]) }}" class="text-decoration-underline">{{__('View')}}</a>
                                 </div>

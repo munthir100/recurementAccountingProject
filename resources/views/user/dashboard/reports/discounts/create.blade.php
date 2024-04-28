@@ -49,7 +49,7 @@
                             <div class="mb-3">
                                 <label for="type" class="form-label">{{ __("Type") }}</label>
                                 <select required class="form-select @error('type') is-invalid @enderror" id="type" name="type">
-                                    <option value="">Select Type</option>
+                                    <option value="">{{__('Select Type')}}</option>
                                     <option value="fixed">Fixed</option>
                                     <option value="percentage">Percentage</option>
                                 </select>
@@ -98,7 +98,7 @@
                             <div class="mb-3">
                             <label for="account_id" class="form-label">{{ __("Account") }}</label>
                                 <select required class="form-select" id="account_id" name="account_id">
-                                    <option value="">Select Account</option>
+                                    <option value="">{{__('Select Account')}}</option>
                                     @foreach(\App\Models\Account::all() as $account)
                                     <option value="{{ $account->id }}">{{ $account->name }}</option>
                                     @endforeach
