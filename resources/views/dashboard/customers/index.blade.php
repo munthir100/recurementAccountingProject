@@ -111,7 +111,7 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="sidebar-span" id="addcustomerLabel">{{ __("Add call center") }}</h5>
+                                    <h5 class="modal-title" id="sidebar-span" id="addcustomerLabel">{{ __("Add") }}</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
@@ -158,7 +158,7 @@
                                             @enderror
                                         </div>
 
-                                        <button type="submit" class="btn btn-primary mt-4">{{ __("Create call center") }}</button>
+                                        <button type="submit" class="btn btn-primary mt-4">{{ __("Create") }}</button>
                                     </form>
                                 </div>
                             </div>
