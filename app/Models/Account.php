@@ -56,11 +56,6 @@ class Account extends Authenticatable
         return $this->morphMany(Contract::class, 'contractable');
     }
 
-    public function transactions()
-    {
-        return $this->morphMany(Transaction::class, 'transactionable');
-    }
-
     public function accountType()
     {
         return $this->belongsTo(AccountType::class);

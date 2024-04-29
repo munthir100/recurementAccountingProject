@@ -90,24 +90,37 @@
                     <table class="table table-nowrap table-striped-columns mb-3">
                         <thead class="table-light">
                             <tr>
-                                <th scope="col">{{ __("ID") }}</th>
-                                <th scope="col">{{ __("Amount") }}</th>
-                                <th scope="col">{{ __("Date") }}</th>
-                                <th scope="col">{{ __("Status") }}</th>
-                                <th scope="col">{{ __("Actions") }}</th>
+                                <th scope="col">{{__('Transaction ID')}}</th>
+                                <th scope="col">{{__('Amount')}}</th>
+                                <th scope="col">{{__('Date')}}</th>
+                                <th scope="col">{{__('Type')}}</th>
+                                <th scope="col">{{__('Transaction Entity')}}</th>
+                                <th scope="col">{{__('Status')}}</th>
+                                <th scope="col">{{__('Actions')}}</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($transactions as $transaction)
+                            @foreach($transactions as $transaction)
                             <form id="form{{ $transaction->id }}" action="{{ route('user.dashboard.reports.transactions.destroy', $transaction->id) }}" method="post" class="hidden">
                                 @csrf
                                 @method('delete')
                             </form>
                             <tr>
-                                <td>{{ $transaction->id }}</td>
-                                <td>{{ $transaction->amount }} {{__('SAR')}} </td>
-                                <td>{{ $transaction->date }}</td>
-                                <td> <x-dashboard.table-status-badge statusId="{{ $transaction->status_id }}" /> </td>
+                                <td>
+                                    <a href="#" class="fw-medium link-primary">{{ $transaction->id }}</a>
+                                </td>
+                                <td>
+                                    <span class="text-primary">{{$transaction->amount}} {{__('SAR')}}</span>
+                                </td>
+                                <td>{{$transaction->date}}</td>
+                                <td>
+                                    {{$transaction->transactionType->name}}
+                                <td>
+                                    <x-dashboard.reports.transactions.transaction-link :transaction="$transaction" />
+                                </td>
+                                <td>
+                                    <x-dashboard.table-status-badge :statusId="$transaction->status_id" />
+                                </td>
                                 <td>
                                     <div class="d-flex gap-2">
                                         <div class="edit">
@@ -121,13 +134,9 @@
                                         </div>
                                     </div>
                                 </td>
-                            </tr>
-                            @empty
-                            <tr>
-                                <th colspan="5" class="text-center">{{ __("No items found!") }}</th>
-                            </tr>
-                            @endforelse
-                        </tbody>
+                            </tr><!-- end tr -->
+                            @endforeach
+                        </tbody><!-- end tbody -->
                     </table>
                     <div class="d-flex justify-content-center">
                         <x-dashboard.pagination :model="$transactions" />

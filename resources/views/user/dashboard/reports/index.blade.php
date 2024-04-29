@@ -239,38 +239,7 @@
                                     <td>
                                         {{$transaction->transactionType->name}}
                                     <td>
-                                        @if ($transaction->transactionable_type === 'App\Models\Order')
-                                        <a href="{{route('user.dashboard.reports.orders.show',$transaction->transactionable_id)}}">
-                                            {{__('Order Transaction')}}
-                                        </a>
-                                        @elseif ($transaction->transactionable_type === 'App\Models\Invoice')
-                                        <a href="{{route('user.dashboard.reports.invoice.show',$transaction->transactionable_id)}}">
-                                            {{__('Invoice Transaction')}}
-                                        </a>
-                                        @elseif ($transaction->transactionable_type === 'App\Models\Account')
-                                        <a href="#">
-                                            {{__('Account Transaction')}}
-                                        </a>
-                                        @elseif ($transaction->transactionable_type === 'App\Models\Bond')
-                                        <a href="{{route('user.dashboard.reports.bonds.show',$transaction->transactionable_id)}}">
-                                            {{__('Bond Transaction')}}
-                                        </a>
-                                        @elseif ($transaction->transactionable_type === 'App\Models\Contract')
-                                        <a href="{{route('user.dashboard.reports.contracts.show',$transaction->transactionable_id)}}">
-                                            {{__('Contract Transaction')}}
-                                        </a>
-                                        @elseif ($transaction->transactionable_type === 'App\Models\Discount')
-                                        <a href="{{route('user.dashboard.reports.discounts.show',$transaction->transactionable_id)}}">
-                                            {{__('Discount Transaction')}}
-                                        </a>
-                                        @elseif ($transaction->transactionable_type === 'App\Models\Indebtedness')
-                                        <a href="{{route('user.dashboard.reports.indebtedness.show',$transaction->transactionable_id)}}">
-                                            {{__('Indebtedness Transaction')}}
-                                        </a>
-                                        <!-- Add more elseif statements for other transactionable types -->
-                                        @else
-                                        {{ $transaction->transactionable_type }}
-                                        @endif
+                                        <x-dashboard.reports.transactions.transaction-link :transaction="$transaction" />
                                     </td>
                                     <td>
                                         <x-dashboard.table-status-badge :statusId="$transaction->status_id" />

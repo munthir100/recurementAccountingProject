@@ -17,7 +17,7 @@ return new class extends Migration
             $table->text('description');
             $table->enum('type', ['fixed', 'percentage']);
             $table->decimal('amount', 10, 2);
-            $table->date('due_date');
+            $table->date('end_data');
             $table->foreignId('status_id')->constrained('statuses');
             $table->foreignId('account_id')->constrained()->cascadeOnDelete();
             $table->timestamps();

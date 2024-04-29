@@ -14,20 +14,20 @@ class OfficeController extends Controller
 {
     public function index()
     {
-        $this->authorize('read contract');
+        $this->authorize('read office');
         $offices = Office::with('account')->dynamicPaginate();
         return view('dashboard.offices.index', compact('offices'));
     }
 
     public function create()
     {
-        $this->authorize('create contract');
+        $this->authorize('create office');
         return view('dashboard.offices.create');
     }
 
     public function store(CreateOfficeRequest $request)
     {
-        $this->authorize('create contract');
+        $this->authorize('create office');
         $account = Account::create(
             array_merge($request->validated(), ['account_type_id' => AccountType::OFFICE])
         );
@@ -38,21 +38,22 @@ class OfficeController extends Controller
 
     public function edit(Office $office)
     {
-        $this->authorize('read contract');
+        $this->authorize('read office');
         $office->load('account');
         return view('dashboard.offices.edit', compact('office'));
     }
 
     public function show(Office $office)
     {
-        $this->authorize('update contract');
+        $this->authorize('update office');
         $office->load('account');
+
         return view('dashboard.offices.show', compact('office'));
     }
 
     public function update(UpdateOfficeRequest $request, Office $office)
     {
-        $this->authorize('update contract');
+        $this->authorize('update office');
         if ($request->filled('location')) {
             $office->update($request->only('location'));
         }
@@ -65,7 +66,7 @@ class OfficeController extends Controller
 
     public function destroy(Office $office)
     {
-        $this->authorize('delete contract');
+        $this->authorize('delete office');
         $office->account()->delete();
 
         return redirect()->route('user.dashboard.offices.index')->with('success', 'deleted successfully.');
@@ -73,6 +74,7 @@ class OfficeController extends Controller
 
     public function updatePassword(Office $office, Request $request)
     {
+        $this->authorize('update office');
         $request->validate([
             'password' => 'required|string|min:8'
         ]);

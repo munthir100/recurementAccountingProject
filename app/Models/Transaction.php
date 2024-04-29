@@ -38,7 +38,8 @@ class Transaction extends Model
 
 
     const TRANSACTIONABLE_MODELS = [
-        Account::class => 'Account Transaction',
+        Customer::class => 'Customer Transaction',
+        Office::class => 'Office Transaction',
         Order::class => 'Order Transaction',
         Contract::class => 'Contract Transaction',
         Invoice::class => 'Invoice Transaction',

@@ -22,4 +22,9 @@ class Office extends Model implements HasMedia
     {
         return $this->hasMany(Cv::class);
     }
+    
+    public function transactions()
+    {
+        return $this->morphMany(Transaction::class, 'transactionable');
+    }
 }

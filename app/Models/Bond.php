@@ -32,4 +32,9 @@ class Bond extends Model
         Status::SUSPENDED => 'Suspended',
         Status::PREPAID => 'Prepaid',
     ];
+    
+    public function transactions()
+    {
+        return $this->morphMany(Transaction::class, 'transactionable');
+    }
 }

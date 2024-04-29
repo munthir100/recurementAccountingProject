@@ -71,9 +71,9 @@
                     <div class="row">
                         <div class="col-md-6 col-sm-12">
                             <div class="mb-3">
-                                <label for="due_date" class="form-label">{{ __("Due Date") }}</label>
-                                <input required type="date" class="form-control @error('due_date') is-invalid @enderror" id="due_date" name="due_date" value="{{ old('due_date') }}">
-                                @error('due_date')
+                                <label for="end_date" class="form-label">{{ __("End Date") }}</label>
+                                <input required type="date" class="form-control @error('end_date') is-invalid @enderror" id="end_date" name="end_date" value="{{ old('end_date') }}">
+                                @error('end_date')
                                 <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>

@@ -89,9 +89,8 @@
                         <thead class="table-light">
                             <tr>
                                 <th scope="col">{{ __("ID") }}</th>
-                                <th scope="col">{{ __("Type") }}</th>
                                 <th scope="col">{{ __("Amount") }}</th>
-                                <th scope="col">{{ __("Due Date") }}</th>
+                                <th scope="col">{{ __("End Date") }}</th>
                                 <th scope="col">{{ __("Status") }}</th>
                                 <th scope="col">{{ __("Actions") }}</th>
                             </tr>
@@ -104,9 +103,14 @@
                             </form>
                             <tr>
                                 <td>{{ $discount->id }}</td>
-                                <td>{{ $discount->type }}</td>
-                                <td>{{ $discount->amount}} %</td>
-                                <td>{{ $discount->due_date }}</td>
+                                <td>{{ $discount->amount}}
+                                    @if($discount->type === 'fixed')
+                                    {{ __('SAR') }}
+                                    @else
+                                    {{ __('%') }}
+                                    @endif
+                                </td>
+                                <td>{{ $discount->end_data }}</td>
                                 <td> <x-dashboard.table-status-badge statusId="{{ $discount->status_id }}" /> </td>
                                 <td>
                                     <div class="d-flex gap-2">

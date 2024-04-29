@@ -28,6 +28,11 @@ class Contract extends Model
         'contractable_id',
     ];
 
+    public function transactions()
+    {
+        return $this->morphMany(Transaction::class, 'transactionable');
+    }
+
     const STATUSES = [
         Status::ACTIVE => 'Active',
         Status::EXPIRED => 'Expired',

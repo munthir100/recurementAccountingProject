@@ -27,7 +27,7 @@ class CreateDiscountRequest extends FormRequest
             'description' => 'required|string',
             'type' => 'required|in:fixed,percentage',
             'amount' => 'required|numeric',
-            'due_date' => 'required|date',
+            'end_data' => 'required|date',
             'status_id' => 'required|in:' . implode(',', array_keys(Discount::STATUSES)),
             'account_id' => 'required|exists:accounts,id',
         ];

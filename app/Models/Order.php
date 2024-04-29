@@ -48,4 +48,9 @@ class Order extends Model
     {
         return $this->belongsTo(Worker::class);
     }
+    
+    public function transactions()
+    {
+        return $this->morphMany(Transaction::class, 'transactionable');
+    }
 }

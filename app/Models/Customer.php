@@ -16,4 +16,8 @@ class Customer extends Model
         return $this->belongsTo(Account::class);
     }
 
+    public function transactions()
+    {
+        return $this->morphMany(Transaction::class, 'transactionable');
+    }
 }

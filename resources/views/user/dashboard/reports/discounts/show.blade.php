@@ -30,11 +30,17 @@
                             </tr>
                             <tr>
                                 <th>{{ __("Amount") }}</th>
-                                <td>{{ $discount->amount }} {{__('SAR')}} </td>
+                                <td>{{ $discount->amount }}
+                                    @if ($discount->type === 'fixed')
+                                    {{__('SAR')}}
+                                    @else
+                                    {{__('%')}}
+                                    @endif
+                                </td>
                             </tr>
                             <tr>
-                                <th>{{ __("Due Date") }}</th>
-                                <td>{{ $discount->due_date }}</td>
+                                <th>{{ __("End Date") }}</th>
+                                <td>{{ $discount->end_date }}</td>
                             </tr>
                             <tr>
                                 <th>{{ __("Account") }}</th>

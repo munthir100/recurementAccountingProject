@@ -15,17 +15,20 @@ class CustomerController extends Controller
 {
     public function index()
     {
+        $this->authorize('read office');
         $customers = Customer::with('account')->dynamicPaginate();
         return view('dashboard.customers.index', compact('customers'));
     }
 
     public function create()
     {
+        $this->authorize('create office');
         return view('dashboard.customers.create');
     }
 
     public function store(CreateCustomerRequest $request)
     {
+        $this->authorize('create office');
         $account = Account::create(
             array_merge($request->validated(), ['account_type_id' => AccountType::CUSTOMER])
         );
@@ -34,28 +37,32 @@ class CustomerController extends Controller
         return redirect()->route('user.dashboard.customers.index')->with('success', 'created successfully.');
     }
 
+    public function show(Customer $customer)
+    {
+        $this->authorize('read office');
+        $customer->load('account');
+        return view('dashboard.customers.show', compact('Customer'));
+    }
+    
     public function edit(Customer $customer)
     {
+        $this->authorize('update office');
         $customer->load('account');
         return view('dashboard.customers.edit', compact('customer'));
     }
 
     public function update(UpdateCustomerRequest $request, Customer $customer)
     {
+        $this->authorize('update office');
         $customer->update($request->validated());
         $customer->account()->update($request->validated());
 
         return back()->with('success', 'updated successfully.');
     }
 
-    public function show(Customer $customer)
-    {
-        $customer->load('account');
-        return view('dashboard.customers.show', compact('Customer'));
-    }
-
     public function destroy(Customer $customer)
     {
+        $this->authorize('delete office');
         $customer->account()->delete();
 
         return redirect()->route('user.dashboard.customers.index')->with('success', 'deleted successfully.');
@@ -63,6 +70,7 @@ class CustomerController extends Controller
 
     public function updatePassword(Customer $customer, Request $request)
     {
+        $this->authorize('update office');
         $request->validate([
             'password' => 'required|string|min:8'
         ]);

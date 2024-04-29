@@ -19,8 +19,11 @@ class TransactionFactory extends Factory
             'date' => $this->faker->date(),
             'transaction_type_id' => TransactionType::inRandomOrder()->first()->id,
             'status_id' => $this->faker->randomElement(array_keys(Transaction::STATUSES)),
-            'transactionable_type' => Account::class,
-            'transactionable_id' => Account::inRandomOrder()->first()->id,
+            'transactionable_type' => $this->faker->randomElement(array_keys(Transaction::TRANSACTIONABLE_MODELS)),
+            'transactionable_id' => function (array $transaction) {
+                $transactionableType = $transaction['transactionable_type'];
+                return $transactionableType::inRandomOrder()->first()->id;
+            },
         ];
     }
 }

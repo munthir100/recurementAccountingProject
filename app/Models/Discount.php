@@ -20,7 +20,7 @@ class Discount extends Model
         'description',
         'type',
         'amount',
-        'due_date',
+        'end_data',
         'status_id',
         'account_id',
     ];
@@ -38,6 +38,10 @@ class Discount extends Model
         Status::LIMITED_AVAILABILITY => 'Limited Availability',
     ];
 
+    public function transactions()
+    {
+        return $this->morphMany(Transaction::class, 'transactionable');
+    }
 
     public function account()
     {

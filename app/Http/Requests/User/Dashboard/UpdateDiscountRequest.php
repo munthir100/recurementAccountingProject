@@ -26,7 +26,7 @@ class UpdateDiscountRequest extends FormRequest
             'description' => 'string',
             'type' => 'in:fixed,percentage',
             'amount' => 'numeric',
-            'due_date' => 'date',
+            'end_data' => 'date',
             'status_id' => 'exists:statuses,id',
             'account_id' => 'exists:accounts,id',
         ];

@@ -38,23 +38,9 @@
                             <tr>
                                 <th>{{ __("Transaction Category") }}</th>
                                 <td>
-                                    @if ($transaction->transactionable_type === 'App\Models\Order')
-                                    <a href="{{ route('user.dashboard.reports.orders.show',$transaction->transactionable_id) }}">
-                                        {{ __('Order Transaction') }}
-                                    </a>
-                                    @elseif ($transaction->transactionable_type === 'App\Models\Invoice')
-                                    <a href="{{ route('user.dashboard.reports.invoice.show',$transaction->transactionable_id) }}">
-                                        {{ __('Invoice Transaction') }}
-                                    </a>
-                                    @elseif ($transaction->transactionable_type === 'App\Models\Account')
-                                    <a href="{{route('user.dashboard.accounts.show',$transaction->transactionable_id)}}">
-                                        {{ __('Account Transaction') }}
-                                    </a>
-                                    <!-- Add more elseif statements for other transactionable types -->
-                                    @else
-                                    {{ $transaction->transactionable_type }}
-                                    @endif
+                                    <x-dashboard.reports.transactions.transaction-link :transaction="$transaction" />
                                 </td>
+
                             </tr>
                             <tr>
                                 <th>{{ __("Transaction Category ID") }}</th>
