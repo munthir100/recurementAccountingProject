@@ -106,7 +106,7 @@
                                 <td>{{ $indebtedness->id }}</td>
                                 <td>{{ $indebtedness->amount }} {{__('SAR')}} </td>
                                 <td>{{ $indebtedness->due_date }}</td>
-                                <td>{{ $indebtedness->type }}</td>
+                                <td>{{ __($indebtedness->type) }}</td>
                                 <td> <x-dashboard.table-status-badge statusId="{{ $indebtedness->status_id }}" /> </td>
                                 <td>
                                     <div class="d-flex gap-2">

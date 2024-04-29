@@ -33,7 +33,7 @@ class OfficeController extends Controller
         );
 
         $account->office()->create($request->validated());
-        return redirect()->route('user.dashboard.offices.index')->with('success', 'Office created successfully.');
+        return redirect()->route('user.dashboard.offices.index')->with('success', 'created successfully.');
     }
 
     public function edit(Office $office)
@@ -60,7 +60,7 @@ class OfficeController extends Controller
             $office->account()->update($request->only('name', 'email', 'phone'));
         }
 
-        return redirect()->back()->with('success', 'Office updated successfully.');
+        return redirect()->back()->with('success', 'updated successfully.');
     }
 
     public function destroy(Office $office)
@@ -68,7 +68,7 @@ class OfficeController extends Controller
         $this->authorize('delete contract');
         $office->account()->delete();
 
-        return redirect()->route('user.dashboard.offices.index')->with('success', 'Office deleted successfully.');
+        return redirect()->route('user.dashboard.offices.index')->with('success', 'deleted successfully.');
     }
 
     public function updatePassword(Office $office, Request $request)
@@ -80,6 +80,6 @@ class OfficeController extends Controller
             'password' => $request->password
         ]);
 
-        return back()->with('success', 'password updated');
+        return back()->with('success', 'updated successfully');
     }
 }

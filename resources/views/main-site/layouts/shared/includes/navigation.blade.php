@@ -38,10 +38,15 @@
                         </ul>
                     </li>
                     <li class="nav-item"><a href="{{ route('home.workers.index') }}" class="nav-link">{{ __('Workers') }}</a></li>
+                    @auth('web')
+                    <li class="nav-item">
+                        <a class="nav-link text-base-color" href="{{ route('user.dashboard.index') }}">{{ __('Dashboard') }}</a>
+                    </li>
+                    @endauth
                 </ul>
             </div>
         </div>
-        <div class="col-auto col-lg-2 text-end d-none d-sm-flex">
+        <div class="col-auto col-lg-2 text-end d-sm-flex">
             <div class="header-icon">
                 <div class="header-button">
                     @guest('account')
@@ -59,9 +64,6 @@
                 </div>
             </div>
         </div>
-        @auth('web')
-        <a href="{{ route('user.dashboard.index') }}" class="btn btn-small btn-rounded btn-base-color btn-box-shadow">{{ __('Admin') }}</a>
-        @endauth
     </div>
     <form id="logoutForm" action="{{ route('account.logout') }}" method="POST" style="display: none;">
         @csrf

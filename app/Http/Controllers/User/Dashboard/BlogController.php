@@ -27,12 +27,12 @@ class BlogController extends Controller
         $blog = request()->user()->blogs()->create($request->only(['title', 'context']));
         $blog->addMediaFromRequest('image')->ToMediaCollection('blog_images');
 
-        return redirect()->route('user.dashboard.blogs.index')->with('success', 'Blog created successfully.');
+        return redirect()->route('user.dashboard.blogs.index')->with('success', 'created successfully.');
     }
 
     public function edit(Blog $blog)
     {
-        $this->authorize('edit blog');
+        $this->authorize('update blog');
         $blog->load('author');
         return view('dashboard.blogs.edit', compact('blog'));
     }
@@ -46,7 +46,7 @@ class BlogController extends Controller
             $blog->addMediaFromRequest('image')->ToMediaCollection('blog_images');
         }
         
-        return back()->with('success', 'Blog updated successfully.');
+        return back()->with('success', 'updated successfully.');
     }
 
     public function show(Blog $blog)
@@ -59,8 +59,8 @@ class BlogController extends Controller
     public function destroy(Blog $blog)
     {
         $this->authorize('delete blog');
-        $blog->account()->delete();
+        $blog->delete();
 
-        return redirect()->route('user.dashboard.blogs.index')->with('success', 'Blog deleted successfully.');
+        return redirect()->route('user.dashboard.blogs.index')->with('success', 'deleted successfully.');
     }
 }

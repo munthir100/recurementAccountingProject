@@ -21,11 +21,21 @@
                         <tbody>
                             <tr>
                                 <th>{{ __("Account") }}</th>
-                                <td>{{ $order->account->name }}</td>
+
+                                <td>
+                                    <a href="{{route('user.dashboard.accounts.show',$order->account->id)}}" target="__blank">
+                                        {{ $order->account->name }}
+                                    </a>
+                                </td>
                             </tr>
                             <tr>
                                 <th>{{ __("Worker") }}</th>
-                                <td>{{ $order->worker->first_name }} {{ $order->worker->last_name }}</td>
+                                <td>
+                                    <a href="{{route('home.workers.show',$order->worker->id)}}" target="__blank">
+                                        {{ $order->worker->first_name }} {{ $order->worker->last_name }}
+                                    </a>
+
+                                </td>
                             </tr>
                             <tr>
                                 <th>{{ __("Contract Type") }}</th>

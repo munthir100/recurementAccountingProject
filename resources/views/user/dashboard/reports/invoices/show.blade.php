@@ -41,11 +41,19 @@
                             </tr>
                             <tr>
                                 <th>{{ __("Account") }}</th>
-                                <td>{{ $invoice->account->name }}</td>
+                                <td>
+                                    <a href="{{route('user.dashboard.accounts.show',$invoice->account->id)}}" target="__blank">
+                                        {{ $invoice->account->name }}
+                                    </a>
+                                </td>
                             </tr>
                             <tr>
                                 <th>{{ __("Worker") }}</th>
-                                <td>{{ $invoice->worker->first_name }} {{ $invoice->worker->last_name }}</td>
+                                <td>
+                                    <a href="{{route('home.workers.show',$invoice->worker->id)}}" target="__blank">
+                                        {{ $invoice->worker->first_name }} {{ $invoice->worker->last_name }}
+                                    </a>
+                                </td>
                             </tr>
                             <tr>
                                 <th>{{ __("Billing Address") }}</th>

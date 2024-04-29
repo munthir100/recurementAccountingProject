@@ -56,7 +56,11 @@ class MainController extends Controller
 
     public function workerDetails($workerId)
     {
-        $worker = Worker::isPublished()->findOrFail($workerId);
+        if (auth()->guard('web')->check()) {
+            $worker = Worker::findOrFail($workerId);
+        } else {
+            $worker = Worker::isPublished()->findOrFail($workerId);
+        }
 
         return view('main-site.workers.show', compact('worker'));
     }

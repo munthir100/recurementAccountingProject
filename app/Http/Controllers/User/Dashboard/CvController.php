@@ -28,7 +28,7 @@ class CvController extends Controller
 
         $cv->addMediaFromRequest('cv')->toMediaCollection('cvs');
 
-        return redirect()->route('user.dashboard.cvs.index')->with('success', 'Cv created successfully.');
+        return redirect()->route('user.dashboard.cvs.index')->with('success', 'created successfully.');
     }
 
     public function edit(Cv $cv)
@@ -47,12 +47,12 @@ class CvController extends Controller
             $cv->addMediaFromRequest('cv')->toMediaCollection('cvs');
         }
 
-        return back()->with('success', 'Cv updated successfully.');
+        return back()->with('success', 'updated successfully.');
     }
 
     public function destroy(Cv $cv)
     {
         $cv->delete();
-        return redirect()->route('dashboard.cvs.index')->with('success', 'Cv deleted successfully.');
+        return redirect()->route('dashboard.cvs.index')->with('success', 'deleted successfully.');
     }
 }

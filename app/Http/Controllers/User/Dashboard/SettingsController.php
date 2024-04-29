@@ -25,7 +25,7 @@ class SettingsController extends Controller
             'name' => $request->input('name'),
         ]);
 
-        return back()->with('success', 'Profile updated successfully.');
+        return back()->with('success', 'updated successfully.');
     }
 
 }

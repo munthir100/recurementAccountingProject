@@ -100,7 +100,11 @@
                             </form>
                             <tr>
                                 <td>{{ $order->id }}</td>
-                                <td>{{ $order->account->name }}</td>
+                                <td>
+                                    <a href="{{route('user.dashboard.accounts.show',$order->account->id)}}">
+                                        {{ $order->account->name }}
+                                    </a>
+                                </td>
                                 <td>{{ $order->contract_type }}</td>
                                 <td>{{ $order->amount }} {{__('SAR')}} </td>
                                 <td>{{ $order->created_at->diffForHumans() }}</td>

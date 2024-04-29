@@ -123,8 +123,8 @@
                                         @csrf
 
                                         <div class="form-group">
-                                            <label for="cv">{{ __("Cv") }}:</label>
-                                            <input type="file" id="cv" name="cv" class="form-control @error('cv') is-invalid @enderror" value="{{ old('cv') }}" required autofocus>
+                                            
+                                            <input type="file" id="cv" name="cv" class="form-control @error('cv') is-invalid @enderror"  value="{{ old('cv') }}" required>
                                             @error('cv')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -133,16 +133,15 @@
                                         </div>
 
                                         <div class="form-group">
-
-                                            <label for="office_id" class="form-label text-muted">Select Cv .doc, .docx, .pdf</label>
+                                            <label for="office_id" class="form-label text-muted">.doc, .docx, .pdf</label>
                                             <select class="form-control" data-choices name="office_id" id="office_id">
-                                                <option value="">Select Office</option>
+                                                <option value="">{{__('Select Office')}}</option>
                                                 @foreach($offices as $office)
                                                 <option value="{{$office->id}}">{{$office->account->name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
-                                        <button type="submit" class="btn btn-primary mt-2">{{ __("Create Office") }}</button>
+                                        <button type="submit" class="btn btn-primary mt-2">{{ __("Upload") }}</button>
                                     </form>
                                 </div>
                             </div>
