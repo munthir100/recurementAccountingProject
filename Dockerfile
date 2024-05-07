@@ -37,7 +37,8 @@ COPY . .
 # Set permissions
 USER root
 
-RUN chown -R www-data:www-data /var/www/html
+RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
+
 
 # Expose port 80
 EXPOSE 80

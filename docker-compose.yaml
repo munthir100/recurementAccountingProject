@@ -4,22 +4,5 @@ services:
     build: .
     volumes:
       - .:/var/www/html
-      - ./apache-config:/etc/apache2/conf-available/httpd.conf:ro  # Mount custom config
-
     ports:
       - 9000:80
-
-  mysql_db:
-    image: mysql:latest
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: laravel_docker
-    ports:
-      - 3306:3306
-
-  phpmyadmin:
-    image: phpmyadmin:latest
-    ports:
-      - 9901:80
-    environment:
-      PMA_ARBITRARY: 1
