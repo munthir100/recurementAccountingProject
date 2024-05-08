@@ -1,7 +1,7 @@
 <!-- ========== App Menu ========== -->
 <div class="app-menu navbar-menu">
     <!-- LOGO -->
-    <div class="navbar-brand-box">
+    <div class="navbar-brand-box mt-4">
         <!-- Dark Logo-->
         <a href="#" class="logo logo-dark">
             <span class="logo-sm">

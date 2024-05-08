@@ -55,6 +55,7 @@ Route::middleware(IsAdmin::class)->group(function () {
                 Route::get('', [SiteSettingsController::class, 'index'])->name('index');
                 Route::put('update', [SiteSettingsController::class, 'update'])->name('update');
                 Route::get('topBar', [SiteSettingsController::class, 'topBar'])->name('topBar');
+                Route::get('banner', [SiteSettingsController::class, 'banner'])->name('banner');
             });
         });
 

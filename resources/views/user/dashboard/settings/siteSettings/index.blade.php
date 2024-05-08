@@ -32,6 +32,23 @@
 
 
 
+        <div class="col-md-3">
+            <div class="card text-center">
+                <a href="{{route('user.dashboard.settings.siteSettings.banner')}}">
+                    <div class="card-body mb-4">
+                        <div class="card-icon display-4">
+                            <i class="ri-home-3-line text-primary"></i>
+                        </div>
+                        <h5 class="card-title mb-2">{{ __('Banner') }}</h5>
+                        <p class="card-text text-muted">{{ __('edit on the banner items and photos') }}</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+
+
+
     </div>
 </div>
 

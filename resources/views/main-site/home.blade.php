@@ -7,26 +7,7 @@
     @include('main-site.layouts.shared.includes.header')
 </header>
 <!-- start banner -->
-<section class="top-space-margin p-0 full-screen md-h-600px sm-h-500px section-dark section-dark-highlight" data-parallax-background-ratio="0.8" style="background-image: url({{asset('images/custom/backround.jpeg')}}); margin-top: 141px; height: 775px; background-position: 50% 64.5px;">
-    <div class="container h-100">
-        <div class="row align-items-center h-100">
-            <div class="col-xl-7 col-md-9 col-sm-9 position-relative text-white" data-anime='{ "el": "childs", "opacity": [0, 1], "translateY": [30, 0], "staggervalue": 200, "easing": "easeInOutSine" }'>
-                <div class="fs-30 lh-75 sm-fs-65 mb-20px text-shadow-large ls-minus-2px">{{__('Your first destination for competitive recruitment prices')}}</div>
-                <div>
-                    <span class="fs-20 w-70 md-w-85 mb-25px fw-300 d-inline-block">{{__('We meet your domestic labor needs at the best prices')}}</span>
-                </div>
-                <div class="icon-with-text-style-08">
-                    <div class="feature-box feature-box-left-icon-middle">
-
-                        <div class="feature-box-content">
-                            <a href="{{route('home.workers.index')}}" class="btn btn-base-color btn-lg d-inline-block fs-19 text-white text-shadow-double-large">{{__('Explore Workers')}}</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+<x-main-site.banner />
 
 <!-- end banner -->
 <!-- start section -->

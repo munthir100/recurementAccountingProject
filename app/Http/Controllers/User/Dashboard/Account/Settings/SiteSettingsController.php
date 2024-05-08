@@ -21,7 +21,14 @@ class SiteSettingsController extends Controller
         return view('user.dashboard.settings.siteSettings.topBar', compact('siteSettings'));
     }
 
-    public function update(UpdateTopbarRequest $request)
+    public function banner()
+    {
+        $siteSettings = SiteSetting::first();
+
+        return view('user.dashboard.settings.siteSettings.banner', compact('siteSettings'));
+    }
+
+    public function updateTopbar(UpdateTopbarRequest $request)
     {
         $validatedData = $request->validated();
         $siteSetting = SiteSetting::first();
