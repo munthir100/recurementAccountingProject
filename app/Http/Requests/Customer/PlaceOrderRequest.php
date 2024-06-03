@@ -28,6 +28,11 @@ class PlaceOrderRequest extends FormRequest
             'contract_end_duration' => 'required|date|after:contract_start_duration',
             'amount' => 'required|numeric|min:0',
             'additional_information' => 'sometimes|string|nullable|max:1000',
+            'delivery_address.country_id' => 'required|exists:countries,id',
+            'delivery_address.city' => 'required|string|max:255',
+            'delivery_address.address' => 'required|string|max:500',
+            'delivery_address.longitude' => 'required|numeric',
+            'delivery_address.latitude' => 'required|numeric',
         ];
     }
 }

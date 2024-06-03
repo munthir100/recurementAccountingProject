@@ -53,9 +53,14 @@ Route::middleware(IsAdmin::class)->group(function () {
             Route::resource('countries', CountryController::class);
             Route::prefix('siteSettings')->name('siteSettings.')->group(function () {
                 Route::get('', [SiteSettingsController::class, 'index'])->name('index');
-                Route::put('update', [SiteSettingsController::class, 'update'])->name('update');
                 Route::get('topBar', [SiteSettingsController::class, 'topBar'])->name('topBar');
                 Route::get('banner', [SiteSettingsController::class, 'banner'])->name('banner');
+
+
+                Route::prefix('update')->name('update.')->group(function () {
+                    Route::put('topBar', [SiteSettingsController::class, 'updateTopBar'])->name('topBar');
+                    Route::put('banner', [SiteSettingsController::class, 'updateBanner'])->name('banner');
+                });
             });
         });
 

@@ -7,7 +7,7 @@ stop:
 	docker-compose stop
 up:
 	docker-compose up -d
-data:
-	docker exec laravel-docker bash -c "php artisan migrate --seed"
 terminal:
 	docker exec -it laravel-docker /bin/bash
+data:
+	php artisan migrate --seed

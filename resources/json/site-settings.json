@@ -1,17 +1,50 @@
 {
     "top_bar": {
         "en": {
-            "text": "contact do not hasitate to contact with if you have any problems",
+            "text": "contact do not hesitate to contact with if you have any problems",
             "phone": "0222 8899900",
             "address": "Broadway, 24th Floor, San Francisco"
         },
         "ar": {
-            "text": "لا تتردد في التواصل معنا اذا واجهت أي مشكلة",
+            "text": "لا تتردد في التواصل معنا إذا واجهت أي مشكلة",
             "phone": "0222 8899900",
             "address": "برودواي، الطابق 24، سان فرانسيسكو"
         },
         "visibility": true
-    }
-    
-    
+    },
+    "banners": [
+        {
+            "en": {
+                "title": "Drawing a sketch",
+                "details": "Too much or too little spacing, as in the example below, can make things unpleasant for the reader."
+            },
+            "ar": {
+                "title": "رسم رسم تخطيطي",
+                "details": "الكثير أو القليل جدًا من التباعد، كما هو الحال في المثال أدناه، يمكن أن يجعل الأمور غير مريحة للقارئ."
+            },
+            "image": "/dashboard/assets/images/small/img-4.jpg"
+        },
+        {
+            "en": {
+                "title": "Blue clock on a pastel background",
+                "details": "In some designs, you might adjust your tracking to create a certain artistic effect asked them what graphic design tips they live."
+            },
+            "ar": {
+                "title": "ساعة زرقاء على خلفية باستيلية",
+                "details": "في بعض التصاميم، قد تقوم بضبط التتبع الخاص بك لإنشاء تأثير فني معين طلبوا منهم ما هي نصائح التصميم الجرافيكي التي يعيشونها."
+            },
+            "image": "/dashboard/assets/images/small/img-5.jpg"
+        },
+        {
+            "en": {
+                "title": "Working at a coffee shop",
+                "details": "A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring."
+            },
+            "ar": {
+                "title": "العمل في مقهى",
+                "details": "لقد استولت هدوء رائع على روحي بأكملها، مثل هذه الصباحات اللطيفة من الربيع."
+            },
+            "image": "/dashboard/assets/images/small/img-6.jpg"
+        }
+    ]
 }

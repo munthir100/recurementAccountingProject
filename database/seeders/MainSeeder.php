@@ -17,6 +17,7 @@ use App\Models\Discount;
 use App\Models\AccountType;
 use App\Models\Transaction;
 use App\Models\Indebtedness;
+use App\Models\DeliveryAddress;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
 
@@ -49,8 +50,12 @@ class MainSeeder extends Seeder
 
 
         Blog::factory(30)->create();
-        Order::factory(30)->create();
         Country::factory(30)->create();
+        Order::factory(30)->create()->each(function ($order) {
+            DeliveryAddress::factory()->create([
+                'order_id' => $order->id,
+            ]);
+        });
         Invoice::factory(30)->create();
         Bond::factory(30)->create();
         Contract::factory(30)->create();

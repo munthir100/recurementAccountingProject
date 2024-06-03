@@ -31,6 +31,11 @@ class UpdateOrderRequest extends FormRequest
             'amount' => 'sometimes|required|numeric',
             'additional_information' => 'nullable|string',
             'status_id' => 'sometimes|required|in:' . implode(',', array_keys(Order::STATUSES)),
+            'delivery_address.country_id' => 'required|exists:countries,id',
+            'delivery_address.city' => 'required|string|max:255',
+            'delivery_address.address' => 'required|string|max:500',
+            'delivery_address.longitude' => 'required|numeric',
+            'delivery_address.latitude' => 'required|numeric',
         ];
     }
 }

@@ -5,23 +5,15 @@
 @endsection
 
 @section('page-title')
-@include("dashboard.layouts.shared.includes.page-title", ["pagetitle" => __("Account"), "title" => __("Create Blog Post")])
+@include("dashboard.layouts.shared.includes.page-title", ["pagetitle" => __("Settings"), "title" => __("Create Blog Post"),"link" => route('user.dashboard.settings.siteSettings.index')])
 @endsection
 
 @section('content')
 <div class="row">
     <div class="card">
-        @if ($errors->any())
-        <div class="alert alert-danger mt-3">
-            <ul>
-                @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-        @endif
+        <x-dashboard.alerts />
         <div class="card-body">
-            <form action="{{ route('user.dashboard.settings.siteSettings.update') }}" method="post">
+            <form action="{{ route('user.dashboard.settings.siteSettings.update.topBar') }}" method="post">
                 @csrf
                 @method('PUT')
                 <div class="row">

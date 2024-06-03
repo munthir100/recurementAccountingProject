@@ -33,11 +33,10 @@ class OrderController extends Controller
             'failed',
             'cancelled'
         ));
-
     }
     public function show($id)
     {
-        $order = request()->user('account')->orders()->findOrFail($id);
+        $order = request()->user('account')->orders()->with('deliveryAddress')->findOrFail($id);
 
         return view('account.dashboard.customer.orders.show', compact('order'));
     }
@@ -58,24 +57,30 @@ class OrderController extends Controller
 
     public function update(PlaceOrderRequest $request, $id)
     {
+        $validatedData = $request->validated();
         $order = request()->user('account')->orders()->findOrFail($id);
 
-        $order->update($request->validated());
+        $order->update($validatedData);
+        $order->deliveryAddress()->update($validatedData['delivery_address']);
 
         return back()->with('success', 'order updated');
     }
 
     public function store(PlaceOrderRequest $request)
     {
-        $request->user('account')->orders()->create($request->validated());
+        $validatedData = $request->validated();
+        $order = $request->user('account')->orders()->create($validatedData);
+        $order->deliveryAddress()->create($validatedData['delivery_address']);
 
         return back()->with('success', 'order created');
     }
 
     public function placeOrder(PlaceOrderRequest $request)
     {
-        $request->user('account')->orders()->create($request->validated());
-
+        $validatedData = $request->validated();
+        $order = $request->user('account')->orders()->create($validatedData);
+        $order->deliveryAddress()->create($validatedData['delivery_address']);
+        
         return back()->with('success', 'order created');
     }
 

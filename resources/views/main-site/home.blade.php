@@ -7,8 +7,7 @@
     @include('main-site.layouts.shared.includes.header')
 </header>
 <!-- start banner -->
-<x-main-site.banner />
-
+@include('main-site.layouts.shared.includes.banner')
 <!-- end banner -->
 <!-- start section -->
 <section>

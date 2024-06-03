@@ -47,7 +47,7 @@ AccountType:
 Country:
     name*
     status_id*
-
+    currency_id* // new
 Account:
     name*
     email*
@@ -55,6 +55,8 @@ Account:
     password*
     account_type_id*
     status_id*
+
+    
 
 CV:
     office_id*
@@ -169,3 +171,69 @@ indebtedness:
     worker_id
     collateral
     attachments:pdf,doc,docx
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+BannerType:
+    name
+
+Banner:
+    title
+    description
+    banner_type_id
+    fiels:
+        image
+
+
+
+
+
+Currency:
+    name
+
+DeliveryAddress:
+    order_id
+    country_id
+    city
+    address
+    longtuide
+    latitude
+
+
+BankAccount:
+    name
+    bank_name
+    country_id
+    currency_id
+    iban_number
+    number
+    soft_code
+    bank_address
+    account_id

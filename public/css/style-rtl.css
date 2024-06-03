@@ -49,6 +49,11 @@ ul li a,
 .navbar-nav {
     text-align: end;
 }
-.dropdown-menu{
+
+.dropdown-menu {
     text-align: justify;
+}
+
+.form-select {
+    background-position: left 0.75rem center;
 }

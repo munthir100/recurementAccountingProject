@@ -61,11 +61,50 @@
                                 <th>{{ __("Status") }}</th>
                                 <td>{{ __($order->status->name) }}</td>
                             </tr>
-                        </tbody>
+                            <tr>
+                                <th>{{ __("Country") }}</th>
+                                <td>{{ $order->deliveryAddress->country->name }}</td>
+                            </tr>
+                            <tr>
+                                <th>{{ __("City") }}</th>
+                                <td>{{ $order->deliveryAddress->city }}</td>
+                            </tr>
+                            <tr>
+                                <th>{{ __("Address") }}</th>
+                                <td>{{ $order->deliveryAddress->address }}</td>
+                            </tr>
+                        </tbody>    
                     </table>
+                    <div id="map" style="height: 300px; width: 100%; margin-top: 20px;"></div>
                 </div>
             </div><!-- end card-body -->
         </div><!-- end card -->
     </div><!-- end col -->
 </div><!-- end row -->
+@endsection
+
+@section('styles')
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+@endsection
+
+@section('scripts')
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var latitude = "{{ $order->deliveryAddress->latitude }}";
+        var longitude = "{{ $order->deliveryAddress->longitude }}";
+        var address = "{{ $order->deliveryAddress->address }}";
+        var map = L.map('map').setView([latitude, longitude], 13);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        var marker = L.marker([latitude, longitude], {
+            draggable: false
+        }).addTo(map);
+
+        marker.bindPopup(address).openPopup();
+    });
+</script>
 @endsection

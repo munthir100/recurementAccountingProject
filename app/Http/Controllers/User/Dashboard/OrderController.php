@@ -45,7 +45,9 @@ class OrderController extends Controller
     public function store(CreateOrderRequest $request)
     {
         $this->authorize('create order');
-        $order = Order::create($request->validated());
+        $validatedData = $request->validated();
+        $order = Order::create($validatedData);
+        $order->deliveryAddress()->create($validatedData['delivery_address']);
 
         return to_route('user.dashboard.reports.orders.index')->with('success', 'created successfully');
     }
@@ -65,8 +67,10 @@ class OrderController extends Controller
     public function update(UpdateOrderRequest $request, Order $order)
     {
         $this->authorize('update order');
-        $order->update($request->validated());
-
+       $validatedData = $request->validated();
+        $order->update($validatedData);
+        $order->deliveryAddress()->update($validatedData['delivery_address']);
+        
         return to_route('user.dashboard.reports.orders.index')->with('success', 'updated successfully');
     }
 

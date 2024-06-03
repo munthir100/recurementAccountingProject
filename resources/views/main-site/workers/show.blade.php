@@ -120,24 +120,10 @@
         @endif
     </div>
     <div class="text-center mt-4">
-        @auth('account')
-        @if(request()->user('account')->isCustomerAccount)
-        <a href="#modal-popup2" class="popup-with-zoom-anim btn-rounded btn-base-color btn btn-large btn-transparent-dark-gray d-table d-lg-inline-block lg-mb-15px md-mx-auto">
+        <a href="{{route('home.workers.order',$worker->id)}}" class="btn-rounded btn-base-color btn btn-large btn-transparent-dark-gray d-table d-lg-inline-block lg-mb-15px md-mx-auto">
             <span class="btn-text">{{__('Request Now')}}</span>
             <span class="btn-icon"><i class="feather icon-feather-shopping-bag"></i></span>
         </a>
-        @elseif(request()->user('account')->isOfficeAccount)
-        <a disabled class="disabled btn-rounded btn-base-color btn btn-large btn-transparent-dark-gray d-table d-lg-inline-block lg-mb-15px md-mx-auto">
-            <span class="btn-text">{{__('Request Now')}}</span>
-            <i class="feather icon-feather-shopping-bag"></i>
-        </a>
-        @endif
-        @else
-        <a href="{{route('account.login')}}" class="btn-rounded btn-base-color btn btn-large btn-transparent-dark-gray d-table d-lg-inline-block lg-mb-15px md-mx-auto">
-            <span class="btn-text">{{__('Request Now')}}</span>
-            <i class="feather icon-feather-shopping-bag"></i>
-        </a>
-        @endauth
 
     </div>
 

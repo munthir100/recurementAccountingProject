@@ -65,6 +65,13 @@ class MainController extends Controller
         return view('main-site.workers.show', compact('worker'));
     }
 
+    public function orderWorker($workerId)
+    {
+        $worker = Worker::isPublished()->findOrFail($workerId);
+
+        return view('main-site.workers.order', compact('worker'));
+    }
+
     public function changeLocale(Request $request)
     {
         $request->validate(['locale' => 'string|in:ar,en']);
