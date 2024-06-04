@@ -51,6 +51,11 @@ class Account extends Authenticatable
         return $this->hasMany(Invoice::class);
     }
 
+    public function bankAccount()
+    {
+        return $this->hasOne(BankAccount::class);
+    }
+
     public function contracts()
     {
         return $this->morphMany(Contract::class, 'contractable');

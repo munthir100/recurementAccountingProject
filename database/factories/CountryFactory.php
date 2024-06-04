@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Currency;
 use App\Models\Status;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -23,6 +24,7 @@ class CountryFactory extends Factory
                 Status::PUBLISHED,
                 Status::NOT_PUBLISHED,
             ]),
+            'currency_id' => Currency::inRandomOrder()->first()->id
         ];
     }
 }

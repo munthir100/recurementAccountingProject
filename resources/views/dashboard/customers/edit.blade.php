@@ -10,30 +10,58 @@
 
 @section('content')
 <div class="row">
-    <div class="card">
-        <div class="card-body">
-            <form action="{{ route('user.dashboard.customers.update', $customer->id) }}" method="POST">
-                @csrf
-                @method('PUT')
+    <div class="col-md-6">
 
-                <div class="form-group">
-                    <label for="name">{{ __('Name') }}:</label>
-                    <input type="text" id="name" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name', $customer->account->name) }}">
-                    @error('name')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </div>
+        <div class="card">
+            <div class="card-body">
+                <form action="{{ route('user.dashboard.customers.update', $customer->id) }}" method="POST">
+                    @csrf
+                    @method('PUT')
 
-                <div class="form-group">
-                    <label for="email">{{ __('Email') }}:</label>
-                    <input type="email" id="email" name="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email', $customer->account->email) }}">
-                    @error('email')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </div>
+                    <div class="form-group">
+                        <label for="name">{{ __('Name') }}:</label>
+                        <input type="text" id="name" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name', $customer->account->name) }}">
+                        @error('name')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
 
-                <button type="submit" class="btn btn-primary mt-4">{{ __('Update') }}</button>
-            </form>
+                    <div class="form-group">
+                        <label for="email">{{ __('Email') }}:</label>
+                        <input type="email" id="email" name="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email', $customer->account->email) }}">
+                        @error('email')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <button type="submit" class="btn btn-primary mt-4">{{ __('Update') }}</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <form action="">
+                    @csrf
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="name">{{ __('Bank Name') }}:</label>
+                            <input type="text" id="name" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name', $customer->account->name) }}">
+                            @error('name')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="col-md-6">
+                            <label for="name">{{ __('Bank Account Name') }}:</label>
+                            <input type="text" id="name" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name', $customer->account->name) }}">
+                            @error('name')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>

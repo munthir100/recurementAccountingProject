@@ -31,6 +31,8 @@ class PermissionSeeder extends Seeder
             'Discount',
             'Invoice',
             'Indebtedness',
+            'Currency',
+            'Country',
         ];
 
         foreach ($models as $model) {

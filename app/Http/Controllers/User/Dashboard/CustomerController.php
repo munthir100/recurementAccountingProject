@@ -47,7 +47,7 @@ class CustomerController extends Controller
     public function edit(Customer $customer)
     {
         $this->authorize('update customer');
-        $customer->load('account');
+        $customer->load('account','account.bankAccount');
         return view('dashboard.customers.edit', compact('customer'));
     }
 
