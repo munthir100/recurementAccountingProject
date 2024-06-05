@@ -9,6 +9,7 @@
 @endsection
 
 @section('content')
+<x-dashboard.alerts />
 <div class="row">
     <div class="col-md-6">
 
@@ -42,25 +43,7 @@
     <div class="col-md-6">
         <div class="card">
             <div class="card-body">
-                <form action="">
-                    @csrf
-                    <div class="row">
-                        <div class="col-md-6">
-                            <label for="name">{{ __('Bank Name') }}:</label>
-                            <input type="text" id="name" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name', $customer->account->name) }}">
-                            @error('name')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        <div class="col-md-6">
-                            <label for="name">{{ __('Bank Account Name') }}:</label>
-                            <input type="text" id="name" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name', $customer->account->name) }}">
-                            @error('name')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                    </div>
-                </form>
+                <x-dashboard.bank-account-form :account="$customer->account" />
             </div>
         </div>
     </div>

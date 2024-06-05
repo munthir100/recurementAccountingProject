@@ -41,6 +41,8 @@ Route::middleware(IsAdmin::class)->group(function () {
         Route::resource('orders', OrderController::class);
         Route::resource('blogs', BlogController::class);
         Route::resource('accounts', AccountController::class);
+        Route::put('accounts/{account}/update/BankAccount', [AccountController::class, 'updateBankAccount'])->name('accounts.bankAccount.update');
+
         Route::resource('users', UserController::class);
 
         Route::put('offices/{office}/password/update', [OfficeController::class, 'updatePassword'])->name('offices.update.password');

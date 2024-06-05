@@ -6,6 +6,7 @@ use App\Models\Account;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\Dashboard\CreateAccountRequest;
 use App\Http\Requests\User\Dashboard\UpdateAccountRequest;
+use App\Http\Requests\User\Dashboard\UpdateBankAccountRequest;
 
 
 
@@ -77,5 +78,13 @@ class AccountController extends Controller
         $account->delete();
 
         return to_route('user.dashboard.accounts.index')->with('success', 'deleted successfully');
+    }
+
+    public function updateBankAccount(UpdateBankAccountRequest $request, Account $account)
+    {
+        $this->authorize('update account');
+        $account->bankAccount()->update($request->validated()['bank_account']);
+
+        return back()->with('success', 'updated successfully');
     }
 }

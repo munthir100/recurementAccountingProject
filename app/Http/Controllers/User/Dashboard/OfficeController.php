@@ -39,7 +39,7 @@ class OfficeController extends Controller
     public function edit(Office $office)
     {
         $this->authorize('read office');
-        $office->load('account');
+        $office->load('account','account.bankAccount');
         return view('dashboard.offices.edit', compact('office'));
     }
 

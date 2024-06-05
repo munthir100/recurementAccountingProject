@@ -10,39 +10,48 @@
 
 @section('content')
 <div class="row">
-    <div class="card">
-        <div class="card-body">
-            <div class="container">
-                <form action="{{ route('user.dashboard.offices.update', $office->id) }}" method="POST">
-                    @csrf
-                    @method('PUT')
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="container">
+                    <form action="{{ route('user.dashboard.offices.update', $office->id) }}" method="POST">
+                        @csrf
+                        @method('PUT')
 
-                    <div class="form-group">
-                        <label for="name">{{ __('Name') }}:</label>
-                        <input type="text" id="name" name="name" class="form-control mb-2 @error('name') is-invalid @enderror" value="{{ old('name', $office->account->name) }}">
-                        @error('name')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
+                        <div class="form-group">
+                            <label for="name">{{ __('Name') }}:</label>
+                            <input type="text" id="name" name="name" class="form-control mb-2 @error('name') is-invalid @enderror" value="{{ old('name', $office->account->name) }}">
+                            @error('name')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
 
-                    <div class="form-group">
-                        <label for="email">{{ __('Email') }}:</label>
-                        <input type="email" id="email" name="email" class="form-control mb-2 @error('email') is-invalid @enderror" value="{{ old('email', $office->account->email) }}">
-                        @error('email')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
+                        <div class="form-group">
+                            <label for="email">{{ __('Email') }}:</label>
+                            <input type="email" id="email" name="email" class="form-control mb-2 @error('email') is-invalid @enderror" value="{{ old('email', $office->account->email) }}">
+                            @error('email')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
 
-                    <div class="form-group">
-                        <label for="location">{{ __('Location') }}:</label>
-                        <input type="text" id="location" name="location" class="form-control mb-2 @error('location') is-invalid @enderror" value="{{ old('location', $office->location) }}">
-                        @error('location')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
+                        <div class="form-group">
+                            <label for="location">{{ __('Location') }}:</label>
+                            <input type="text" id="location" name="location" class="form-control mb-2 @error('location') is-invalid @enderror" value="{{ old('location', $office->location) }}">
+                            @error('location')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
 
-                    <button type="submit" class="btn btn-primary mt-4">{{ __('Update') }}</button>
-                </form>
+                        <button type="submit" class="btn btn-primary mt-4">{{ __('Update') }}</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <x-dashboard.bank-account-form :account="$office->account" />
             </div>
         </div>
     </div>
