@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name')->nullable();
             $table->string('bank_name')->nullable();
-            $table->string('iban_number')->unique()->nullable();
-            $table->string('number')->unique()->nullable();
+            $table->string('iban_number')->nullable();
+            $table->string('number')->nullable();
             $table->string('soft_code')->nullable();
             $table->string('bank_address')->nullable();
             
