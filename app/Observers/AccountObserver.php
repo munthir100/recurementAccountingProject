@@ -14,7 +14,6 @@ class AccountObserver
     }
     public function deleting(Account $account)
     {
-        $account->transactions()->delete();
         $account->contracts()->delete();
     }
 }

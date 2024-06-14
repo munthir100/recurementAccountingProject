@@ -23,13 +23,13 @@ return new class extends Migration
             $table->string('nationality');
             $table->integer('age');
             $table->string('type');
-            $table->string('tall');
-            $table->string('religion');
+            $table->string('tall')->nullable();
+            $table->string('religion')->nullable();
             $table->string('place_of_birth');
-            $table->integer('children');
+            $table->integer('children')->nullable();
             $table->string('education');
             $table->date('birth_date');
-            $table->string('weight');
+            $table->string('weight')->nullable();
             $table->boolean('has_practical_experience')->default(true);
             $table->json('practical_experience');
             $table->string('work_experience_country');

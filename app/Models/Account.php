@@ -2,18 +2,20 @@
 
 namespace App\Models;
 
-use App\Filters\AccountFilters;
 use App\Models\Office;
-use App\Models\AccountType;
 use App\Traits\HasStatus;
+use App\Models\AccountType;
+use App\Filters\AccountFilters;
+use Spatie\Activitylog\LogOptions;
 use Essa\APIToolKit\Filters\Filterable;
+use Spatie\Activitylog\Traits\LogsActivity;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Account extends Authenticatable
 {
-    use HasFactory, HasStatus, Filterable;
+    use HasFactory, HasStatus, Filterable, LogsActivity;
 
     protected $default_filters = AccountFilters::class;
 
@@ -22,6 +24,12 @@ class Account extends Authenticatable
     protected $casts = [
         'password' => 'hashed',
     ];
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logOnlyDirty();
+    }
 
     const STATUSES = [
         Status::ACTIVE => 'Active',

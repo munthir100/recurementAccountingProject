@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Blog;
 use App\Models\Worker;
 use App\Models\Country;
+use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use App\Http\Controllers\Controller;
@@ -14,8 +15,9 @@ class MainController extends Controller
     public function home()
     {
         $countries = Country::with('media')->isPublished()->get();
+        $services = Service::isPublished()->get();
 
-        return view('main-site.home', compact('countries'));
+        return view('main-site.home', compact('countries', 'services'));
     }
 
     public function contact()
@@ -46,6 +48,14 @@ class MainController extends Controller
     {
         return view('main-site.about');
     }
+
+    public function services()
+    {
+        $services = Service::isPublished()->get();
+
+        return view('main-site.services', compact('services'));
+    }
+
 
     public function workers()
     {

@@ -77,11 +77,11 @@
                         <i class="ri-settings-3-line"></i> <span id="sidebar-span">{{ __('Settings') }}</span>
                     </a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link menu-link {{ request()->routeIs('user.dashboard.reports.*') ? 'active' : '' }}" href="{{ route('user.dashboard.reports.index') }}" aria-expanded="false" aria-controls="sidebarSettings">
                         <i class="ri-file-list-3-line"></i> <span id="sidebar-span">{{ __('Accounting Reports') }}</span>
                     </a>
-                </li>
+                </li> -->
                 <li class="nav-item">
                     <a class="nav-link menu-link {{ request()->routeIs('user.dashboard.accounts.*') ? 'active' : '' }}" href="{{ route('user.dashboard.accounts.index') }}" aria-expanded="false" aria-controls="sidebarSettings">
                         <i class="ri-account-circle-line"></i> <span id="sidebar-span">{{ __('Accounts') }}</span>
@@ -90,6 +90,11 @@
                 <li class="nav-item">
                     <a class="nav-link menu-link {{ request()->routeIs('user.dashboard.users.*') ? 'active' : '' }}" href="{{ route('user.dashboard.users.index') }}" aria-expanded="false" aria-controls="sidebarSettings">
                         <i class="ri-admin-line"></i> <span id="sidebar-span">{{ __('Users') }}</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link {{ request()->routeIs('user.dashboard.activities.*') ? 'active' : '' }}" href="{{ route('user.dashboard.activities.index') }}" aria-expanded="false" aria-controls="sidebarSettings">
+                        <i class="ri-history-line"></i> <span id="sidebar-span">{{ __('Activity Logs') }}</span>
                     </a>
                 </li>
             </ul>

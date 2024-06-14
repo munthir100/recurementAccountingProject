@@ -2,18 +2,25 @@
 
 namespace App\Models;
 
-use App\Filters\ContractFilters;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Traits\HasStatus;
+use App\Filters\ContractFilters;
+use Spatie\Activitylog\LogOptions;
 use Essa\APIToolKit\Filters\Filterable;
+use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Contract extends Model
 {
-    use HasFactory, HasStatus, Filterable;
+    use HasFactory, HasStatus, Filterable, LogsActivity;
 
     protected $default_filters = ContractFilters::class;
-    
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logOnlyDirty();
+    }
     protected $fillable = [
         'title',
         'description',

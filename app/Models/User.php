@@ -4,20 +4,26 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
-use App\Filters\UserFilters;
 use App\Traits\HasStatus;
+use App\Filters\UserFilters;
+use Spatie\Activitylog\LogOptions;
+use Spatie\Permission\Traits\HasRoles;
 use Essa\APIToolKit\Filters\Filterable;
+use Illuminate\Notifications\Notifiable;
+use Spatie\Activitylog\Traits\LogsActivity;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable, HasStatus, Filterable, HasRoles;
+    use HasFactory, Notifiable, HasStatus, Filterable, HasRoles, LogsActivity;
 
     protected $default_filters = UserFilters::class;
-
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logOnlyDirty();
+    }
     /**
      * The attributes that are mass assignable.
      *

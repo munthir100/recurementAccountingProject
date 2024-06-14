@@ -2,9 +2,12 @@
     <div class="container-fluid">
         <div class="col-auto col-lg-2 me-lg-0 me-auto">
             <a class="navbar-brand" href="{{ route('home.index') }}">
-                <img src="/images/custom/rayak-1.webp" alt="" class="default-logo">
-                <img src="/images/custom/rayak-1.webp" alt="" class="alt-logo">
-                <img src="/images/custom/rayak-1.webp" alt="" class="mobile-logo">
+                @php
+                $src = $siteSettings->hasMedia('logo') ? $siteSettings->getFirstMedia('logo')->getUrl() : '/images/custom/rayak-1.webp';
+                @endphp
+                <img src="{{$src}}" alt="" class="default-logo">
+                <img src="{{$src}}" alt="" class="alt-logo">
+                <img src="{{$src}}" alt="" class="mobile-logo">
             </a>
         </div>
         <div class="col-auto menu-order position-static">
@@ -18,14 +21,8 @@
                 <ul class="navbar-nav">
                     <li class="nav-item"><a href="{{ route('home.index') }}" class="nav-link">{{ __('Home') }}</a></li>
                     <li class="nav-item dropdown dropdown-with-icon-style02">
-                        <a href="#" class="nav-link">{{ __('Our Services') }}</a>
-                        <i class="fa-solid fa-angle-down dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a href="#"><img src="/images/demo-accounting-company-icon02.svg" alt="">{{ __('Recruitment Procedures') }}</a></li>
-                            <li><a href="#"><img src="/images/demo-accounting-company-icon03.svg" alt="">{{ __('Worker Selection') }}</a></li>
-                            <li><a href="#"><img src="/images/demo-accounting-company-icon-04.svg" alt="">{{ __('Recruitment Contracting') }}</a></li>
-                            <li><a href="#"><img src="/images/demo-accounting-company-icon-05.svg" alt="">{{ __('Recruitment Policies') }}</a></li>
-                        </ul>
+                        <a href="{{route('home.services')}}" class="nav-link">{{ __('Our Services') }}</a>
+                        <i class="fa-solid" role="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
                     </li>
                     <li class="nav-item"><a href="#" class="nav-link">{{ __('Recruitment Journey') }}</a></li>
                     <li class="nav-item dropdown dropdown-with-icon-style02">

@@ -146,87 +146,28 @@
         </div>
         <div class="row row-cols-1 row-cols-lg-3 row-cols-md-2 justify-content-center" data-anime='{ "el": "childs", "translateY": [50, 0], "opacity": [0,1], "duration": 1200, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }'>
             <!-- start features box item -->
+            @foreach($services as $service)
             <div class="col icon-with-text-style-07 transition-inner-all mb-30px">
                 <div class="bg-white h-100 justify-content-end box-shadow-quadruple-large-hover feature-box flex-column-reverse p-15 md-p-13 border-radius-8px">
                     <div class="feature-box-icon">
-                        <a href="demo-accounting-services-details.html"><img src="/images/demo-accounting-company-icon01.svg" class="h-95px" alt=""></a>
+                        <a href="#"><img src="/images/demo-accounting-company-icon01.svg" class="h-95px" alt=""></a>
                     </div>
                     <div class="feature-box-content">
-                        <a href="demo-accounting-services-details.html" class="d-inline-block fw-600 text-dark-gray mb-5px fs-20 ls-minus-05px">{{__('Recruitment Procedures')}}</a>
-                        <p class="mb-30px">{{__('We at Taraf Al-A\'mal Office care for your service through multiple communication channels and ensure a complete service and an exceptional customer experience.')}}</p>
+                        <a href="#" class="d-inline-block fw-600 text-dark-gray mb-5px fs-20 ls-minus-05px">{{$service->title}}</a>
+                        <p class="mb-30px">{{$service->description}}</p>
+                        @if($service->is_new)
+                        <span class="position-absolute box-shadow-large top-25px lg-top-15px right-25px lg-right-15px bg-base-color border-radius-18px text-white fs-11 fw-600 text-uppercase ps-15px pe-15px lh-26 ls-minus-05px">{{__('New')}}</span>
+                        @endif
                     </div>
                 </div>
             </div>
+            @endforeach
             <!-- end features box item -->
-            <!-- start features box item -->
-            <div class="col icon-with-text-style-07 transition-inner-all mb-30px">
-                <div class="bg-white h-100 justify-content-end box-shadow-quadruple-large-hover feature-box flex-column-reverse p-15 md-p-13 border-radius-8px">
-                    <div class="feature-box-icon">
-                        <a href="demo-accounting-services-details.html"><img src="/images/demo-accounting-company-icon02.svg" class="h-95px" alt=""></a>
-                    </div>
-                    <div class="feature-box-content">
-                        <a href="demo-accounting-services-details.html" class="d-inline-block fw-600 text-dark-gray mb-5px fs-20 ls-minus-05px">{{__('Labor Selection')}}</a>
-                        <p class="mb-30px">{{__('We at Taraf Al-A\'mal Office care for your service through multiple communication channels and ensure a complete service and an exceptional customer experience.')}}</p>
-                    </div>
-                    <span class="position-absolute box-shadow-large top-25px lg-top-15px right-25px lg-right-15px bg-base-color border-radius-18px text-white fs-11 fw-600 text-uppercase ps-15px pe-15px lh-26 ls-minus-05px">{{__('New')}}</span>
-                </div>
-            </div>
-            <!-- end features box item -->
-            <!-- start features box item -->
-            <div class="col icon-with-text-style-07 transition-inner-all mb-30px">
-                <div class="bg-white h-100 justify-content-end box-shadow-quadruple-large-hover feature-box flex-column-reverse p-15 md-p-13 border-radius-8px">
-                    <div class="feature-box-icon">
-                        <a href="demo-accounting-services-details.html"><img src="/images/demo-accounting-company-icon03.svg" class="h-95px" alt=""></a>
-                    </div>
-                    <div class="feature-box-content">
-                        <a href="demo-accounting-services-details.html" class="d-inline-block fw-600 text-dark-gray mb-5px fs-20 ls-minus-05px">{{__('Recruitment Contracts')}}</a>
-                        <p class="mb-30px">{{__('We at Taraf Al-A\'mal Office care for your service through multiple communication channels and ensure a complete service and an exceptional customer experience.')}}</p>
-                    </div>
-                </div>
-            </div>
-            <!-- end features box item -->
-            <!-- start features box item -->
-            <div class="col icon-with-text-style-07 transition-inner-all md-mb-30px">
-                <div class="bg-white h-100 justify-content-end box-shadow-quadruple-large-hover feature-box flex-column-reverse p-15 md-p-13 border-radius-8px">
-                    <div class="feature-box-icon">
-                        <a href="demo-accounting-services-details.html"><img src="/images/demo-accounting-company-icon-04.svg" class="h-95px" alt=""></a>
-                    </div>
-                    <div class="feature-box-content">
-                        <a href="demo-accounting-services-details.html" class="d-inline-block fw-600 text-dark-gray mb-5px fs-20 ls-minus-05px">{{__('Recruitment Policies')}}</a>
-                        <p class="mb-30px">{{__('We at Taraf Al-A\'mal Office care for your service through multiple communication channels and ensure a complete service and an exceptional customer experience.')}}</p>
-                    </div>
-                </div>
-            </div>
-            <!-- end features box item -->
-            <!-- start features box item -->
-            <div class="col icon-with-text-style-07 transition-inner-all sm-mb-30px">
-                <div class="bg-white h-100 justify-content-end box-shadow-quadruple-large-hover feature-box flex-column-reverse p-15 md-p-13 border-radius-8px">
-                    <div class="feature-box-icon">
-                        <a href="demo-accounting-services-details.html"><img src="/images/demo-accounting-company-icon-05.svg" class="h-95px" alt=""></a>
-                    </div>
-                    <div class="feature-box-content">
-                        <a href="demo-accounting-services-details.html" class="d-inline-block fw-600 text-dark-gray mb-5px fs-20 ls-minus-05px">{{__('Domestic Recruitment')}}</a>
-                        <p class="mb-30px">{{__('We at Taraf Al-A\'mal Office care for your service through multiple communication channels and ensure a complete service and an exceptional customer experience.')}}</p>
-                    </div>
-                </div>
-            </div>
-            <!-- end features box item -->
-            <!-- start features box item -->
-            <div class="col icon-with-text-style-07 transition-inner-all">
-                <div class="bg-white h-100 justify-content-end box-shadow-quadruple-large-hover feature-box flex-column-reverse p-15 md-p-13 border-radius-8px">
-                    <div class="feature-box-icon">
-                        <a href="demo-accounting-services-details.html"><img src="/images/demo-accounting-company-icon-06.svg" class="h-95px" alt=""></a>
-                    </div>
-                    <div class="feature-box-content">
-                        <a href="demo-accounting-services-details.html" class="d-inline-block fw-600 text-dark-gray mb-5px fs-20 ls-minus-05px">{{__('Labor Recruitment')}}</a>
-                        <p class="mb-30px">{{__('We at Taraf Al-A\'mal Office care for your service through multiple communication channels and ensure a complete service and an exceptional customer experience.')}}</p>
-                    </div>
-                </div>
-            </div>
-            <!-- end features box item -->
+
         </div>
     </div>
 </section>
+
 
 <!-- end section -->
 <!-- start section -->
@@ -236,7 +177,7 @@
             <div class="col-auto d-flex align-items-center" data-anime='{ "translateY": [0, 0], "opacity": [0,1], "duration": 1200, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }'>
                 <img src="/images/custom/demo-accounting-img-05.jpg" alt="" />
                 <div class="fs-19 lh-28 last-paragraph-no-margin text-white pt-15px pb-15px">
-                    <p>{{__('Save your valuable time and effort to find a solution.')}} <a href="#" class="text-decoration-line-bottom fw-500 text-white">{{__('Contact us now')}}</a></p>
+                    <p>{{__('Save your valuable time and effort to find a solution.')}} <a href="tel:{{$siteSettings->contact_phone}}" class="text-decoration-line-bottom fw-500 text-white">{{__('Contact us now')}}</a></p>
                 </div>
             </div>
         </div>

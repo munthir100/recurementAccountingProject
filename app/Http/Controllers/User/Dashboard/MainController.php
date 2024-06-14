@@ -10,6 +10,7 @@ use App\Models\Customer;
 use App\Models\CallCenter;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Spatie\Activitylog\Models\Activity;
 
 class MainController extends Controller
 {

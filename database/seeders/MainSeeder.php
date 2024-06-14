@@ -11,12 +11,13 @@ use App\Models\Worker;
 use App\Models\Account;
 use App\Models\Country;
 use App\Models\Invoice;
+use App\Models\Service;
 use App\Models\Contract;
+use App\Models\Currency;
 use App\Models\Customer;
 use App\Models\Discount;
 use App\Models\AccountType;
 use App\Models\BankAccount;
-use App\Models\Currency;
 use App\Models\Transaction;
 use App\Models\Indebtedness;
 use App\Models\DeliveryAddress;
@@ -27,6 +28,8 @@ class MainSeeder extends Seeder
 {
     public function run()
     {
+        Service::factory(6)->create();
+
         $accountTypes = [AccountType::OFFICE, AccountType::CUSTOMER];
 
         $user = User::factory()->create();
@@ -58,7 +61,7 @@ class MainSeeder extends Seeder
 
 
         Blog::factory(30)->create();
-
+        
         Order::factory(30)->create()->each(function ($order) {
             DeliveryAddress::factory()->create([
                 'order_id' => $order->id,

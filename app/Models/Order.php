@@ -6,15 +6,23 @@ use App\Models\Worker;
 use App\Models\Account;
 use App\Traits\HasStatus;
 use App\Filters\OrderFilters;
+use Spatie\Activitylog\LogOptions;
 use Essa\APIToolKit\Filters\Filterable;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Order extends Model
 {
-    use HasFactory, HasStatus, Filterable;
+    use HasFactory, HasStatus, Filterable, LogsActivity;
+    
     protected string $default_filters = OrderFilters::class;
 
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logOnlyDirty();
+    }
     protected $fillable = [
         'account_id',
         'worker_id',

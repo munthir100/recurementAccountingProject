@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Status;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,14 +12,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('site_settings', function (Blueprint $table) {
+        Schema::create('services', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('description');
-            $table->string('whatsapp_number');
-            $table->string('contact_email');
-            $table->string('contact_phone');
-            $table->json('settings');
+            $table->string('title');
+            $table->text('description')->nullable();
+            $table->boolean('is_new')->default(false);
+            $table->foreignId('status_id')->constrained()->cascadeOnDelete()->default(Status::ACTIVE);
+
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('site_settings');
+        Schema::dropIfExists('services');
     }
 };

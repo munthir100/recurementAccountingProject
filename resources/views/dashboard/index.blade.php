@@ -18,7 +18,7 @@
         <div class="d-flex flex-column h-100">
 
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-lg-3 col-md-6">
                     <div class="card card-animate">
                         <div class="card-body">
                             <div class="d-flex justify-content-between">
@@ -44,7 +44,7 @@
                     </div> <!-- end card-->
                 </div> <!-- end col-->
 
-                <div class="col-md-3">
+                <div class="col-lg-3 col-md-6">
                     <div class="card card-animate">
                         <div class="card-body">
                             <div class="d-flex justify-content-between">
@@ -69,7 +69,7 @@
                     </div> <!-- end card-->
                 </div> <!-- end col-->
 
-                <div class="col-md-3">
+                <div class="col-lg-3 col-md-6">
                     <div class="card card-animate">
                         <div class="card-body">
                             <div class="d-flex justify-content-between">
@@ -94,12 +94,12 @@
                     </div> <!-- end card-->
                 </div> <!-- end col-->
 
-                <div class="col-md-3">
+                <div class="col-lg-3 col-md-6">
                     <div class="card card-animate">
                         <div class="card-body">
                             <div class="d-flex justify-content-between">
                                 <div>
-                                    <p class="fw-medium text-muted mb-0">{{ __("New Cvs") }}</p>
+                                    <p class="fw-medium text-muted mb-0">{{ __("Cvs") }}</p>
                                     <h2 class="mt-4 ff-secondary fw-semibold">
                                         <span class="counter-value" data-target="{{ $cvsCount }}">0</span>
                                     </h2>

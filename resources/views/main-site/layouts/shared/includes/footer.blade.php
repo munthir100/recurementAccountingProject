@@ -9,11 +9,11 @@
                 <!-- end footer column -->
                 <!-- start footer column -->
                 <div class="col-xl-6 text-center text-xl-end">
-                    <a href="#" class="btn btn-extra-large btn-yellow left-icon btn-box-shadow btn-rounded text-transform-none d-inline-block align-middle me-15px xs-m-10px">
-                        <i class="feather icon-feather-mail"></i>{{__('rayaksa@rayaksa.com')}}
+                    <a href="mailto:{{$siteSettings->contact_email}}" class="btn btn-large btn-yellow left-icon btn-box-shadow btn-rounded text-transform-none d-inline-block align-middle me-15px xs-m-10px">
+                        <i class="feather icon-feather-mail"></i>{{$siteSettings->contact_email}}
                     </a>
-                    <a href="tel:0508111994" class="btn btn-extra-large btn-base-color left-icon btn-box-shadow btn-rounded d-inline-block align-middle xs-m-10px">
-                        <i class="feather icon-feather-phone-call"></i>0508111994
+                    <a href="tel:{{$siteSettings->contact_phone}}" class="btn btn-large btn-base-color left-icon btn-box-shadow btn-rounded d-inline-block align-middle xs-m-10px">
+                        <i class="feather icon-feather-phone-call"></i>{{$siteSettings->contact_phone}}
                     </a>
                 </div>
                 <!-- end footer column -->
@@ -24,8 +24,8 @@
         <div class="row justify-content-center fs-17 fw-300 mt-5 mb-4 md-mt-45px md-mb-45px xs-mt-35px xs-mb-35px">
             <!-- start footer column -->
             <div class="col-6 col-lg-3 order-sm-1 md-mb-40px xs-mb-30px last-paragraph-no-margin">
-                <span class="fs-18 fw-400 d-block text-white mb-5px">{{__('Rayak for E-Marketing')}}</span>
-                <p class="w-85 xl-w-95 sm-w-100" style="text-align: right;">{{__('Simply put, it\'s placeholder content (meaning the goal is form, not content)')}}</p>
+                <span class="fs-18 fw-400 d-block text-white mb-5px">{{$siteSettings->name}}</span>
+                <p class="w-85 xl-w-95 sm-w-100" style="text-align: right;">{{$siteSettings->description}}</p>
                 <div class="elements-social social-icon-style-02 mt-20px lg-mt-20px">
                     <ul class="small-icon light">
                         <li><a class="facebook" href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook-f"></i></a></li>
@@ -62,9 +62,9 @@
             <div class="col-6 col-lg-2 col-sm-4 xs-mb-30px order-sm-5 order-lg-4">
                 <span class="fs-18 fw-400 d-block text-white mb-5px">{{__('Stay Connected')}}</span>
                 <p class="mb-5px">{{__('Do you need help?')}}</p>
-                <a href="mailto:hi@domain.com" class="text-white lh-16 d-block mb-15px">hi@domain.com</a>
+                <a href="mailto:{{$siteSettings->contact_email}}" class="text-white lh-16 d-block mb-15px">{{$siteSettings->contact_email}}</a>
                 <p class="mb-5px">{{__('Technical Support?')}}</p>
-                <a href="tel:12345678910" class="text-white lh-16 d-block">+1 234 567 8910</a>
+                <a href="tel:12345678910" class="text-white lh-16 d-block">{{$siteSettings->contact_phone}}</a>
             </div>
             <!-- end footer column -->
             <!-- start footer column -->

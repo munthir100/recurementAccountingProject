@@ -211,6 +211,16 @@ Banner:
     fiels:
         image
 
+Service:
+    title
+    description
+    is_new
+    status_id
+    files:
+        image
+
+
+
 
 
 

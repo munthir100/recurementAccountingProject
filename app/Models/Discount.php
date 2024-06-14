@@ -6,15 +6,23 @@ use App\Models\Status;
 use App\Models\Account;
 use App\Traits\HasStatus;
 use App\Filters\DiscountFilters;
+use Spatie\Activitylog\LogOptions;
 use Essa\APIToolKit\Filters\Filterable;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Discount extends Model
 {
-    use HasFactory, HasStatus, Filterable;
+    use HasFactory, HasStatus, Filterable, LogsActivity;
 
     protected $default_filters = DiscountFilters::class;
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logOnlyDirty();
+    }
     protected $fillable = [
         'title',
         'description',

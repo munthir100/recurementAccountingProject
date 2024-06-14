@@ -4,18 +4,25 @@ namespace App\Models;
 
 use App\Traits\HasStatus;
 use Spatie\MediaLibrary\HasMedia;
+use Spatie\Activitylog\LogOptions;
 use App\Filters\IndebtednessFilters;
 use Essa\APIToolKit\Filters\Filterable;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Indebtedness extends Model implements HasMedia
 {
-    use HasFactory, HasStatus, InteractsWithMedia, Filterable;
+    use HasFactory, HasStatus, InteractsWithMedia, Filterable, LogsActivity;
 
     protected $default_filters = IndebtednessFilters::class;
-
+    
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logOnlyDirty();
+    }
     protected $fillable = [
         'title',
         'description',

@@ -2,22 +2,54 @@
 
 namespace App\Models;
 
-use App\Filters\WorkerFilters;
 use App\Traits\HasStatus;
 use App\Traits\HasUploads;
-use Essa\APIToolKit\Filters\Filterable;
+use App\Filters\WorkerFilters;
 use Spatie\MediaLibrary\HasMedia;
+use Spatie\Activitylog\LogOptions;
+use Essa\APIToolKit\Filters\Filterable;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Worker extends Model implements HasMedia
 {
-    use HasFactory, HasStatus, InteractsWithMedia, Filterable;
+    use HasFactory, HasStatus, InteractsWithMedia, Filterable, LogsActivity;
 
     protected $default_filters = WorkerFilters::class;
 
-    protected $fillable = ['first_name', 'last_name', 'job', 'month_salary', 'contract_period', 'languages', 'nationality', 'age', 'type', 'tall', 'religion', 'place_of_birth', 'children', 'education', 'birth_date', 'weight', 'practical_experience', 'work_experience_country', 'years_of_experience', 'main_image', 'related_images', 'office_id', 'status_id', 'cv_id'];
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logOnlyDirty();
+    }
+    protected $fillable = [
+        'first_name',
+        'last_name',
+        'job',
+        'month_salary',
+        'contract_period',
+        'languages',
+        'nationality',
+        'age',
+        'type',
+        'tall',
+        'religion',
+        'place_of_birth',
+        'children',
+        'education',
+        'birth_date',
+        'weight',
+        'practical_experience',
+        'work_experience_country',
+        'years_of_experience',
+        'main_image',
+        'related_images',
+        'office_id',
+        'status_id',
+        'cv_id'
+    ];
 
     const STATUSES = [
         Status::PUBLISHED => 'Published',

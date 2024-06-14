@@ -19,6 +19,7 @@ Route::middleware([SetLocale::class])->group(function () {
         Route::get('/blog', [MainController::class, 'blog'])->name('blog');
         Route::get('/blog/{blog}/details', [MainController::class, 'blogDetails'])->name('blog.details');
         Route::get('/about', [MainController::class, 'about'])->name('about');
+        Route::get('/services', [MainController::class, 'services'])->name('services');
         Route::get('workers', [MainController::class, 'workers'])->name('workers.index');
         Route::get('workers/{worker}', [MainController::class, 'workerDetails'])->name('workers.show');
         Route::get('workers/{worker}/order', [MainController::class, 'orderWorker'])->name('workers.order');

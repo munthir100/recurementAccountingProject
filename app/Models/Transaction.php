@@ -2,18 +2,27 @@
 
 namespace App\Models;
 
-use App\Filters\TransactionFilters;
 use App\Models\Status;
 use App\Traits\HasStatus;
 use App\Models\TransactionType;
+use Spatie\Activitylog\LogOptions;
+use App\Filters\TransactionFilters;
 use Essa\APIToolKit\Filters\Filterable;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Transaction extends Model
 {
-    use HasFactory, HasStatus, Filterable;
+    use HasFactory, HasStatus, Filterable, LogsActivity;
+
     protected $default_filters = TransactionFilters::class;
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logOnlyDirty();
+    }
 
     protected $fillable = [
         'description',

@@ -2,17 +2,25 @@
 
 namespace App\Models;
 
-use App\Filters\InvoiceFilters;
 use App\Traits\HasStatus;
+use App\Filters\InvoiceFilters;
+use Spatie\Activitylog\LogOptions;
 use Essa\APIToolKit\Filters\Filterable;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Invoice extends Model
 {
-    use HasFactory, HasStatus, Filterable;
-    protected $default_filters = InvoiceFilters::class;
+    use HasFactory, HasStatus, Filterable, LogsActivity;
     
+    protected $default_filters = InvoiceFilters::class;
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logOnlyDirty();
+    }
     protected $fillable = [
         'title',
         'description',
